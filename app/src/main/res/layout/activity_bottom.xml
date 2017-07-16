@@ -3,10 +3,11 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:background="@drawable/bottom_bar" >
+              android:background="#E8E8E8" >
 
     <LinearLayout
         android:id="@+id/ll_home"
+        android:layout_marginTop="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -31,6 +32,7 @@
 
     <LinearLayout
         android:id="@+id/ll_address"
+        android:layout_marginTop="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -49,12 +51,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="好友"
-            android:textColor="#ffffff"
+            android:textColor="#4D4D4D"
             android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_friend"
+        android:layout_marginTop="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -73,12 +76,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="分享"
-            android:textColor="#ffffff"
+            android:textColor="#4D4D4D"
             android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_setting"
+        android:layout_marginTop="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -97,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="设置"
-            android:textColor="#ffffff"
+            android:textColor="#4D4D4D"
             android:textStyle="bold" />
     </LinearLayout>
 

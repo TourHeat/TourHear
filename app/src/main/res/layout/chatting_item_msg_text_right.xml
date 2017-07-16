@@ -16,9 +16,8 @@
             android:id="@+id/tv_sendtime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#bfbfbf"
             android:padding="2dp"
-            android:textColor="#ffffff"
+            android:textColor="#8f8f8f"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -29,8 +28,8 @@
 
         <ImageView
             android:id="@+id/iv_userhead"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:background="@drawable/timg0"
@@ -39,7 +38,7 @@
         <TextView
             android:id="@+id/tv_chatcontent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@id/iv_userhead"
             android:background="@drawable/chatto_bg"
@@ -60,7 +59,7 @@
             android:layout_toRightOf="@id/tv_chatcontent"
             android:gravity="center"
             android:textColor="#818181"
-            android:textSize="15sp" />
+            android:textSize="12dp" />
     </RelativeLayout>
 
 </LinearLayout>

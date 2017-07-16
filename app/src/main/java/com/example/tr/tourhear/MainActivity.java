@@ -189,11 +189,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         iv_address.setImageResource(R.drawable.tab_address_normal);
         iv_friend.setImageResource(R.drawable.tab_find_frd_normal);
         iv_setting.setImageResource(R.drawable.tab_settings_normal);
-        // TextView置为白色
-        tv_home.setTextColor(0xffffffff);
-        tv_address.setTextColor(0xffffffff);
-        tv_friend.setTextColor(0xffffffff);
-        tv_setting.setTextColor(0xffffffff);
+        // TextView置为灰色
+        tv_home.setTextColor(0xff4D4D4D);
+        tv_address.setTextColor(0xff4D4D4D);
+        tv_friend.setTextColor(0xff4D4D4D);
+        tv_setting.setTextColor(0xff4D4D4D);
     }
 
 }

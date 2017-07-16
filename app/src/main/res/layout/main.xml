@@ -9,18 +9,17 @@
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
         android:layout_height="55dp"
-        android:background="@drawable/mmtitle_bg"
+        android:background="#1e90ff"
         android:orientation="vertical" >
 
         <Button
             android:id="@+id/btn_back"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:background="@drawable/selector_btn_back"
             android:paddingLeft="10dp"
-            android:text="返回"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
@@ -36,9 +35,9 @@
     <RelativeLayout
         android:id="@+id/rl_bottom"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/layout_bg1" >
+        android:background="#E8E8E8" >
 
         <Button
             android:id="@+id/btn_send"
