@@ -43,6 +43,7 @@
     <color name="salmon">#fa8072</color><!--鲜肉色 -->
     <color name="ghostwhite">#f8f8ff</color><!--幽灵白 -->
     <color name="mintcream">#f5fffa</color><!--薄荷色 -->
+    <color name="colorIconBlueTransparent">#aa0b76dd</color>
     <color name="whitesmoke">#f5f5f5</color><!--烟白色 -->
     <color name="beige">#f5f5dc</color><!--米色 -->
     <color name="wheat">#f5deb3</color><!--浅黄色 -->
@@ -54,6 +55,9 @@
     <color name="lightcoral">#f08080</color><!--亮珊瑚色 -->
     <color name="palegoldenrod">#eee8aa</color><!--苍麒麟色 -->
     <color name="violet">#ee82ee</color><!--紫罗兰色 -->
+    <color name="colorIconBlue">#69b273</color>
+    <color name="darkGrey"> #C0C0C0</color>
+    <color name="transparent">#00000000</color>
     <color name="darksalmon">#e9967a</color><!--暗肉色 -->
     <color name="lavender">#e6e6fa</color><!--淡紫色 -->
     <color name="lightcyan">#e0ffff</color><!--亮青色 -->
