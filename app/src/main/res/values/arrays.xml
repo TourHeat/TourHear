@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string-array name="data">
+        <item>御坂美琴</item>
+        <item>白井黑子</item>
+        <item>斯拉克</item>
+        <item>曾经~</item>
+        <item>何华均</item>
+        <item>朱浩楠</item>
+        <item>时崎狂三</item>
+        <item>四糸乃</item>
+        <item>阿克蒙德</item>
+        <item>基尔加丹</item>
+        <item>伊利丹</item>
+        <item>喜羊羊</item>
+        <item>懒羊羊</item>
+        <item>彼得潘</item>
+        <item>帕金森</item>
+        <item>王尼玛</item>
+        <item>yyf</item>
+        <item>zsmj</item>
+        <item>#Blizzer</item>
+        <item>Lancer</item>
+        <item>Saber</item>
+        <item>Valve</item>
+        <item>Google</item>
+        <item>网易</item>
+        <item>阿里巴巴</item>
+        <item>百度</item>
+        <item>腾讯</item>
+        <item>西南交通大学</item>
+        <item>软件工程</item>
+        <item>!小透明</item>
+        <item>宇智波鼬</item>
+        <item>鸣人</item>
+        <item>日向雏田</item>
+        <item>佩恩</item>
+        <item>托尔</item>
+        <item>康纳</item>
+        <item>堕落的珈百璃</item>
+        <item>拉斐尔</item>
+        <item>萨塔尼亚</item>
+        <item>123木头人</item>
+        <item>么么哒</item>
+        <item>小萌新</item>
+
+    </string-array>
+
+    <string-array name="head">
+        <item>添加新朋友</item>
+        <item>群组</item>
+        <item>部落</item>
+    </string-array>
+
+</resources>

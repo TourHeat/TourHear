@@ -73,20 +73,26 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
 
     @Override
     public void onLetterSelected(String letter) {
-        setListviewPosition(letter);
-        mTip.setText(letter);
-        mTip.setVisibility(View.VISIBLE);
+        if (letter!=null){
+            setListviewPosition(letter);
+            mTip.setText(letter);
+            mTip.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void onLetterChanged(String letter) {
-        setListviewPosition(letter);
-        mTip.setText(letter);
+        if (letter!=null){
+            setListviewPosition(letter);
+            mTip.setText(letter);
+        }
     }
 
     @Override
     public void onLetterReleased(String letter) {
-        mTip.setVisibility(View.GONE);
+        if (letter!=null){
+            mTip.setVisibility(View.GONE);
+        }
     }
 
     private void setListviewPosition(String letter){
