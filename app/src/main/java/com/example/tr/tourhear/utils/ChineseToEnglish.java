@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 /**
- * Created by Administrator on 2016/1/8.
+ * Created by ZhangYan on 2017/7/16.
  */
 public class ChineseToEnglish {
 
@@ -555,8 +555,8 @@ public class ChineseToEnglish {
             else {
                 String spell = getSpellByAscii(ascii);
                 if (spell == null) {
-                    retuBuf.append(chars[i]);
-                }
+                        retuBuf.append(chars[i]);
+                    }
                 else {
                     if (i == 0) { //第一个字取全拼
                         retuBuf.append(spell);

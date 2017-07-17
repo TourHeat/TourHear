@@ -1,21 +1,22 @@
 package com.example.tr.tourhear.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.tr.tourhear.ChatActivity;
 import com.example.tr.tourhear.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Administrator on 2016/1/8.
+ * Created by ZhangYan on 2017/7/16.
  */
 public class UserAdapter extends BaseAdapter{
     private Context mContext;
@@ -65,7 +66,19 @@ public class UserAdapter extends BaseAdapter{
         viewHolder.tvItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,users.get(position).getName(),Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext,users.get(position).getName(),Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    default:
+                        Intent intent=new Intent(v.getContext(), ChatActivity.class);
+                        v.getContext().startActivity(intent);
+                }
+
             }
         });
         //当前的item的title与上一个item的title不同的时候回显示title(A,B,C......)

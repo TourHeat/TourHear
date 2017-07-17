@@ -5,7 +5,9 @@ import java.util.Comparator;
 /**
  * 排序类
  * //@标签代表A前面的那些，#代表除了A-Z以外的其他标签
- * Created by tian on 16-1-9.
+ */
+/**
+ * Created by ZhangYan on 2017/7/16.
  */
 public class CompareSort implements Comparator<User> {
     @Override

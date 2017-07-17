@@ -14,7 +14,7 @@ import com.example.tr.tourhear.R;
 
 
 /**
- * Created by Administrator on 2016/1/8.
+ * Created by ZhangYan on 2017/7/16.
  */
 public class SideBarView extends View{
     public static String[] b = { "A", "B", "C", "D", "E", "F", "G", "H", "I",
