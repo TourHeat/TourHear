@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.tr.tourhear.utils.ChatMsgEntity;
+import com.example.tr.tourhear.utils.ChatMsgViewAdapter;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
