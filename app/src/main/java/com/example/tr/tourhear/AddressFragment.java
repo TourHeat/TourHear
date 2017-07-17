@@ -26,6 +26,7 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
     ListView mListview;
     UserAdapter mAdapter;
     TextView mTip;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.page_02, container, false);
@@ -43,9 +44,9 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
             user.setName(contactsArray[i]);
             String firstSpell = ChineseToEnglish.getFirstSpell(contactsArray[i]);
             String substring = firstSpell.substring(0, 1).toUpperCase();
-            if(substring.matches("[A-Z]")){
+            if (substring.matches("[A-Z]")) {
                 user.setLetter(substring);
-            }else {
+            } else {
                 user.setLetter("#");
             }
             users.add(user);
@@ -73,31 +74,25 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
 
     @Override
     public void onLetterSelected(String letter) {
-        if (letter!=null){
-            setListviewPosition(letter);
-            mTip.setText(letter);
-            mTip.setVisibility(View.VISIBLE);
-        }
+        setListviewPosition(letter);
+        mTip.setText(letter);
+        mTip.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onLetterChanged(String letter) {
-        if (letter!=null){
-            setListviewPosition(letter);
-            mTip.setText(letter);
-        }
+        setListviewPosition(letter);
+        mTip.setText(letter);
     }
 
     @Override
     public void onLetterReleased(String letter) {
-        if (letter!=null){
-            mTip.setVisibility(View.GONE);
-        }
+        mTip.setVisibility(View.GONE);
     }
 
-    private void setListviewPosition(String letter){
+    private void setListviewPosition(String letter) {
         int firstLetterPosition = mAdapter.getFirstLetterPosition(letter);
-        if(firstLetterPosition != -1){
+        if (firstLetterPosition != -1) {
             mListview.setSelection(firstLetterPosition);
         }
     }
