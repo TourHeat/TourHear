@@ -14,7 +14,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="#DBDBDB">
+            android:background="@color/highgray">
             <!--   ***********************************************************************   -->
             <RelativeLayout
                 android:id="@+id/SrelativeLayoutT"
@@ -33,16 +33,16 @@
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
-                android:id="@+id/SrelativeLayout1"
+                android:id="@+id/PersonalInformation"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff">
+                android:background="@drawable/select_btn">
                 <ImageView
                     android:id="@+id/img1"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="13dp"
@@ -73,11 +73,12 @@
                     android:textSize="14dp" />
                 <ImageView
                     android:id="@+id/SimageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -87,7 +88,7 @@
                 android:layout_marginTop="14dp"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff">
+                android:background="@drawable/select_btn">
                 <TextView
                     android:id="@+id/StxtView2"
                     android:layout_width="wrap_content"
@@ -98,11 +99,12 @@
                     android:textColor="#000" />
                 <ImageView
                     android:id="@+id/SimageView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/SrelativeLayout3"
@@ -110,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff"
+                android:background="@drawable/select_btn"
                 android:layout_marginTop="1px">
                 <TextView
                     android:id="@+id/StxtView3"
@@ -122,11 +124,12 @@
                     android:textColor="#000" />
                 <ImageView
                     android:id="@+id/SimageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -136,7 +139,7 @@
                 android:layout_marginTop="14dp"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff">
+                android:background="@drawable/select_btn">
                 <TextView
                     android:id="@+id/StxtView4"
                     android:layout_width="wrap_content"
@@ -147,11 +150,12 @@
                     android:textColor="#000"/>
                 <ImageView
                     android:id="@+id/SimageView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/SrelativeLayout5"
@@ -159,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff"
+                android:background="@drawable/select_btn"
                 android:layout_marginTop="1px">
 
                 <TextView
@@ -172,11 +176,12 @@
                     android:textColor="#000" />
                 <ImageView
                     android:id="@+id/SimageView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -186,7 +191,7 @@
                 android:layout_marginTop="14dp"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff">
+                android:background="@drawable/select_btn">
                 <TextView
                     android:id="@+id/StxtView6"
                     android:layout_width="wrap_content"
@@ -197,11 +202,12 @@
                     android:textColor="#000" />
                 <ImageView
                     android:id="@+id/SimageView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -211,7 +217,7 @@
                 android:layout_marginTop="14dp"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff">
+                android:background="@drawable/select_btn">
                 <TextView
                     android:id="@+id/StxtView7"
                     android:layout_width="wrap_content"
@@ -222,11 +228,12 @@
                     android:textColor="#000" />
                 <ImageView
                     android:id="@+id/SimageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/SrelativeLayout8"
@@ -234,7 +241,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff"
+                android:background="@drawable/select_btn"
                 android:layout_marginTop="1px">
                 <TextView
                     android:id="@+id/StxtView8"
@@ -246,11 +253,12 @@
                     android:textColor="#000"/>
                 <ImageView
                     android:id="@+id/SimageView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/SrelativeLayout9"
@@ -258,7 +266,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff"
+                android:background="@drawable/select_btn"
                 android:layout_marginTop="1px">
                 <TextView
                     android:id="@+id/StxtView9"
@@ -270,11 +278,12 @@
                     android:textColor="#000" />
                 <ImageView
                     android:id="@+id/SimageView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <!--   ********************************************************************   -->
             <RelativeLayout
@@ -284,7 +293,7 @@
                 android:layout_marginTop="14dp"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff">
+                android:background="@drawable/select_btn">
                 <TextView
                     android:id="@+id/StxtView10"
                     android:layout_width="wrap_content"
@@ -295,11 +304,12 @@
                     android:textColor="#000" />
                 <ImageView
                     android:id="@+id/SimageView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/SrelativeLayout11"
@@ -307,7 +317,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:clickable="true"
-                android:background="#ffffff"
+                android:background="@drawable/select_btn"
                 android:layout_marginTop="1px">
                 <TextView
                     android:id="@+id/StxtView11"
@@ -319,11 +329,12 @@
                     android:textColor="#000" />
                 <ImageView
                     android:id="@+id/SimageView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/icon_to"/>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

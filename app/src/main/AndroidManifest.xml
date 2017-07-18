@@ -46,6 +46,7 @@
             android:windowSoftInputMode="stateHidden|stateUnchanged"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".GroupActivity"/>
+        <activity android:name=".PersonalActivity"/>
     </application>
 
 </manifest>

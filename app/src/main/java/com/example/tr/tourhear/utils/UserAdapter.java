@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,6 +58,7 @@ public class UserAdapter extends BaseAdapter{
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item, null);
             viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.title);
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.name);
+            viewHolder.tvicon = (ImageView) convertView.findViewById(R.id.icon);
             viewHolder.tvItem = (LinearLayout) convertView.findViewById(R.id.item);
             convertView.setTag(viewHolder);
         } else {
@@ -64,6 +66,7 @@ public class UserAdapter extends BaseAdapter{
         }
 
         viewHolder.tvName.setText(users.get(position).getName());
+        viewHolder.tvicon.setImageResource(users.get(position).getIcon());
         viewHolder.tvItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,6 +136,7 @@ public class UserAdapter extends BaseAdapter{
     class ViewHolder {
         TextView tvName;
         TextView tvTitle;
+        ImageView tvicon;
         LinearLayout tvItem;
     }
 

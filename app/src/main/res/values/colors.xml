@@ -66,6 +66,7 @@
     <color name="gainsboro">#dcdcdc</color><!--淡灰色 -->
     <color name="crimson">#dc143c</color><!--暗深红色 -->
     <color name="palevioletred">#db7093</color><!--苍紫罗兰色 -->
+    <color name="highgray">#DBDBDB</color><!--苍紫罗兰色 -->
     <color name="goldenrod">#daa520</color><!--金麒麟色 -->
     <color name="orchid">#da70d6</color><!--淡紫色 -->
     <color name="thistle">#d8bfd8</color><!--蓟色 -->

@@ -51,10 +51,12 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
             }
             users.add(user);
         }
-
+        int temp[]={R.drawable.icon_add,R.drawable.icon_group,R.drawable.icon_tribe};
+        //图表的icon存放在数组中循环调用
         for (int i = 0; i < headArray.length; i++) {
             User user = new User();
             user.setName(headArray[i]);
+            user.setIcon(temp[i]);
             user.setLetter("@");
             users.add(user);
         }
