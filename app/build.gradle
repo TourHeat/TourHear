@@ -3,7 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.3"
-    defaultConfig {7
+    defaultConfig {
+        7
         applicationId "com.example.tr.tourhear"
         minSdkVersion 17
         targetSdkVersion 24

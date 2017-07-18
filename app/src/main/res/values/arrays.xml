@@ -53,4 +53,12 @@
         <item>部落</item>
     </string-array>
 
+    <string-array name="group">
+        <item>教务之星</item>
+        <item>西南交大软件工程</item>
+        <item>二次元</item>
+        <item>小透明俱乐部</item>
+        <item>何华均的秘密基地</item>
+
+    </string-array>
 </resources>

@@ -19,19 +19,19 @@ import java.util.List;
 /**
  * Created by ZhangYan on 2017/7/16.
  */
-public class UserAdapter extends BaseAdapter{
+public class GroupAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<User> users;
-    public UserAdapter(Context context) {
+
+    public GroupAdapter(Context context) {
         this.mContext = context;
         users = new ArrayList<>();
     }
 
-    public void setData(List<User> data){
+    public void setData(List<User> data) {
         this.users.clear();
         this.users.addAll(data);
     }
-
 
 
     @Override
@@ -54,8 +54,7 @@ public class UserAdapter extends BaseAdapter{
         ViewHolder viewHolder = null;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item, null);
-            viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.title);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_group, null);
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.name);
             viewHolder.tvItem = (LinearLayout) convertView.findViewById(R.id.item);
             convertView.setTag(viewHolder);
@@ -68,30 +67,12 @@ public class UserAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 //Toast.makeText(mContext,users.get(position).getName(),Toast.LENGTH_SHORT).show();
-                switch (position){
-                    case 0:
-                        break;
-                    case 1:
-                        Intent i=new Intent(v.getContext(), GroupActivity.class);
-                        v.getContext().startActivity(i);
-                        break;
-                    case 2:
-                        break;
-                    default:
-                        Intent intent=new Intent(v.getContext(), ChatActivity.class);
-                        v.getContext().startActivity(intent);
-                }
 
+                Intent intent = new Intent(v.getContext(), ChatActivity.class);
+                v.getContext().startActivity(intent);
             }
-        });
-        //当前的item的title与上一个item的title不同的时候回显示title(A,B,C......)
-        if(position == getFirstLetterPosition(position) && !users.get(position).getLetter().equals("@")){
-            viewHolder.tvTitle.setVisibility(View.VISIBLE);
-            viewHolder.tvTitle.setText(users.get(position).getLetter().toUpperCase());
-        }else {
-            viewHolder.tvTitle.setVisibility(View.GONE);
-        }
 
+        });
 
         return convertView;
     }
@@ -108,7 +89,7 @@ public class UserAdapter extends BaseAdapter{
         int cnAscii = ChineseToEnglish.getCnAscii(letter.toUpperCase().charAt(0));
         int size = users.size();
         for (int i = 0; i < size; i++) {
-            if(cnAscii == users.get(i).getLetter().charAt(0)){
+            if (cnAscii == users.get(i).getLetter().charAt(0)) {
                 return i;
             }
         }
@@ -117,13 +98,14 @@ public class UserAdapter extends BaseAdapter{
 
     /**
      * 顺序遍历所有元素．找到letter下的第一个item对应的position
+     *
      * @param letter
      * @return
      */
-    public int getFirstLetterPosition(String letter){
+    public int getFirstLetterPosition(String letter) {
         int size = users.size();
         for (int i = 0; i < size; i++) {
-            if(letter.charAt(0) == users.get(i).getLetter().charAt(0)){
+            if (letter.charAt(0) == users.get(i).getLetter().charAt(0)) {
                 return i;
             }
         }
@@ -132,7 +114,6 @@ public class UserAdapter extends BaseAdapter{
 
     class ViewHolder {
         TextView tvName;
-        TextView tvTitle;
         LinearLayout tvItem;
     }
 
