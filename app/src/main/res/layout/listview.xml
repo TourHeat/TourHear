@@ -14,8 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/name"
@@ -23,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textSize="18dp"
-            android:textColor="#4D4D4D"
+            android:textColor="@color/TittleColor"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
             android:text="TextView" />
@@ -34,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:textColor="@color/TextColor"
             android:textSize="15dp"
             android:text="TextView" />
 
@@ -43,6 +43,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/TextColor"
         android:layout_marginRight="13dp"
         android:text="TextView" />
 </LinearLayout>

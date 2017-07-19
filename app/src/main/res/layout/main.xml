@@ -9,7 +9,7 @@
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
         android:layout_height="55dp"
-        android:background="#1e90ff"
+        android:background="@color/PrimaryColor"
         android:orientation="vertical" >
 
         <Button

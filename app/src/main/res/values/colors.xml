@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="PrimaryColor">#7076fa</color>
+    <color name="TittleColor">#50597e</color>
+    <color name="TextColor">#b2b2bf</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="bgofdefault">#f5f5f9</color>
+    <color name="bgofdefault">#f1f1f1</color>
     <color name="title">#ffffff</color>
     <color name="white">#ffffff</color><!--白色 -->
     <color name="ivory">#fffff0</color><!--象牙色 -->

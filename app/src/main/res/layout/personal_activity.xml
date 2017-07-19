@@ -10,7 +10,7 @@
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
         android:layout_height="55dp"
-        android:background="#1e90ff"
+        android:background="@color/PrimaryColor"
         android:orientation="vertical">
 
         <Button
@@ -91,7 +91,7 @@
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
                     android:text="头像"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
 
@@ -122,7 +122,7 @@
                     android:layout_centerVertical="true"
                     android:padding="8dp"
                     android:text="名字"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -134,7 +134,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView2"
                     android:text="白井黑子"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -164,7 +164,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="途聆号"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -176,7 +176,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView3"
                     android:text="moon2333"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -206,7 +206,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="性别"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -218,7 +218,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView4"
                     android:text="女"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -248,7 +248,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="地区"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -260,7 +260,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView5"
                     android:text="东京都学园都市"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -290,7 +290,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="个性签名"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -302,7 +302,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView6"
                     android:text="啊啊啊姐姐大人~"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -332,7 +332,7 @@
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
                     android:text="我的地址"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <ImageView

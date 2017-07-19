@@ -10,7 +10,7 @@
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
         android:layout_height="55dp"
-        android:background="#1e90ff"
+        android:background="@color/PrimaryColor"
         android:orientation="vertical">
 
         <Button
@@ -79,7 +79,7 @@
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
                     android:text="途聆号"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -91,7 +91,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView1"
                     android:text="moon2333"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -121,7 +121,7 @@
                     android:layout_centerVertical="true"
                     android:padding="8dp"
                     android:text="手机号"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -133,7 +133,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView2"
                     android:text="12323332333"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -163,7 +163,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="通用"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <ImageView
@@ -193,7 +193,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="预留"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -205,7 +205,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView4"
                     android:text="预留"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -235,7 +235,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="预留"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -247,7 +247,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView5"
                     android:text="预留"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -277,7 +277,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="预留"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -289,7 +289,7 @@
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView6"
                     android:text="预留"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -319,7 +319,7 @@
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
                     android:text="帮助与反馈"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <ImageView
@@ -349,7 +349,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="关于途聆"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <ImageView
@@ -379,7 +379,7 @@
                     android:layout_centerHorizontal="true"
                     android:padding="12dp"
                     android:text="退出登录"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
             </RelativeLayout>

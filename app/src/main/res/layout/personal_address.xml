@@ -10,7 +10,7 @@
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
         android:layout_height="55dp"
-        android:background="#1e90ff"
+        android:background="@color/PrimaryColor"
         android:orientation="vertical">
 
         <Button
@@ -79,7 +79,7 @@
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
                     android:text="白井黑子"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
                 <TextView
@@ -90,7 +90,7 @@
                     android:padding="8dp"
                     android:layout_below="@id/SimageView2"
                     android:text="东京都学园都市常盘台中学"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/TextColor"
                     android:textSize="16dp"/>
 
                 <ImageView
@@ -120,7 +120,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:text="+新增地址"
-                    android:textColor="#000"
+                    android:textColor="@color/TittleColor"
                     android:textSize="18dp"/>
 
 

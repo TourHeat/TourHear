@@ -3,11 +3,12 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
         android:layout_height="55dp"
-        android:background="#1e90ff"
+        android:background="@color/PrimaryColor"
         android:orientation="vertical">
 
         <TextView
@@ -19,11 +20,55 @@
             android:textSize="20.0sp"/>
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/tittle_high"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="发现"
-        android:textSize="30dp" />
+        android:layout_below="@id/rl_layout"
+        android:background="@color/lightgray">
+
+        <TextView
+            android:id="@+id/tittle_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="成都"
+            android:textColor="@color/TittleColor"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:id="@+id/tittle_down"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tittle_name"
+            android:src="@drawable/icon_pulldown"/>
+
+        <EditText
+            android:id="@+id/tittle_search_bar"
+            android:layout_width="260dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/tittle_name"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/qq_edit_login"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@id/tittle_search_bar"/>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/tra_book_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tittle_high"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip">
+
+    </ListView>
 
 </RelativeLayout>
