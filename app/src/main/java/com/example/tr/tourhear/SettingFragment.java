@@ -25,6 +25,14 @@ public class SettingFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        final RelativeLayout personalSetting = (RelativeLayout) view.findViewById(R.id.SrelativeLayout6);
+        personalSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),PersonalSettingActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 

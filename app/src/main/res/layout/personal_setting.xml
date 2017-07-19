@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="个人信息"
+            android:text="设置"
             android:textColor="#ffffff"
             android:textSize="20.0sp"/>
     </RelativeLayout>
@@ -71,18 +71,6 @@
                 android:clickable="true"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:id="@+id/img1"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginRight="13dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_toLeftOf="@id/SimageView1"
-                    android:background="@drawable/timg0"
-                    android:scaleType="matrix"/>
-
                 <TextView
                     android:id="@+id/StxtView1"
                     android:layout_width="wrap_content"
@@ -90,10 +78,21 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
-                    android:text="头像"
+                    android:text="途聆号"
                     android:textColor="#000"
                     android:textSize="18dp"/>
 
+                <TextView
+                    android:id="@+id/text1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:layout_toLeftOf="@id/SimageView1"
+                    android:text="moon2333"
+                    android:textColor="@color/gray"
+                    android:textSize="16dp"/>
 
                 <ImageView
                     android:id="@+id/SimageView1"
@@ -121,7 +120,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
                     android:padding="8dp"
-                    android:text="名字"
+                    android:text="手机号"
                     android:textColor="#000"
                     android:textSize="18dp"/>
 
@@ -133,7 +132,7 @@
                     android:layout_centerVertical="true"
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView2"
-                    android:text="白井黑子"
+                    android:text="12323332333"
                     android:textColor="@color/gray"
                     android:textSize="16dp"/>
 
@@ -163,21 +162,9 @@
                     android:padding="8dp"
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
-                    android:text="途聆号"
+                    android:text="通用"
                     android:textColor="#000"
                     android:textSize="18dp"/>
-
-                <TextView
-                    android:id="@+id/text3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_centerVertical="true"
-                    android:padding="8dp"
-                    android:layout_toLeftOf="@id/SimageView3"
-                    android:text="moon2333"
-                    android:textColor="@color/gray"
-                    android:textSize="16dp"/>
 
                 <ImageView
                     android:id="@+id/SimageView3"
@@ -205,7 +192,7 @@
                     android:padding="8dp"
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
-                    android:text="性别"
+                    android:text="预留"
                     android:textColor="#000"
                     android:textSize="18dp"/>
 
@@ -217,7 +204,7 @@
                     android:layout_centerVertical="true"
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView4"
-                    android:text="女"
+                    android:text="预留"
                     android:textColor="@color/gray"
                     android:textSize="16dp"/>
 
@@ -247,7 +234,7 @@
                     android:padding="8dp"
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
-                    android:text="地区"
+                    android:text="预留"
                     android:textColor="#000"
                     android:textSize="18dp"/>
 
@@ -259,7 +246,7 @@
                     android:layout_centerVertical="true"
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView5"
-                    android:text="东京都学园都市"
+                    android:text="预留"
                     android:textColor="@color/gray"
                     android:textSize="16dp"/>
 
@@ -289,7 +276,7 @@
                     android:padding="8dp"
                     android:layout_marginLeft="5dp"
                     android:layout_centerVertical="true"
-                    android:text="个性签名"
+                    android:text="预留"
                     android:textColor="#000"
                     android:textSize="18dp"/>
 
@@ -301,7 +288,7 @@
                     android:layout_centerVertical="true"
                     android:padding="8dp"
                     android:layout_toLeftOf="@id/SimageView6"
-                    android:text="啊啊啊姐姐大人~"
+                    android:text="预留"
                     android:textColor="@color/gray"
                     android:textSize="16dp"/>
 
@@ -331,7 +318,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
-                    android:text="我的地址"
+                    android:text="帮助与反馈"
                     android:textColor="#000"
                     android:textSize="18dp"/>
 
@@ -343,6 +330,58 @@
                     android:layout_centerVertical="true"
                     android:background="@drawable/icon_to"
                     android:scaleType="matrix"/>
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout8"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:text="关于途聆"
+                    android:textColor="#000"
+                    android:textSize="18dp"/>
+
+                <ImageView
+                    android:id="@+id/SimageView8"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout9"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:padding="12dp"
+                    android:text="退出登录"
+                    android:textColor="#000"
+                    android:textSize="18dp"/>
+
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

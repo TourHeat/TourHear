@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:scrollbarStyle="outsideOverlay"
-        android:background="#EAEAEA">
+        android:background="@color/highgray">
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
                 android:id="@+id/SrelativeLayout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="18dp"
                 android:gravity="center_vertical"
                 android:clickable="true"
                 android:background="@drawable/select_btn">
@@ -93,8 +93,8 @@
                     android:id="@+id/StxtView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="背景"
+                    android:padding="12dp"
+                    android:text="收藏"
                     android:textSize="16dp"
                     android:textColor="#000" />
                 <ImageView
@@ -118,8 +118,8 @@
                     android:id="@+id/StxtView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="字体大小"
+                    android:padding="12dp"
+                    android:text="相册"
                     android:textSize="16dp"
                     android:textColor="#000" />
                 <ImageView
@@ -136,7 +136,7 @@
                 android:id="@+id/SrelativeLayout4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="18dp"
                 android:gravity="center_vertical"
                 android:clickable="true"
                 android:background="@drawable/select_btn">
@@ -144,8 +144,8 @@
                     android:id="@+id/StxtView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="听筒播放"
+                    android:padding="12dp"
+                    android:text="预留"
                     android:textSize="16dp"
                     android:textColor="#000"/>
                 <ImageView
@@ -170,8 +170,8 @@
                     android:id="@+id/StxtView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="自动播放"
+                    android:padding="12dp"
+                    android:text="预留"
                     android:textSize="16dp"
                     android:textColor="#000" />
                 <ImageView
@@ -188,7 +188,7 @@
                 android:id="@+id/SrelativeLayout6"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="16dp"
                 android:gravity="center_vertical"
                 android:clickable="true"
                 android:background="@drawable/select_btn">
@@ -196,8 +196,8 @@
                     android:id="@+id/StxtView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="隐私设置"
+                    android:padding="12dp"
+                    android:text="设置"
                     android:textSize="16dp"
                     android:textColor="#000" />
                 <ImageView
@@ -210,7 +210,7 @@
                     android:background="@drawable/icon_to"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
-            <RelativeLayout
+           <!-- <RelativeLayout
                 android:id="@+id/SrelativeLayout7"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -285,7 +285,7 @@
                     android:layout_alignParentRight="true"
                     android:background="@drawable/icon_to"/>
             </RelativeLayout>
-            <!--   ********************************************************************   -->
+            &lt;!&ndash;   ********************************************************************   &ndash;&gt;
             <RelativeLayout
                 android:id="@+id/SrelativeLayout10"
                 android:layout_width="fill_parent"
@@ -335,7 +335,7 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
                     android:background="@drawable/icon_to"/>
-            </RelativeLayout>
+            </RelativeLayout>-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
