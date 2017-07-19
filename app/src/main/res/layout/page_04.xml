@@ -4,81 +4,102 @@
               android:layout_height="fill_parent"
               android:background="#EEE"
               android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:background="#1e90ff"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我"
+            android:textColor="#ffffff"
+            android:textSize="20.0sp"/>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:scrollbarStyle="outsideOverlay"
-        android:background="@color/highgray">
+        android:background="@color/highgray"
+        android:scrollbarStyle="outsideOverlay">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/highgray">
+            android:background="@color/highgray"
+            android:orientation="vertical">
             <!--   ***********************************************************************   -->
             <RelativeLayout
                 android:id="@+id/SrelativeLayoutT"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:clickable="true">
+                android:clickable="true"
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtViewT"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text=""
-                    android:textSize="5dp"
-                    android:textColor="#000" />
+                    android:textColor="#000"
+                    android:textSize="5dp"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
                 android:id="@+id/PersonalInformation"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:background="@drawable/select_btn"
                 android:clickable="true"
-                android:background="@drawable/select_btn">
+                android:gravity="center_vertical">
+
                 <ImageView
                     android:id="@+id/img1"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="13dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentLeft="true"
-                    android:background="@drawable/timg0"/>
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/timg0"
+                    android:scaleType="matrix"/>
+
                 <TextView
                     android:id="@+id/StxtView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:layout_toRightOf="@id/img1"
-                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/img1"
+                    android:padding="8dp"
                     android:text="白井黑子"
-                    android:textSize="18dp"
-                    android:textColor="#000" />
+                    android:textColor="#000"
+                    android:textSize="18dp"/>
+
                 <TextView
                     android:id="@+id/StxtView01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:layout_below="@id/StxtView1"
-                    android:layout_toRightOf="@id/img1"
                     android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/img1"
+                    android:padding="5dp"
                     android:text="途聆号:moon2333"
-                    android:textSize="14dp" />
+                    android:textSize="14dp"/>
+
                 <ImageView
                     android:id="@+id/SimageView1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -86,50 +107,55 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:gravity="center_vertical"
+                android:background="@drawable/select_btn"
                 android:clickable="true"
-                android:background="@drawable/select_btn">
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="收藏"
-                    android:textSize="16dp"
-                    android:textColor="#000" />
+                    android:textColor="#000"
+                    android:textSize="16dp"/>
+
                 <ImageView
                     android:id="@+id/SimageView2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/SrelativeLayout3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:clickable="true"
+                android:layout_marginTop="1px"
                 android:background="@drawable/select_btn"
-                android:layout_marginTop="1px">
+                android:clickable="true"
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="相册"
-                    android:textSize="16dp"
-                    android:textColor="#000" />
+                    android:textColor="#000"
+                    android:textSize="16dp"/>
+
                 <ImageView
                     android:id="@+id/SimageView3"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -137,34 +163,37 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:gravity="center_vertical"
+                android:background="@drawable/select_btn"
                 android:clickable="true"
-                android:background="@drawable/select_btn">
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="预留"
-                    android:textSize="16dp"
-                    android:textColor="#000"/>
+                    android:textColor="#000"
+                    android:textSize="16dp"/>
+
                 <ImageView
                     android:id="@+id/SimageView4"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/SrelativeLayout5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:clickable="true"
+                android:layout_marginTop="1px"
                 android:background="@drawable/select_btn"
-                android:layout_marginTop="1px">
+                android:clickable="true"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:id="@+id/StxtView5"
@@ -172,16 +201,17 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="预留"
-                    android:textSize="16dp"
-                    android:textColor="#000" />
+                    android:textColor="#000"
+                    android:textSize="16dp"/>
+
                 <ImageView
                     android:id="@+id/SimageView5"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -189,28 +219,30 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:gravity="center_vertical"
+                android:background="@drawable/select_btn"
                 android:clickable="true"
-                android:background="@drawable/select_btn">
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="设置"
-                    android:textSize="16dp"
-                    android:textColor="#000" />
+                    android:textColor="#000"
+                    android:textSize="16dp"/>
+
                 <ImageView
                     android:id="@+id/SimageView6"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
-           <!-- <RelativeLayout
+            <!-- <RelativeLayout
                 android:id="@+id/SrelativeLayout7"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

@@ -49,6 +49,8 @@
         <activity android:name=".PersonalActivity"/>
         <activity android:name=".AddressActivity"/>
         <activity android:name=".PersonalSettingActivity"/>
+        <activity android:name=".CollectionActivity"/>
+        <activity android:name=".AlbumActivity"/>
     </application>
 
 </manifest>

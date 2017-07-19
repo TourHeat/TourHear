@@ -17,6 +17,7 @@ public class SettingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.page_04, container, false);
+        //个人信息
         final RelativeLayout personalInformation = (RelativeLayout) view.findViewById(R.id.PersonalInformation);
         personalInformation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,6 +26,25 @@ public class SettingFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        //收藏
+        final RelativeLayout personalCollection = (RelativeLayout) view.findViewById(R.id.SrelativeLayout2);
+        personalCollection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),CollectionActivity.class);
+                startActivity(intent);
+            }
+        });
+        //相册
+        final RelativeLayout personalAlbum = (RelativeLayout) view.findViewById(R.id.SrelativeLayout3);
+        personalAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),AlbumActivity.class);
+                startActivity(intent);
+            }
+        });
+        //设置
         final RelativeLayout personalSetting = (RelativeLayout) view.findViewById(R.id.SrelativeLayout6);
         personalSetting.setOnClickListener(new View.OnClickListener() {
             @Override
