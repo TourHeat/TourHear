@@ -17,8 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="2dp"
-            android:textColor="#8f8f8f"
-            android:textSize="12sp" />
+            android:textColor="@color/TextColor"
+            android:textSize="@dimen/NotesTextSize" />
     </LinearLayout>
 
     <RelativeLayout
@@ -47,8 +47,8 @@
             android:gravity="left|center"
             android:lineSpacingExtra="2dp"
             android:minHeight="50dp"
-            android:textColor="#ff000000"
-            android:textSize="15sp" />
+            android:textColor="@color/TittleColor"
+            android:textSize="@dimen/TittleTextSize" />
 
         <TextView
             android:id="@+id/tv_username"
@@ -58,8 +58,8 @@
             android:layout_below="@id/iv_userhead"
             android:layout_toRightOf="@id/tv_chatcontent"
             android:gravity="center"
-            android:textColor="#818181"
-            android:textSize="12dp" />
+            android:textColor="@color/TextColor"
+            android:textSize="@dimen/NotesTextSize" />
     </RelativeLayout>
 
 </LinearLayout>

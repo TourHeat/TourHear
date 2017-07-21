@@ -9,11 +9,12 @@
         android:id="@+id/title"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#E0E0E0"
+        android:background="@color/BackgroundColor"
         android:textColor="@color/TittleColor"
         android:paddingLeft="5dip"
         android:paddingTop="2dip"
         android:paddingBottom="2dip"
+        android:textSize="@dimen/NotesTextSize"
         android:text="A"/>
 
     <LinearLayout
@@ -39,7 +40,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
             android:textColor="@color/TittleColor"
-            android:textSize="18dp"
+            android:textSize="@dimen/TextTextSize"
             android:paddingLeft="5dip"
             android:paddingTop="10dip"
             android:paddingBottom="10dip"

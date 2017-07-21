@@ -25,8 +25,8 @@ public class SideBarView extends View {
     private final int defaultNormalColor = Color.TRANSPARENT;
     private final int defaultPressColor = Color.parseColor("#1F000000");
     private final int defaultTextSize = 30;
-    private final int defaultNorTextColor = Color.parseColor("#cc181818");
-    private final int defaultPressTextColor = Color.parseColor("#ff000000");
+    private final int defaultNorTextColor = Color.parseColor("#887076fa");
+    private final int defaultPressTextColor = Color.parseColor("#ff7076fa");
 
 
     private int sideBarBgNorColor;

@@ -14,8 +14,10 @@
 
         <TextView
             android:id="@+id/tv_sendtime"
-            android:textColor="#8f8f8f"
+            android:textColor="@color/TextColor"
             android:layout_width="wrap_content"
+            android:textColorHighlight="@color/TextColor"
+            android:textSize="@dimen/NotesTextSize"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -47,7 +49,6 @@
             style="@style/chat_text_name_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12dp"
             android:layout_alignParentLeft="true"
             android:layout_below="@id/iv_userhead"
             android:layout_toLeftOf="@id/tv_chatcontent" />

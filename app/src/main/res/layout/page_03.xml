@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@color/BackgroundColor">
 
     <RelativeLayout
         android:id="@+id/rl_layout"
@@ -17,15 +18,22 @@
             android:layout_centerInParent="true"
             android:text="发现"
             android:textColor="#ffffff"
-            android:textSize="20.0sp"/>
+            android:textSize="@dimen/NavigationTittleSize"/>
     </RelativeLayout>
-
+    <ScrollView
+        android:id="@+id/pull_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/rl_layout">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/tittle_high"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rl_layout"
-        android:background="@color/lightgray">
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/test_backpicture">
 
         <TextView
             android:id="@+id/tittle_name"
@@ -34,41 +42,53 @@
             android:layout_marginLeft="20dp"
             android:text="成都"
             android:textColor="@color/TittleColor"
-            android:textSize="18dp"/>
+            android:textSize="@dimen/TittleTextSize"/>
 
         <ImageView
             android:id="@+id/tittle_down"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/tittle_name"
             android:src="@drawable/icon_pulldown"/>
 
         <EditText
             android:id="@+id/tittle_search_bar"
-            android:layout_width="260dp"
-            android:layout_height="40dp"
+            android:layout_width="240dp"
+            android:layout_height="35dp"
+            android:paddingLeft="42dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:layout_below="@id/tittle_name"
             android:layout_centerInParent="true"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/qq_edit_login"/>
+            android:hint="搜索"
+            android:textColor="@color/TittleColor"
+            android:textSize="@dimen/TextTextSize"
+            android:background="@drawable/icon_search_push"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_below="@id/tittle_search_bar"/>
     </RelativeLayout>
-    <ListView
+
+    <com.example.tr.tourhear.MyListView
         android:id="@+id/tra_book_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/tittle_high"
         android:layout_marginLeft="10.0dip"
         android:layout_marginRight="10.0dip"
-        android:layout_marginTop="10.0dip">
+        android:layout_marginTop="10.0dip"
+        android:dividerHeight="@dimen/NotesTextSize"
+        android:divider="@color/BackgroundColor">
 
-    </ListView>
+    </com.example.tr.tourhear.MyListView>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -4,14 +4,16 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/select_btn"
                 android:layout_marginTop="10dp">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
         android:src="@drawable/timg"/>
 
     <LinearLayout
@@ -29,7 +31,7 @@
             android:layout_marginTop="5dp"
             android:text="TextView"
             android:textColor="@color/TittleColor"
-            android:textSize="16dp"
+            android:textSize="@dimen/TittleTextSize"
             android:textStyle="bold"/>
 
         <TextView
@@ -40,50 +42,42 @@
             android:layout_marginTop="5dp"
             android:textColor="@color/TextColor"
             android:text="TextView"
-            android:textSize="15dp"/>
+            android:textSize="@dimen/TextTextSize"/>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/image"
+        android:layout_margin="5dp"
+        android:background="@drawable/timg"/>
 
     <TextView
         android:id="@+id/tittle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/image"
+        android:layout_below="@+id/picture"
         android:text="西南交通大学一日游，三缺一！！"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/TittleColor"
-        android:textSize="23dp"/>
-
-    <TextView
-        android:id="@+id/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tittle"
-        android:layout_marginTop="8dp"
-        android:text="明天下午出发，三位老司机！！"
-        android:textColor="@color/TextColor"
-        android:textSize="18dp"/>
-
-    <ImageView
-        android:id="@+id/picture"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:layout_below="@id/content"
-        android:layout_centerInParent="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/timg"/>
+        android:textSize="@dimen/TittleTextSize"/>
 
     <LinearLayout
         android:id="@+id/evalute"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/picture"
+        android:layout_below="@+id/tittle"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp">
 
         <LinearLayout
             android:id="@+id/collect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageView
@@ -99,7 +93,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="200"
                 android:textColor="@color/TextColor"
-                android:textSize="16dp"/>
+                android:textSize="@dimen/TextTextSize"/>
         </LinearLayout>
 
         <LinearLayout
@@ -107,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/picture"
-            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageView
@@ -123,14 +117,14 @@
                 android:layout_marginLeft="5dp"
                 android:text="200"
                 android:textColor="@color/TextColor"
-                android:textSize="16dp"/>
+                android:textSize="@dimen/TextTextSize"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/picture"
-            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageView
@@ -146,14 +140,14 @@
                 android:layout_marginLeft="5dp"
                 android:text="200"
                 android:textColor="@color/TextColor"
-                android:textSize="16dp"/>
+                android:textSize="@dimen/TextTextSize"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/forward"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/picture"
-            android:layout_marginLeft="50dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <ImageView
@@ -169,7 +163,7 @@
                 android:layout_marginLeft="5dp"
                 android:text="200"
                 android:textColor="@color/TextColor"
-                android:textSize="16dp"/>
+                android:textSize="@dimen/TextTextSize"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

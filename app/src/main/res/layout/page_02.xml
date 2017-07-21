@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/BackgroundColor"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -18,32 +19,59 @@
             android:layout_centerInParent="true"
             android:text="通讯录"
             android:textColor="#ffffff"
-            android:textSize="20.0sp"/>
+            android:textSize="@dimen/NavigationTittleSize"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/test_area"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_layout"
+        android:background="@color/BackgroundColor"
+        android:layout_marginTop="1px"
+        android:layout_marginBottom="5dp">
+
+    <EditText
+        android:id="@+id/friend_search_bar"
+        android:layout_width="240dp"
+        android:layout_height="35dp"
+        android:paddingLeft="42dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:hint="搜索"
+        android:textColor="@color/TittleColor"
+        android:textSize="@dimen/TextTextSize"
+        android:background="@drawable/icon_search_push"/>
     </RelativeLayout>
 
     <ListView
+        android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:layout_below="@id/rl_layout"
-        android:id="@+id/listview"/>
+        android:layout_below="@id/test_area"
+        android:background="@color/white"
+        android:scrollbars="none"/>
 
     <com.example.tr.tourhear.utils.SideBarView
         android:id="@+id/sidebarview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_layout"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/test_area"/>
 
     <TextView
         android:id="@+id/tip"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:background="@drawable/item_tip_bg"
+        android:gravity="center"
+        android:textColor="@color/PrimaryColor"
         android:text="A"
         android:textSize="40sp"
-        android:gravity="center"
-        android:background="@drawable/item_tip_bg"
-        android:layout_centerInParent="true"/>
+        android:visibility="gone"/>
 
 </RelativeLayout>

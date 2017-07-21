@@ -3,7 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="#EEE"
+                android:background="@color/BackgroundColor"
                 android:orientation="vertical">
 
     <RelativeLayout
@@ -30,20 +30,20 @@
             android:layout_centerInParent="true"
             android:text="设置"
             android:textColor="#ffffff"
-            android:textSize="20.0sp"/>
+            android:textSize="@dimen/NavigationTittleSize"/>
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#EAEAEA"
+        android:background="@color/BackgroundColor"
         android:scrollbarStyle="outsideOverlay"
         android:layout_below="@id/rl_layout">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/highgray"
+            android:background="@color/BackgroundColor"
             android:orientation="vertical">
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -80,7 +80,7 @@
                     android:padding="8dp"
                     android:text="途聆号"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <TextView
                     android:id="@+id/text1"
@@ -92,7 +92,7 @@
                     android:layout_toLeftOf="@id/SimageView1"
                     android:text="moon2333"
                     android:textColor="@color/TextColor"
-                    android:textSize="16dp"/>
+                    android:textSize="@dimen/TextTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView1"
@@ -122,7 +122,7 @@
                     android:padding="8dp"
                     android:text="手机号"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <TextView
                     android:id="@+id/text2"
@@ -134,7 +134,7 @@
                     android:layout_toLeftOf="@id/SimageView2"
                     android:text="12323332333"
                     android:textColor="@color/TextColor"
-                    android:textSize="16dp"/>
+                    android:textSize="@dimen/TextTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView2"
@@ -164,7 +164,7 @@
                     android:layout_centerVertical="true"
                     android:text="通用"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView3"
@@ -194,7 +194,7 @@
                     android:layout_centerVertical="true"
                     android:text="预留"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <TextView
                     android:id="@+id/text4"
@@ -206,7 +206,7 @@
                     android:layout_toLeftOf="@id/SimageView4"
                     android:text="预留"
                     android:textColor="@color/TextColor"
-                    android:textSize="16dp"/>
+                    android:textSize="@dimen/TextTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView4"
@@ -236,7 +236,7 @@
                     android:layout_centerVertical="true"
                     android:text="预留"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <TextView
                     android:id="@+id/text5"
@@ -248,7 +248,7 @@
                     android:layout_toLeftOf="@id/SimageView5"
                     android:text="预留"
                     android:textColor="@color/TextColor"
-                    android:textSize="16dp"/>
+                    android:textSize="@dimen/TextTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView5"
@@ -278,7 +278,7 @@
                     android:layout_centerVertical="true"
                     android:text="预留"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <TextView
                     android:id="@+id/text6"
@@ -290,7 +290,7 @@
                     android:layout_toLeftOf="@id/SimageView6"
                     android:text="预留"
                     android:textColor="@color/TextColor"
-                    android:textSize="16dp"/>
+                    android:textSize="@dimen/TextTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView6"
@@ -320,7 +320,7 @@
                     android:padding="8dp"
                     android:text="帮助与反馈"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView7"
@@ -350,7 +350,7 @@
                     android:layout_centerVertical="true"
                     android:text="关于途聆"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView8"
@@ -380,7 +380,7 @@
                     android:padding="12dp"
                     android:text="退出登录"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
             </RelativeLayout>
         </LinearLayout>

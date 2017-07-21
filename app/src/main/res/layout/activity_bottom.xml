@@ -27,6 +27,7 @@
             android:layout_marginTop="3dp"
             android:text="消息"
             android:textColor="#1B940A"
+            android:textSize="@dimen/TittleTextSize"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -52,6 +53,7 @@
             android:layout_marginTop="3dp"
             android:text="通讯录"
             android:textColor="@color/TittleColor"
+            android:textSize="@dimen/TittleTextSize"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -76,6 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="发现"
+            android:textSize="@dimen/TittleTextSize"
             android:textColor="@color/TittleColor"
             android:textStyle="bold" />
     </LinearLayout>
@@ -101,6 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="我"
+            android:textSize="@dimen/TittleTextSize"
             android:textColor="@color/TittleColor"
             android:textStyle="bold" />
     </LinearLayout>

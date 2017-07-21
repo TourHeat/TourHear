@@ -1,5 +1,9 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="NavigationTittleSize">18sp</dimen>
+    <dimen name="TittleTextSize">16sp</dimen>
+    <dimen name="TextTextSize">14sp</dimen>
+    <dimen name="NotesTextSize">12sp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="tTextSize">10sp</dimen>

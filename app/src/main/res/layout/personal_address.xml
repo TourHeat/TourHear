@@ -3,7 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="#EEE"
+                android:background="@color/BackgroundColor"
                 android:orientation="vertical">
 
     <RelativeLayout
@@ -30,20 +30,20 @@
             android:layout_centerInParent="true"
             android:text="我的地址"
             android:textColor="#ffffff"
-            android:textSize="20.0sp"/>
+            android:textSize="@dimen/NavigationTittleSize"/>
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#EAEAEA"
+        android:background="@color/BackgroundColor"
         android:scrollbarStyle="outsideOverlay"
         android:layout_below="@id/rl_layout">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="@color/highgray"
+            android:background="@color/BackgroundColor"
             android:orientation="vertical">
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -80,7 +80,7 @@
                     android:padding="8dp"
                     android:text="白井黑子"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
                 <TextView
                     android:id="@+id/text2"
@@ -91,7 +91,7 @@
                     android:layout_below="@id/SimageView2"
                     android:text="东京都学园都市常盘台中学"
                     android:textColor="@color/TextColor"
-                    android:textSize="16dp"/>
+                    android:textSize="@dimen/TextTextSize"/>
 
                 <ImageView
                     android:id="@+id/SimageView2"
@@ -121,7 +121,7 @@
                     android:layout_centerVertical="true"
                     android:text="+新增地址"
                     android:textColor="@color/TittleColor"
-                    android:textSize="18dp"/>
+                    android:textSize="@dimen/TittleTextSize"/>
 
 
                 <ImageView
