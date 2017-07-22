@@ -30,6 +30,19 @@
             android:text="御坂美琴"
             android:textColor="#ffffff"
             android:textSize="@dimen/NavigationTittleSize" />
+
+        <Button
+            android:id="@+id/btn_more"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/tab_me"
+            android:paddingLeft="10dp"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
     </RelativeLayout>
 
     <RelativeLayout
