@@ -1,6 +1,7 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +25,7 @@ public class ChatActivity extends Activity implements OnClickListener {
 
     private Button mBtnSend;// 发送btn
     private Button mBtnBack;// 返回btn
+    private Button mBtnmore;// 聊天设置btn
     private EditText mEditTextContent;
     private ListView mListView;
     private ChatMsgViewAdapter mAdapter;// 消息视图的Adapter
@@ -49,6 +51,8 @@ public class ChatActivity extends Activity implements OnClickListener {
         mBtnSend.setOnClickListener(this);
         mBtnBack = (Button) findViewById(R.id.btn_back);
         mBtnBack.setOnClickListener(this);
+        mBtnmore = (Button) findViewById(R.id.btn_more);
+        mBtnmore.setOnClickListener(this);
         mEditTextContent = (EditText) findViewById(R.id.et_sendmessage);
     }
 
@@ -92,6 +96,10 @@ public class ChatActivity extends Activity implements OnClickListener {
         switch (v.getId()) {
             case R.id.btn_send:// 发送按钮点击事件
                 send();
+                break;
+            case R.id.btn_more:// 发送按钮点击事件
+                Intent intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
+                startActivity(intent);
                 break;
             case R.id.btn_back:// 返回按钮点击事件
                 finish();// 结束,实际开发中，可以返回主界面
