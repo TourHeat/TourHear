@@ -53,8 +53,10 @@
         <activity android:name=".CollectionActivity"/>
         <activity android:name=".AlbumActivity"/>
         <activity android:name=".ChatSettingActivity"/>
-        <activity android:name=".ChatGroupActivity"/>
-        <activity android:name=".CarGroupActivity"/>
+        <activity android:name=".ChatGroupActivity"
+                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity android:name=".CarGroupActivity"
+                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
     </application>
 
 </manifest>

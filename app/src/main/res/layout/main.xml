@@ -40,7 +40,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:background="@drawable/tab_me"
+            android:background="@drawable/show_setting"
             android:paddingLeft="10dp"
             android:textColor="#ffffff"
             android:textSize="16sp" />
