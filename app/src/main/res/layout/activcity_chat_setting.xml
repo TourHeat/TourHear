@@ -78,32 +78,21 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/timg0"
+                    android:background="@drawable/timg"
                     android:scaleType="matrix"/>
 
-                <TextView
-                    android:id="@+id/StxtView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                <ImageView
+                    android:id="@+id/img2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/img1"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="13dp"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@id/img1"
-                    android:padding="8dp"
-                    android:text="白井黑子"
-                    android:textColor="@color/TittleColor"
-                    android:textSize="@dimen/TittleTextSize"/>
-
-                <TextView
-                    android:id="@+id/StxtView01"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/StxtView1"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/img1"
-                    android:textColor="@color/TextColor"
-                    android:padding="5dp"
-                    android:text="途聆号:moon2333"
-                    android:textSize="@dimen/TextTextSize"/>
+                    android:background="@drawable/timg"
+                    android:scaleType="matrix"/>
 
                 <ImageView
                     android:id="@+id/SimageView1"
