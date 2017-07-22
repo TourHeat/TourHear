@@ -18,7 +18,7 @@
             android:id="@+id/iv_home"
             android:layout_width="33dp"
             android:layout_height="48dp"
-            android:src="@drawable/tab_mssage0" />
+            android:src="@drawable/tab_message_press" />
 
         <TextView
             android:id="@+id/tv_home"
