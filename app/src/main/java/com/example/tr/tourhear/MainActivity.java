@@ -1,5 +1,6 @@
 package com.example.tr.tourhear;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -195,5 +196,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         tv_friend.setTextColor(0xff50597e);
         tv_setting.setTextColor(0xff50597e);
     }
-
+    public void toChatActivity(View view){
+        Intent intent=new Intent(this,ChatActivity.class);
+        startActivity(intent);
+    }
 }

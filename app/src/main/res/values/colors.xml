@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="PrimaryColor">#7076fa</color>
+    <color name="PrimaryColor">#7076fa</color>b0b
+    <color name="infosColor">#b0b4fd</color>
     <color name="TittleColor">#50597e</color>
     <color name="TextColor">#b2b2bf</color>
     <color name="BackgroundColor">#f1f1f1</color>

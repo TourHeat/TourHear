@@ -6,6 +6,7 @@
     <dimen name="NotesTextSize">12sp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="smalltext">10dp</dimen>
     <dimen name="tTextSize">10sp</dimen>
     <dimen name="sTextSize">12sp</dimen>
     <dimen name="mTextSize">15sp</dimen>

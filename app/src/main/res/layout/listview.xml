@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
-    <ImageView
+              android:layout_height="match_parent"
+              android:onClick="toChatActivity"
+             android:background="@drawable/select_btn"
+    >
+    <com.example.tr.tourhear.view.CircleImageView
         android:id="@+id/image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:layout_marginLeft="13dp"
-        android:background="@drawable/timg" />
+        android:layout_marginLeft="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/timg"
+
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,29 +28,46 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:textSize="@dimen/TittleTextSize"
-            android:textColor="@color/TittleColor"
-            android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginLeft="10dp"
             android:text="TextView" />
 
-        <!--<TextView
+        <TextView
             android:id="@+id/mess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:textColor="@color/TextColor"
-            android:textSize="@dimen/TextTextSize"
-            android:text="TextView" />-->
+            android:textSize="@dimen/NotesTextSize"
+            android:text="TextView" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
     <TextView
         android:id="@+id/date"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/TextColor"
-        android:layout_marginRight="13dp"
-        android:textSize="@dimen/TextTextSize"
+        android:textSize="@dimen/NotesTextSize"
+        android:gravity="center"
+        android:layout_gravity="center"
         android:text="TextView" />
+    <Button
+        android:layout_gravity="center"
+        android:layout_width="30dp"
+        android:textSize="@dimen/smalltext"
+        android:layout_height="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/corner_rec_bg_blue_press"
+        android:text="99+"
+        />
+    </LinearLayout>
 </LinearLayout>

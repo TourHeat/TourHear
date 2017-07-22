@@ -5,8 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.tr.tourhear.view.CircleImageView;
 
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class ListViewAdapter extends BaseAdapter {
      * @author Administrator
      */
     public final class Zujian {
-        public ImageView image;
+        public CircleImageView image;
         public TextView name;
     //    public TextView mess;
         public TextView date;
@@ -67,7 +68,7 @@ public class ListViewAdapter extends BaseAdapter {
             zujian = new Zujian();
             //获得组件，实例化组件
             convertView = layoutInflater.inflate(R.layout.listview, null);
-            zujian.image = (ImageView) convertView.findViewById(R.id.image);
+            zujian.image = (CircleImageView) convertView.findViewById(R.id.image);
             zujian.name = (TextView) convertView.findViewById(R.id.name);
        //     zujian.mess = (TextView) convertView.findViewById(R.id.mess);
             zujian.date = (TextView) convertView.findViewById(R.id.date);
@@ -76,7 +77,7 @@ public class ListViewAdapter extends BaseAdapter {
             zujian = (Zujian) convertView.getTag();
         }
         //绑定数据
-        zujian.image.setBackgroundResource((Integer) data.get(position).get("image"));
+        zujian.image.setImageDrawable(context.getResources().getDrawable((Integer) data.get(position).get("image")));
         zujian.name.setText((String) data.get(position).get("name"));
      //   zujian.mess.setText((String) data.get(position).get("mess"));
         zujian.date.setText((String) data.get(position).get("date"));

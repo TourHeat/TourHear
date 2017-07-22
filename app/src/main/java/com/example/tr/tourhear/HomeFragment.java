@@ -22,7 +22,7 @@ public class HomeFragment extends Fragment {
     private ListView listView;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.page_01, container, false);
+        final View view = inflater.inflate(R.layout.page_01, container, false);
         listView = (ListView) view.findViewById(R.id.listview);
         List<Map<String, Object>> list = getData();
         listView.setAdapter(new ListViewAdapter(getActivity(), list));
@@ -33,13 +33,13 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        /*listView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeFragment.this, ChatActivity.class);
-                startActivity(intent);
-            }
-        });*/
+//        listView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), ChatActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         return view;
     }
 
@@ -58,4 +58,5 @@ public class HomeFragment extends Fragment {
         }
         return list;
     }
+
 }
