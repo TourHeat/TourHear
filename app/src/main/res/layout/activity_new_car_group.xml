@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="聊天设置"
+            android:text="创建车队"
             android:textColor="#ffffff"
             android:textSize="@dimen/NavigationTittleSize" />
 
@@ -64,51 +64,33 @@
             <RelativeLayout
                 android:id="@+id/PersonalInformation"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@drawable/select_btn"
                 android:clickable="true"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:id="@+id/img1"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/timg"
-                    android:scaleType="matrix"/>
+                <TextView
+                    android:id="@+id/StxtView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="车队名称"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
-                    android:id="@+id/img2"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_alignParentLeft="true"
+                <EditText
+                    android:id="@+id/CarGroupName"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/img1"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/timg"
-                    android:scaleType="matrix"/>
-
-                <ImageView
-                    android:id="@+id/SimageView1"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    android:layout_toRightOf="@id/StxtView1"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
                 android:id="@+id/SrelativeLayout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="1px"
                 android:background="@drawable/select_btn"
                 android:clickable="true"
                 android:gravity="center_vertical">
@@ -118,18 +100,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="收藏"
+                    android:text="车队队长"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
-                    android:id="@+id/SimageView2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
+                <EditText
+                    android:id="@+id/CarGroupLeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    android:layout_toRightOf="@id/StxtView2"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -146,20 +126,68 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="相册"
+                    android:text="成员"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
-                    android:id="@+id/SimageView3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/StxtView3">
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/timg"
+                        android:scaleType="matrix"/>
+
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:layout_below="@id/img1"
+                        android:text="御坂美琴"
+                        android:textColor="@color/TittleColor"
+                        android:textSize="@dimen/TextTextSize"/>
+
+                    <ImageView
+                        android:id="@+id/img0"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_toRightOf="@id/img1"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/timg0"
+                        android:scaleType="matrix"/>
+
+                    <TextView
+                        android:id="@+id/text0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:layout_below="@id/img0"
+                        android:layout_toRightOf="@id/text1"
+                        android:text="白井黑子"
+                        android:textColor="@color/TittleColor"
+                        android:textSize="@dimen/TextTextSize"/>
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/img0"
+                        android:layout_marginLeft="25dp"
+                        android:background="@drawable/icon_add_more"
+                        android:scaleType="matrix"/>
+
+                </RelativeLayout>
             </RelativeLayout>
-            <!--   ***********************************************************************   -->
+
             <RelativeLayout
                 android:id="@+id/SrelativeLayout4"
                 android:layout_width="fill_parent"
@@ -174,7 +202,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="预留"
+                    android:text="车辆"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
@@ -184,10 +212,10 @@
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/icon_add_more"
                     android:scaleType="matrix"/>
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/SrelativeLayout5"
                 android:layout_width="fill_parent"
@@ -202,7 +230,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="预留"
+                    android:text="一队(4人)"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
@@ -215,12 +243,11 @@
                     android:background="@drawable/icon_to"
                     android:scaleType="matrix"/>
             </RelativeLayout>
-            <!--   ***********************************************************************   -->
             <RelativeLayout
                 android:id="@+id/SrelativeLayout6"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="1px"
                 android:background="@drawable/select_btn"
                 android:clickable="true"
                 android:gravity="center_vertical">
@@ -230,7 +257,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="设置"
+                    android:text="车牌号：川A666666"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
@@ -243,133 +270,116 @@
                     android:background="@drawable/icon_to"
                     android:scaleType="matrix"/>
             </RelativeLayout>
-            <!--   ***********************************************************************   -->
-            <!-- <RelativeLayout
+            <RelativeLayout
                 android:id="@+id/SrelativeLayout7"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:gravity="center_vertical"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
                 android:clickable="true"
-                android:background="@drawable/select_btn">
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="清空微日记"
-                    android:textSize="16dp"
-                    android:textColor="#000" />
+                    android:padding="12dp"
+                    android:text="驾驶员：皮卡丘"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
                 <ImageView
                     android:id="@+id/SimageView7"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/SrelativeLayout8"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:clickable="true"
+                android:layout_marginTop="18dp"
                 android:background="@drawable/select_btn"
-                android:layout_marginTop="1px">
+                android:clickable="true"
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="初始化设置"
-                    android:textSize="16dp"
-                    android:textColor="#000"/>
+                    android:padding="12dp"
+                    android:text="一队(4人)"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
                 <ImageView
                     android:id="@+id/SimageView8"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/SrelativeLayout9"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:clickable="true"
+                android:layout_marginTop="1px"
                 android:background="@drawable/select_btn"
-                android:layout_marginTop="1px">
+                android:clickable="true"
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="初始化应用程序"
-                    android:textSize="16dp"
-                    android:textColor="#000" />
+                    android:padding="12dp"
+                    android:text="车牌号：川A666666"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
                 <ImageView
                     android:id="@+id/SimageView9"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
-            &lt;!&ndash;   ********************************************************************   &ndash;&gt;
             <RelativeLayout
                 android:id="@+id/SrelativeLayout10"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:gravity="center_vertical"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
                 android:clickable="true"
-                android:background="@drawable/select_btn">
+                android:gravity="center_vertical">
+
                 <TextView
                     android:id="@+id/StxtView10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="帮助与反馈"
-                    android:textSize="16dp"
-                    android:textColor="#000" />
+                    android:padding="12dp"
+                    android:text="驾驶员：皮卡丘"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
                 <ImageView
                     android:id="@+id/SimageView10"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
             </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/SrelativeLayout11"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:clickable="true"
-                android:background="@drawable/select_btn"
-                android:layout_marginTop="1px">
-                <TextView
-                    android:id="@+id/StxtView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="关于"
-                    android:textSize="16dp"
-                    android:textColor="#000" />
-                <ImageView
-                    android:id="@+id/SimageView11"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/icon_to"/>
-            </RelativeLayout>-->
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

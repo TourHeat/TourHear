@@ -52,6 +52,9 @@
         <activity android:name=".PersonalSettingActivity"/>
         <activity android:name=".CollectionActivity"/>
         <activity android:name=".AlbumActivity"/>
+        <activity android:name=".ChatSettingActivity"/>
+        <activity android:name=".ChatGroupActivity"/>
+        <activity android:name=".CarGroupActivity"/>
     </application>
 
 </manifest>
