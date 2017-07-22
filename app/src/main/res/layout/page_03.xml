@@ -42,14 +42,14 @@
             android:layout_marginLeft="20dp"
             android:text="成都"
             android:textColor="@color/TittleColor"
-            android:textSize="@dimen/TittleTextSize"/>
+            android:textSize="@dimen/NavigationTittleSize"/>
 
         <ImageView
             android:id="@+id/tittle_down"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:layout_toRightOf="@id/tittle_name"
             android:src="@drawable/icon_pulldown"/>
 
@@ -64,7 +64,7 @@
             android:layout_below="@id/tittle_name"
             android:layout_centerInParent="true"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="40dp"
             android:hint="搜索"
             android:textColor="@color/TittleColor"
             android:textSize="@dimen/TextTextSize"
@@ -90,5 +90,16 @@
     </com.example.tr.tourhear.MyListView>
         </RelativeLayout>
     </ScrollView>
-
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:background="@drawable/icon_more"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:tint="@android:color/white"
+        android:id="@+id/fab"
+        android:elevation="1dp"
+        />
 </RelativeLayout>

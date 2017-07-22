@@ -18,9 +18,9 @@
         android:text="A"/>
 
     <LinearLayout
+        android:id="@+id/item"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/item"
         android:background="@drawable/item_click"
         android:orientation="horizontal">
 
@@ -39,15 +39,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center_vertical"
-            android:textColor="@color/TittleColor"
-            android:textSize="@dimen/TextTextSize"
+            android:paddingBottom="10dip"
             android:paddingLeft="5dip"
             android:paddingTop="10dip"
-            android:paddingBottom="10dip"
-            android:text="hhhh"/>
+            android:text="hhhh"
+            android:textColor="@color/TittleColor"
+            android:textSize="@dimen/TextTextSize"/>
 
     </LinearLayout>
-
 
 
 </LinearLayout>

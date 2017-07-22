@@ -21,6 +21,7 @@ public class MyListView extends ListView {
     public MyListView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
     //重写onMeasure方法来解决src布局和listview的冲突
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

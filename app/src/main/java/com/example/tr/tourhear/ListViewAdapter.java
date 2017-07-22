@@ -35,7 +35,7 @@ public class ListViewAdapter extends BaseAdapter {
     public final class Zujian {
         public ImageView image;
         public TextView name;
-        public TextView mess;
+    //    public TextView mess;
         public TextView date;
     }
 
@@ -69,7 +69,7 @@ public class ListViewAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.listview, null);
             zujian.image = (ImageView) convertView.findViewById(R.id.image);
             zujian.name = (TextView) convertView.findViewById(R.id.name);
-            zujian.mess = (TextView) convertView.findViewById(R.id.mess);
+       //     zujian.mess = (TextView) convertView.findViewById(R.id.mess);
             zujian.date = (TextView) convertView.findViewById(R.id.date);
             convertView.setTag(zujian);
         } else {
@@ -78,7 +78,7 @@ public class ListViewAdapter extends BaseAdapter {
         //绑定数据
         zujian.image.setBackgroundResource((Integer) data.get(position).get("image"));
         zujian.name.setText((String) data.get(position).get("name"));
-        zujian.mess.setText((String) data.get(position).get("mess"));
+     //   zujian.mess.setText((String) data.get(position).get("mess"));
         zujian.date.setText((String) data.get(position).get("date"));
         return convertView;
     }

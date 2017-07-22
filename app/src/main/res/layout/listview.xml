@@ -9,7 +9,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="13dp"
-        android:src="@drawable/timg" />
+        android:background="@drawable/timg" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,7 +27,7 @@
             android:layout_marginLeft="10dp"
             android:text="TextView" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/mess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:layout_marginTop="10dp"
             android:textColor="@color/TextColor"
             android:textSize="@dimen/TextTextSize"
-            android:text="TextView" />
+            android:text="TextView" />-->
 
     </LinearLayout>
     <TextView

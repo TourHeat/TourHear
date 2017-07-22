@@ -3,7 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/BackgroundColor">
+                android:background="@color/PrimaryColor">
 
     <RelativeLayout
         android:id="@+id/rl_layout"
@@ -21,12 +21,44 @@
             android:textSize="@dimen/NavigationTittleSize"/>
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/temp_background"
+        android:layout_below="@id/rl_layout"
+        android:layout_width="240dp"
+        android:layout_height="1px"
+        android:layout_centerInParent="true"
+        android:background="@color/BackgroundColor"/>
+
+    <RelativeLayout
+        android:id="@+id/test_area"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/temp_background"
+        android:background="@color/PrimaryColor"
+        android:layout_marginBottom="5dp">
+
+        <EditText
+            android:id="@+id/friend_search_bar"
+            android:layout_width="240dp"
+            android:layout_height="35dp"
+            android:paddingLeft="42dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:hint="搜索"
+            android:textColor="@color/TittleColor"
+            android:textSize="@dimen/TextTextSize"
+            android:background="@drawable/icon_search_push"/>
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@color/white"
-        android:layout_below="@id/rl_layout">
+        android:layout_below="@id/test_area">
 
     </ListView>
 

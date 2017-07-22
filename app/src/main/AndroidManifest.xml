@@ -44,7 +44,8 @@
         <activity
             android:name=".ChatActivity"
             android:windowSoftInputMode="stateHidden|stateUnchanged"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity"
+                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
         <activity android:name=".GroupActivity"/>
         <activity android:name=".PersonalActivity"/>
         <activity android:name=".AddressActivity"/>

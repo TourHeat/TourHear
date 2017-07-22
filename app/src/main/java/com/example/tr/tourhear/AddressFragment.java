@@ -26,10 +26,14 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
     ListView mListview;
     UserAdapter mAdapter;
     TextView mTip;
+    /*ScrollView mscrollview;
+    RelativeLayout mrelative;*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.page_02, container, false);
+        /*mscrollview=(ScrollView)view.findViewById(R.id.test_pull);
+        mrelative=(RelativeLayout) view.findViewById(R.id.test_area);*/
         mListview = (ListView) view.findViewById(R.id.listview);
         SideBarView sideBarView = (SideBarView) view.findViewById(R.id.sidebarview);
         String[] contactsArray = getResources().getStringArray(R.array.data);
@@ -95,7 +99,8 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
     private void setListviewPosition(String letter) {
         int firstLetterPosition = mAdapter.getFirstLetterPosition(letter);
         if (firstLetterPosition != -1) {
-            mListview.setSelection(firstLetterPosition);
+           mListview.setSelection(firstLetterPosition);
+            /*mscrollview.smoothScrollTo(0,mListview.getHeight()+ (mrelative.getHeight()+20));*/
         }
     }
 

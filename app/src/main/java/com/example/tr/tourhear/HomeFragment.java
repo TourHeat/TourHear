@@ -44,13 +44,16 @@ public class HomeFragment extends Fragment {
     }
 
     public List<Map<String, Object>> getData() {
+        int image_input[]={R.mipmap.ic_launcher,R.drawable.timg,R.drawable.timg,R.drawable.timg,R.drawable.timg,R.drawable.timg,R.drawable.timg,R.drawable.timg,R.drawable.timg,R.drawable.timg};
+        String name_input[]={"西南交大抄家小分队","御坂美琴","炮姐1号","炮姐2号","炮姐3号","炮姐4号","炮姐5号","炮姐6号","炮姐7号","炮姐8号"};
+        String date_input[]={"20人","2017-7-21","2017-7-20","2017-7-20","2017-7-20","2017-7-19","2017-7-19","2017-7-19","2017-7-18","2017-7-17"};
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < 10; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("image", R.drawable.timg);
-            map.put("name", "御坂美琴");
-            map.put("mess", "喵喵喵~");
-            map.put("date", "2017-7-16");
+            map.put("image", image_input[i]);
+            map.put("name", name_input[i]);
+      //      map.put("mess", "喵喵喵~");
+            map.put("date", date_input[i]);
             list.add(map);
         }
         return list;
