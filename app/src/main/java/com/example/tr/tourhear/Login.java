@@ -14,7 +14,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login2);
     }
 
     public static Handler getUiHandler() {
@@ -25,4 +25,10 @@ public class Login extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    public void register(View view) {
+        Intent intent = new Intent(Login.this, Register.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
