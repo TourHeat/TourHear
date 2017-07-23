@@ -44,7 +44,6 @@
         <item>123木头人</item>
         <item>么么哒</item>
         <item>小萌新</item>
-
     </string-array>
 
     <string-array name="head">
@@ -59,6 +58,10 @@
         <item>二次元</item>
         <item>小透明俱乐部</item>
         <item>何华均的秘密基地</item>
+    </string-array>
 
+    <string-array name="car_group">
+        <item>西南交大萌萌哒三日游</item>
+        <item>西南交大宿舍一日游</item>
     </string-array>
 </resources>

@@ -5,6 +5,7 @@
     <color name="TittleColor">#50597e</color>
     <color name="TextColor">#b2b2bf</color>
     <color name="BackgroundColor">#f1f1f1</color>
+    <color name="TempColor">#dedfe0</color>
     <color name="highgray">#DBDBDB</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>

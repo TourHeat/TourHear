@@ -57,6 +57,14 @@
                   android:windowSoftInputMode="stateHidden|stateUnchanged"/>
         <activity android:name=".CarGroupActivity"
                   android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity android:name=".NewFriendActivity"
+                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity android:name=".ShowCarGroupActivity"/>
+        <activity android:name=".CarGroupSettingActivity"/>
+        <activity android:name=".GroupMemberActivity"/>
+        <activity android:name=".PersonSelectActivity"
+                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity android:name=".CarSelectActivity"/>
     </application>
 
 </manifest>

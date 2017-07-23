@@ -1,7 +1,6 @@
 package com.example.tr.tourhear.utils;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.tr.tourhear.ChatActivity;
-import com.example.tr.tourhear.GroupActivity;
-import com.example.tr.tourhear.NewFriendActivity;
 import com.example.tr.tourhear.R;
-import com.example.tr.tourhear.ShowCarGroupActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +17,10 @@ import java.util.List;
 /**
  * Created by ZhangYan on 2017/7/16.
  */
-public class UserAdapter extends BaseAdapter{
+public class PersonSelectAdapter extends BaseAdapter{
     private Context mContext;
     private ArrayList<User> users;
-    public UserAdapter(Context context) {
+    public PersonSelectAdapter(Context context) {
         this.mContext = context;
         users = new ArrayList<>();
     }
@@ -73,23 +68,7 @@ public class UserAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 //Toast.makeText(mContext,users.get(position).getName(),Toast.LENGTH_SHORT).show();
-                switch (position){
-                    case 0://车队
-                        Intent intent_car_group=new Intent(v.getContext(), ShowCarGroupActivity.class);
-                        v.getContext().startActivity(intent_car_group);
-                        break;
-                    case 1://群组
-                        Intent intent_group=new Intent(v.getContext(), GroupActivity.class);
-                        v.getContext().startActivity(intent_group);
-                        break;
-                    case 2://添加新朋友
-                        Intent intent_new_friend=new Intent(v.getContext(), NewFriendActivity.class);
-                        v.getContext().startActivity(intent_new_friend);
-                        break;
-                    default://通讯录list
-                        Intent intent_list=new Intent(v.getContext(), ChatActivity.class);
-                        v.getContext().startActivity(intent_list);
-                }
+                //选中与取消选中事件
 
             }
         });
