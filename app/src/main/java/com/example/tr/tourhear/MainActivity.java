@@ -242,6 +242,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     }
     public void toChatActivity(View view){
         Intent intent=new Intent(this,ChatActivity.class);
+        //获取当前点击的频道
+        TextView cn = (TextView) view.findViewById(R.id.name);
+        intent.putExtra("channelName",cn.getText().toString());
         startActivity(intent);
     }
 }
