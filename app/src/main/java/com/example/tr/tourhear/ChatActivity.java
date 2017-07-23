@@ -8,6 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.tr.tourhear.utils.ChatMsgEntity;
 import com.example.tr.tourhear.utils.ChatMsgViewAdapter;
@@ -54,6 +55,16 @@ public class ChatActivity extends Activity implements OnClickListener {
         mBtnmore = (Button) findViewById(R.id.btn_more);
         mBtnmore.setOnClickListener(this);
         mEditTextContent = (EditText) findViewById(R.id.et_sendmessage);
+
+        //频道名称
+        //获取频道名称
+        Intent intent = getIntent();
+        String strChannelName = intent.getStringExtra("channelName");
+        TextView cn =  (TextView) findViewById(R.id.channel_name);
+        if(strChannelName != null && strChannelName !=""){//设置频道名称
+            cn.setText(strChannelName);
+        }
+
     }
 
     private String[] msgArray = new String[]{"你好", "你好", "挖掘机学校哪家强", "中国山东找蓝翔",

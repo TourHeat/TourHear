@@ -34,6 +34,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Login"
+            android:anyDensity="true"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden|stateUnchanged">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -41,6 +43,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".Test2"></activity>
         <activity
             android:name=".ChatActivity"
             android:windowSoftInputMode="stateHidden|stateUnchanged"/>
@@ -65,6 +68,44 @@
         <activity android:name=".PersonSelectActivity"
                   android:windowSoftInputMode="stateHidden|stateUnchanged"/>
         <activity android:name=".CarSelectActivity"/>
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity android:name=".GroupActivity" />
+        <activity android:name=".PersonalActivity" />
+        <activity android:name=".AddressActivity" />
+        <activity android:name=".PersonalSettingActivity" />
+        <activity android:name=".CollectionActivity" />
+        <activity android:name=".AlbumActivity" />
+        <activity android:name=".ChatSettingActivity" />
+        <activity
+            android:name=".ChatGroupActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".CarGroupActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity android:name=".Register"></activity>
+        <service android:name="com.algebra.sdk.Controller" />
+
+        <receiver android:name="com.example.tr.tourhear.entity.BootUpReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.example.tr.tourhear.entity.PttReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PTT.up" />
+                <action android:name="android.intent.action.PTT.down" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.example.tr.tourhear.utils.MediaKeys">
+            <intent-filter android:priority="1000000000">
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
