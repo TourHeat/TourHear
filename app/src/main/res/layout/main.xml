@@ -12,6 +12,7 @@
         android:background="@color/PrimaryColor"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
+
         android:layout_alignParentStart="true">
 
         <Button
@@ -33,22 +34,48 @@
             android:text="御坂美琴"
             android:textColor="#ffffff"
             android:textSize="@dimen/NavigationTittleSize" />
-
-        <Button
-            android:id="@+id/btn_more"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignRight="@+id/btn_more"
+            android:layout_marginRight="50dp"
+            android:onClick="setVoiceState"
+            >
+            <ImageView
+                android:id="@+id/voice"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/voice"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/show_setting"
-            android:paddingLeft="10dp"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:layout_centerVertical="true"
+            android:id="@+id/btn_more"
+            android:onClick="setting"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            >
+            <Button
+                android:onClick="setting"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/setting"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/rl_bottom"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
@@ -81,7 +108,7 @@
         android:id="@+id/listview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@id/rl_bottom"
+        android:layout_above="@+id/img"
         android:layout_below="@id/rl_layout"
         android:layout_marginLeft="10.0dip"
         android:layout_marginRight="10.0dip"
@@ -90,5 +117,51 @@
         android:divider="@null"
         android:dividerHeight="5dp"
         android:scrollbars="none" />
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"
+        android:layout_above="@+id/bottom"
+        />
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center"
+        >
+        <ImageView
+            android:id="@+id/icon_voice"
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/tab_message"
+            />
+        <TextView
+            android:id="@+id/btn_speak"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="按住说话"
+            android:layout_weight="1"
+            android:gravity="center"
 
+            />
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:background="@color/PrimaryColor"
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/add2"
+            />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

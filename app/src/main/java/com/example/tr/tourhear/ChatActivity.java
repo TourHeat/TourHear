@@ -3,10 +3,13 @@ package com.example.tr.tourhear;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -26,12 +29,15 @@ public class ChatActivity extends Activity implements OnClickListener {
 
     private Button mBtnSend;// 发送btn
     private Button mBtnBack;// 返回btn
-    private Button mBtnmore;// 聊天设置btn
+    private LinearLayout mBtnmore;// 聊天设置btn
     private EditText mEditTextContent;
     private ListView mListView;
     private ChatMsgViewAdapter mAdapter;// 消息视图的Adapter
     private List<ChatMsgEntity> mDataArrays = new ArrayList<ChatMsgEntity>();// 消息对象数组
-
+    private boolean voiceable = true;//设置能否发声
+    private ImageView iconVoice;
+    private TextView btnSpeak; //按住发声
+    private LinearLayout bottom;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -52,10 +58,29 @@ public class ChatActivity extends Activity implements OnClickListener {
         mBtnSend.setOnClickListener(this);
         mBtnBack = (Button) findViewById(R.id.btn_back);
         mBtnBack.setOnClickListener(this);
-        mBtnmore = (Button) findViewById(R.id.btn_more);
+        mBtnmore = (LinearLayout) findViewById(R.id.btn_more);
         mBtnmore.setOnClickListener(this);
         mEditTextContent = (EditText) findViewById(R.id.et_sendmessage);
-
+        //底部
+        bottom = (LinearLayout) findViewById(R.id.bottom);
+    //对讲图标
+        iconVoice = (ImageView) findViewById(R.id.icon_voice);
+        btnSpeak = (TextView) findViewById(R.id.btn_speak);
+      //  btnSpeak.setOnFocusChangeListener(this);
+        btnSpeak.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message_press));
+                    bottom.setBackgroundColor(getResources().getColor(R.color.BackgroundColor));
+                }
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message));
+                    bottom.setBackgroundColor(getResources().getColor(R.color.white));
+                }
+                return true;
+            }
+        });
         //频道名称
         //获取频道名称
         Intent intent = getIntent();
@@ -148,4 +173,27 @@ public class ChatActivity extends Activity implements OnClickListener {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         return format.format(new Date());
     }
+
+    public void setVoiceState(View view) {
+        ImageView v = (ImageView) view.findViewById(R.id.voice);
+        if(voiceable) {
+            voiceable = voiceable?false:true;
+            v.setBackground(getResources().getDrawable(R.drawable.novoice));
+        } else {
+            voiceable = voiceable?false:true;
+            v.setBackground(getResources().getDrawable(R.drawable.voice));
+        }
+
+    }
+
+    public void setting(View view) {
+        Intent intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
+        startActivity(intent);
+    }
+
+    public void startSpeak(View view) {
+        //iconVoice
+    }
+
+
 }
