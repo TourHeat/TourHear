@@ -1,16 +1,29 @@
 package com.example.tr.tourhear;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.algebra.sdk.API;
+import com.algebra.sdk.AccountApi;
+import com.algebra.sdk.ChannelApi;
+import com.algebra.sdk.entity.Channel;
+import com.algebra.sdk.entity.CompactID;
+import com.example.tr.tourhear.myimplements.MyOnChannelListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
     // 底部菜单4个Linearlayout
@@ -36,7 +49,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     private Fragment addressFragment;
     private Fragment friendFragment;
     private Fragment settingFragment;
-
+    private Handler uiHandler = null;
+    private Context uiContext;
+    private ChannelApi channelApi;
+    private Channel channel;
+    private static List<Channel> channelList = new ArrayList<Channel>();
+    private static String[] channelsname;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +65,34 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         initEvent();
         // 初始化并设置当前Fragment
         initFragment(0);
+        uiHandler = Login.getUiHandler();
+        channelApi = API.getChannelApi();
+        initChannes();
     }
 
+    private void initChannes() {
+        AccountApi me = API.getAccountApi();
+        channelApi = API.getChannelApi();
+        channelApi.channelListGet(me.whoAmI().id);
+
+        channelApi.setOnChannelListener(new MyOnChannelListener() {
+            @Override
+            public void onChannelListGet(int i, Channel channel, List<Channel> list) {
+                super.onChannelListGet(i, channel, list);
+                channelList = list;
+                for(Channel channel2 : list){
+                    Log.i("login","------------"+channel2.toString());
+                    Log.i("login",channel2.name+channel2.cid);
+                    CompactID cid =  channel2.cid;
+                    Log.i("login","id"+cid.getId()+" type:"+cid.getType());
+                }
+            }
+        });
+        Log.i("login","chanel inti"+(me.whoAmI().id));
+    }
+    public static List<Channel> getChannelList(){
+        return channelList;
+    }
     private void initFragment(int index) {
         // 由于是引用了V4包下的Fragment，所以这里的管理器要用getSupportFragmentManager获取
         FragmentManager fragmentManager = getSupportFragmentManager();

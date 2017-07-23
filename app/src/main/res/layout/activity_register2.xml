@@ -12,6 +12,7 @@
         android:background="@color/PrimaryColor"
         android:orientation="vertical">
         <ImageView
+            android:onClick="back"
             android:layout_centerVertical="true"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -35,6 +36,33 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center"
+            >
+
+            <EditText
+                android:textColorHint="@color/TextColor"
+                android:id="@+id/jihouma"
+                android:textSize="@dimen/TextTextSize"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:drawableLeft="@drawable/jihouma"
+                android:drawablePadding="5dp"
+                android:hint="请输入激活码" />
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/darkGrey"
+            />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="60dp"

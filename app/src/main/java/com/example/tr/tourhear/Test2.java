@@ -2,7 +2,6 @@ package com.example.tr.tourhear;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,31 +10,27 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.algebra.sdk.API;
 import com.algebra.sdk.AccountApi;
 import com.algebra.sdk.ChannelApi;
 import com.algebra.sdk.DeviceApi;
+import com.algebra.sdk.OnChannelListener;
 import com.algebra.sdk.entity.Channel;
-import com.algebra.sdk.entity.CompactID;
 import com.algebra.sdk.entity.Constant;
 import com.algebra.sdk.entity.Contact;
 import com.algebra.sdk.entity.UserProfile;
 import com.example.tr.tourhear.entity.MsgCode;
 import com.example.tr.tourhear.myimplements.MyAccountListener;
-import com.example.tr.tourhear.myimplements.MyOnChannelListener;
 import com.example.tr.tourhear.utils.MyProcessDialog;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Login extends AppCompatActivity {
-    private static Handler uiHandler =null;
+public class Test2 extends AppCompatActivity {
+    private Handler uiHandler =null;
     private Context uiConntext;
-
     private boolean needUnbind = true;
     private int selfId = 0;
     private int selfState = Constant.CONTACT_STATE_OFFLINE;
@@ -49,6 +44,9 @@ public class Login extends AppCompatActivity {
     private AccountApi accountApi = null;
     private DeviceApi deviceApi = null;
     private ProgressDialog processDialog = null;
+
+
+
     private interface StartStage {
         public static final int INITIALIZING = 0;
         public static final int LOGIN_VISITOR = 2;
@@ -63,20 +61,14 @@ public class Login extends AppCompatActivity {
     private Button btn_test;
     private MyProcessDialog myProcessDialog;
     //private
-    //获取频道
-    private static List<Channel> channelList = new ArrayList<Channel>();
-    private ChannelApi channelApi;
-    private Channel channel;
-    public static Handler getUiHandler(){
-        return uiHandler;
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
         account = (EditText) findViewById(R.id.user_account);//输入登录账号
         userPassWord = (EditText) findViewById(R.id.user_pass);//输入密码
-        uiConntext = this;
+
         startStep = StartStage.INITIALIZING;//当前状态为初始化
         newBind = API.init(this);//初始化对讲服务
 
@@ -95,7 +87,7 @@ public class Login extends AppCompatActivity {
 //                Log.i("login","user"+me.name+me.id);
 //            }
 //        });
-        myProcessDialog = new MyProcessDialog(Login.this);
+        myProcessDialog = new MyProcessDialog(Test2.this);
     }
 
     @Override
@@ -107,11 +99,11 @@ public class Login extends AppCompatActivity {
     }
 
     private static class UIHandler extends  Handler{
-        WeakReference<Login> wrActi;//UIHandler所在的活动
-        Login mActi = null;
+        WeakReference<Test2> wrActi;//UIHandler所在的活动
+        Test2 mActi = null;
 
-        public UIHandler(Login act){
-            wrActi = new WeakReference<Login>(act);
+        public UIHandler(Test2 act){
+            wrActi = new WeakReference<Test2>(act);
         }
 
         @Override
@@ -125,7 +117,7 @@ public class Login extends AppCompatActivity {
             //消息处理
             switch (msg.what) {
                 case MsgCode.ASKFORLOGIN: //请求登录
-                    // 判断是否登录
+                   // 判断是否登录
                     Contact me = mActi.accountApi.whoAmI();
                     if(me != null){//若登录了，则退出登录
                         mActi.accountApi.logout(mActi.selfId);
@@ -149,18 +141,9 @@ public class Login extends AppCompatActivity {
                 case MsgCode.MC_LOGINFINISHED:
                     //登录成功关闭对话框
                     mActi.myProcessDialog.dismissProcessing();
+                    if(msg.arg1 == 1) {
 
-                    if(msg.arg2 == 0) {
-                        if(msg.arg2 == 0){
-                            Intent intent = new Intent(wrActi.get(),MainActivity.class);
-                            wrActi.get().startActivity(intent);
-                        }
                     }
-                    break;
-                case MsgCode.MC_LOGINOK:
-
-
-
                     break;
                 case MsgCode.ASKFOREXIT: //退出登录
                     mActi.setContentView(R.layout.welcome);
@@ -191,7 +174,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onLogin(int uid, int result, UserProfile uProfile) {
                         super.onLogin(uid, result, uProfile);
-                        uiHandler.obtainMessage(MsgCode.MC_LOGINFINISHED, 2, result).sendToTarget();//登录成功，关闭对话框
+                        uiHandler.obtainMessage(MsgCode.MC_LOGINFINISHED, 2, 0).sendToTarget();//登录成功，关闭对话框
                         Log.i("login","result"+result);
                         //登录成功状态
                         if(result == Constant.ACCOUNT_RESULT_OK
@@ -206,22 +189,7 @@ public class Login extends AppCompatActivity {
                             }
                             //成功登录，状态在线
                             uiHandler.obtainMessage(MsgCode.MC_LOGINOK, uid,
-                                    Constant.CONTACT_STATE_ONLINE,result).sendToTarget();
-                        }
-                        if (result == Constant.ACCOUNT_RESULT_ERR_USER_NOTEXIST) {
-                            Toast.makeText(uiConntext, "账号不存在", Toast.LENGTH_SHORT).show();
-                        }
-                        if (result == Constant.ACCOUNT_RESULT_ERR_USER_PWD) {
-                            Toast.makeText(uiConntext, "密码错误", Toast.LENGTH_SHORT).show();
-                        }
-                        if (result == Constant.ACCOUNT_RESULT_ERR_SERVER_UNAVAILABLE) {
-                            Toast.makeText(uiConntext, "没有打开对讲服务", Toast.LENGTH_SHORT).show();
-                        }
-                        if (result == Constant.ACCOUNT_RESULT_ERR_NETWORK) {
-                            Toast.makeText(uiConntext, "无网络", Toast.LENGTH_SHORT).show();
-                        }
-                        if (result == Constant.ACCOUNT_RESULT_OTHER_LOGIN) {
-                            Toast.makeText(uiConntext, "用户错误", Toast.LENGTH_SHORT).show();
+                                    Constant.CONTACT_STATE_ONLINE).sendToTarget();
                         }
                         Log.i("login","delayInitApi----"+4);
                     }
@@ -271,7 +239,7 @@ public class Login extends AppCompatActivity {
                 0, outputInfo)
                 .sendToTarget();
     }
-    //退出
+//退出
     public void quit(View view){
         Log.i("login","ASKFORLOGIN selfid"+selfId);
         if (selfId > 0) {
@@ -282,19 +250,100 @@ public class Login extends AppCompatActivity {
         if (uiHandler != null) {
             uiHandler.sendEmptyMessage(MsgCode.ASKFOREXIT);
         } else {
-            Login.this.finish();
+            Test2.this.finish();
         }
     }
-    //
+//
     public void contact(View view){
         AccountApi me = API.getAccountApi();
         ChannelApi channel = API.getChannelApi();
         channel.channelListGet(me.whoAmI().id);
 
-        channel.setOnChannelListener(new MyOnChannelListener() {
+        channel.setOnChannelListener(new OnChannelListener() {
+            @Override
+            public void onDefaultChannelSet(int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onAdverChannelsGet(int i, Channel channel, List<Channel> list) {
+
+            }
+
             @Override
             public void onChannelListGet(int i, Channel channel, List<Channel> list) {
-                super.onChannelListGet(i, channel, list);
+                for (Channel ch:list) {
+                    Log.i("login",ch.name);
+                }
+            }
+
+            @Override
+            public void onChannelMemberListGet(int i, int i1, int i2, List<Contact> list) {
+
+            }
+
+            @Override
+            public void onChannelNameChanged(int i, int i1, int i2, String s) {
+
+            }
+
+            @Override
+            public void onChannelAdded(int i, int i1, int i2, String s) {
+
+            }
+
+            @Override
+            public void onChannelRemoved(int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onChannelMemberAdded(int i, int i1, List<Contact> list) {
+
+            }
+
+            @Override
+            public void onChannelMemberRemoved(int i, int i1, List<Integer> list) {
+
+            }
+
+            @Override
+            public void onPubChannelCreate(int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onPubChannelSearchResult(int i, List<Channel> list) {
+
+            }
+
+            @Override
+            public void onPubChannelFocusResult(int i, int i1) {
+
+            }
+
+            @Override
+            public void onPubChannelUnfocusResult(int i, int i1) {
+
+            }
+
+            @Override
+            public void onPubChannelRenamed(int i, int i1) {
+
+            }
+
+            @Override
+            public void onPubChannelDeleted(int i, int i1) {
+
+            }
+
+            @Override
+            public void onCallMeetingStarted(int i, int i1, int i2, List<Contact> list) {
+
+            }
+
+            @Override
+            public void onCallMeetingStopped(int i, int i1) {
 
             }
         });
@@ -302,34 +351,4 @@ public class Login extends AppCompatActivity {
         //channel.channelListGet(0);
         //channel.
     }
-//注册
-    public void register(View view) {
-        Intent i = new Intent(Login.this,Register.class);
-        startActivity(i);
-    }
-
-    private void initChannes() {
-        AccountApi me = API.getAccountApi();
-        channelApi = API.getChannelApi();
-        channelApi.channelListGet(me.whoAmI().id);
-
-        channelApi.setOnChannelListener(new MyOnChannelListener() {
-            @Override
-            public void onChannelListGet(int i, Channel channel, List<Channel> list) {
-                super.onChannelListGet(i, channel, list);
-                channelList = list;
-                for(Channel channel2 : list){
-                    Log.i("login","------------"+channel2.toString());
-                    Log.i("login",channel2.name+channel2.cid);
-                    CompactID cid =  channel2.cid;
-                    Log.i("login","id"+cid.getId()+" type:"+cid.getType());
-                }
-            }
-        });
-        Log.i("login","chanel inti"+(me.whoAmI().id));
-    }
-    public static List<Channel> getChannelList(){
-        return channelList;
-    }
-
 }
