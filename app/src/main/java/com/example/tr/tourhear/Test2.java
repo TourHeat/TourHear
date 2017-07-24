@@ -168,6 +168,7 @@ public class Test2 extends AppCompatActivity {
             Log.i("login","delayInitApi----"+1);
             accountApi = API.getAccountApi();//获取对讲操作
             deviceApi = API.getDeviceApi();
+            //deviceApi.setOemToneGenerator();
             if(accountApi!=null && deviceApi !=null){
                 Log.i("login","delayInitApi----"+2);
                 accountApi.setOnAccountListener(new MyAccountListener(){

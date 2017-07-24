@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:viewportWidth="847"
+    android:viewportHeight="246" android:width="8dp" android:height="2dp">
+    <group android:name="图层_x0020_1">
+        <path android:name="fil0" android:fillColor="@color/PrimaryColor"
+            android:pathData="M752 15l-667 0c-33,0 -60,27 -60,60l0 87c0,33 27,60 60,60l667 0c34,0 61,-27 61,-60l0 -87c0,-2 0,-3 -1,-5l0 0c1,-19 -3,-47 20,-55l-80 0z" />
+    </group>
+</vector>

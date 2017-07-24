@@ -18,7 +18,7 @@
 
     <style name="chat_content_date_style">
         <item name="android:minHeight">50dp</item>
-        <item name="android:gravity">left|center</item>
+        <item name="android:gravity">center_vertical</item>
         <item name="android:textColor">@color/TittleColor</item>
         <item name="android:textSize">@dimen/TittleTextSize</item>
         <item name="android:lineSpacingExtra">2dp</item>

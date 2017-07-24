@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,11 +20,16 @@ import android.widget.TextView;
 
 import com.algebra.sdk.API;
 import com.algebra.sdk.DeviceApi;
+import com.algebra.sdk.OnMediaListener;
 import com.algebra.sdk.SessionApi;
 import com.algebra.sdk.entity.Channel;
+import com.algebra.sdk.entity.CompactID;
 import com.algebra.sdk.entity.Contact;
+import com.algebra.sdk.entity.HistoryRecord;
+import com.algebra.sdk.entity.OEMToneGenerator;
+import com.algebra.sdk.entity.OEMToneProgressListener;
+import com.algebra.sdk.entity.Session;
 import com.example.tr.tourhear.entity.ChaneelMems;
-import com.example.tr.tourhear.myimplements.MyOnMediaListener;
 import com.example.tr.tourhear.myimplements.MyOnSessionListener;
 import com.example.tr.tourhear.utils.ChatMsgEntity;
 import com.example.tr.tourhear.utils.ChatMsgViewAdapter;
@@ -36,7 +43,7 @@ import java.util.List;
  * Created by ZhangYan on 2017/7/16.
  */
 
-public class ChatActivity extends Activity implements OnClickListener {
+public class ChatActivity extends Activity implements OnClickListener, OnMediaListener {
 
     private Button mBtnSend;// 发送btn
     private Button mBtnBack;// 返回btn
@@ -50,6 +57,8 @@ public class ChatActivity extends Activity implements OnClickListener {
     private TextView btnSpeak; //按住发声
     private LinearLayout bottom;
     private SessionApi sessionapi;//会话操作
+    private CompactID currSession = null;//会话
+    private Session session;
 //操作频道
     private List<Channel> cs = new ArrayList<Channel>();
     private  Channel channel = null;
@@ -57,10 +66,11 @@ public class ChatActivity extends Activity implements OnClickListener {
     private com.example.tr.tourhear.tl_demo.TalkHistory talkHistory = null;//历史
 //媒体操作类
     private AudioManager mAudioManager = null;
+    private Handler uiHandler = null;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
+        uiHandler = Login.getUiHandler();
         initView();// 初始化view
         initData();// 初始化数据
         mListView.setSelection(mAdapter.getCount() - 1);
@@ -92,14 +102,25 @@ public class ChatActivity extends Activity implements OnClickListener {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
+                    //打开对讲
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message_press));
                     bottom.setBackgroundColor(getResources().getColor(R.color.infosColor));
-                    sessionapi.talkRequest(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
+                    if ( currSession!= null && sessionapi != null){
+                        sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
+                        talkRequest(currSession);
+                        Log.i("login","alkRequest:"+"uid: "+API.getAccountApi().whoAmI().id+"type"+currSession.getType()+" id :"+ currSession.getId());
+                    }
                 }
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message));
                     bottom.setBackgroundColor(getResources().getColor(R.color.white));
+                    if ( currSession!= null && sessionapi != null){
+                        sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
+                        talkRelease(currSession);
+                        Log.i("login","alkRequest:"+"uid: "+API.getAccountApi().whoAmI().id+"type"+currSession.getType()+" id :"+ currSession.getId());
+                    }
                 }
+
                 return true;
             }
         });
@@ -125,7 +146,15 @@ public class ChatActivity extends Activity implements OnClickListener {
     }
 
     private void initSession() {
+        deviceApi = API.getDeviceApi();//获取媒体操作
+      //  deviceApi.setOemToneGenerator();
+        setupToneGen();
         sessionapi  = API.getSessionApi();
+        if(sessionapi == null){
+            uiHandler.postDelayed(delayInitApi, 300);
+        }else {
+            sessionapi.setOnMediaListener(this);
+        }
         sessionapi.sessionCall(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
         Log.i("login","创建会话:"+API.getAccountApi().whoAmI().id+" ::  "+channel.cid.getType()+" ::  "+channel.cid.getId());
         sessionapi.setOnSessionListener(new MyOnSessionListener(){
@@ -146,9 +175,10 @@ public class ChatActivity extends Activity implements OnClickListener {
             public void onSessionEstablished(int selfUserId, int type, int sessionId) {
                 super.onSessionEstablished(selfUserId, type, sessionId);
                 Log.i("login","onSessionEstablished----- sessionId"+sessionId);
+                currSession = new CompactID(type,sessionId);
+              //  sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
 
-                sessionapi.talkRequest(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
-               //获取频道成员
+                //获取频道成员
                 ChaneelMems cm = HomeFragment.getCmem(channel.cid.getId());
                 int [] ids = new int[cm.getCs().size()];
                 int i = 0;
@@ -157,13 +187,11 @@ public class ChatActivity extends Activity implements OnClickListener {
                 }
                 sessionapi.startDialog(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId(),ids);
             }
+
             @Override
             public void onDialogEstablished(int i, int i1, int i2, List<Integer> list) {
                 Log.i("login","onDialogEstablished----- sessionId"+i1);
             }
-        });
-        sessionapi.setOnMediaListener(new MyOnMediaListener(){
-
         });
 
        // sessionapi.startDialog(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
@@ -273,6 +301,175 @@ public class ChatActivity extends Activity implements OnClickListener {
 
     public void startSpeak(View view) {
         //iconVoice
+    }
+    private class OEMToneGen implements OEMToneGenerator {
+        private OEMToneProgressListener toneProgressListener = null;
+        private ToneGenerator mToneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 15);
+
+        void setToneProgressListener(OEMToneProgressListener l) {
+            toneProgressListener = l;
+        }
+
+        @Override
+        public void alertTone(final int type) {
+            mToneGen.startTone(ToneGenerator.TONE_DTMF_5);
+            uiHandler.postDelayed(new Runnable(){
+                @Override
+                public void run() {
+                    mToneGen.stopTone();
+                    if (toneProgressListener != null)
+                        toneProgressListener.onToneStopped(type);
+                }
+            }, 100);
+        }
+    }
+
+    private OEMToneGen oemToneGen = new OEMToneGen();
+    private void setupToneGen() {
+        deviceApi.setOemToneGenerator(oemToneGen);
+        OEMToneProgressListener listener = deviceApi.getToneProgressListener();
+        oemToneGen.setToneProgressListener(listener);
+    }
+    //
+    private Runnable delayInitApi = new Runnable() {
+        @Override
+        public void run() {
+            if ((sessionapi = API.getSessionApi()) != null) {
+                deviceApi = API.getDeviceApi();
+                sessionapi.setOnMediaListener(ChatActivity.this);
+
+            } else {
+                uiHandler.postDelayed(delayInitApi, 300);
+            }
+        }
+    };
+    //获取话权
+    private void talkRequest(CompactID session) {
+        //isPttPressed = true;
+        if (session != null && sessionapi != null)
+            sessionapi.talkRequest(API.getAccountApi().whoAmI().id, session.getType(), session.getId());
+    }
+    //释放
+    private void talkRelease(CompactID session) {
+       // isPttPressed = false;
+        if (session != null && sessionapi != null)
+            sessionapi.talkRelease(API.getAccountApi().whoAmI().id, session.getType(), session.getId());
+    }
+    //媒体回调
+    @Override
+    public void onMediaInitializedEnd(int i, int i1, int i2) {
+        Log.i("login","media onMediaInitializedEnd uid"+i+"sid:"+i2+"ct:"+i1);
+    }
+
+    @Override
+    public void onPttButtonPressed(int i, int i1) {
+
+    }
+
+    @Override
+    public void onTalkRequestConfirm(int i, int i1, int i2, int i3, boolean b) {
+
+    }
+
+    @Override
+    public void onTalkRequestDeny(int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTalkRequestQueued(int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTalkReleaseConfirm(int i, int i1) {
+
+    }
+
+    @Override
+    public void onTalkTransmitBroken(int i, int i1) {
+
+    }
+
+    @Override
+    public void onStartPlaying(int i, int i1, int i2, int i3) {
+
+    }
+
+    @Override
+    public void onPlayStopped(int i) {
+
+    }
+
+    @Override
+    public void onSomeoneSpeaking(int i, int i1, int i2, int i3, int i4) {
+
+    }
+
+    @Override
+    public void onThatoneSayOver(int i, int i1) {
+
+    }
+
+    @Override
+    public void onSomeoneAttempt(int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onThatAttemptQuit(int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onNewSpeakingCatched(HistoryRecord historyRecord) {
+        Log.i("login","media onNewSpeakingCatched: ok"+historyRecord.owner);
+
+    }
+
+    @Override
+    public void onPlayLastSpeaking(int i, int i1) {
+
+    }
+
+    @Override
+    public void onPlayLastSpeakingEnd(int i) {
+
+    }
+
+    @Override
+    public void onMediaSenderCutted(int i, int i1) {
+
+    }
+
+    @Override
+    public void onMediaSenderReport(long l, int i, int i1, int i2, int i3) {
+
+    }
+
+    @Override
+    public void onMediaReceiverReport(long l, int i, int i1, int i2, int i3) {
+
+    }
+
+    @Override
+    public void onRecorderMeter(int i, int i1) {
+
+    }
+
+    @Override
+    public void onPlayerMeter(int i, int i1) {
+
+    }
+
+    @Override
+    public void onBluetoothBatteryGet(int i) {
+
+    }
+
+    @Override
+    public void onBluetoothConnect(int i) {
+
     }
 
 

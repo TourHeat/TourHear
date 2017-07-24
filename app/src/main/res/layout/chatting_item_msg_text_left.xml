@@ -21,9 +21,10 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="5dp" >
 
         <com.example.tr.tourhear.view.CircleImageView
@@ -35,23 +36,36 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/tv_chatcontent"
             style="@style/chat_content_date_style"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="150dp"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+
             android:layout_toRightOf="@id/iv_userhead"
-            android:background="@drawable/chatfrom_bg" />
-
+            android:background="@drawable/chatfrom_bg" /> -->
         <TextView
-            android:id="@+id/tv_username"
-            style="@style/chat_text_name_style"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_chatcontent"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/iv_userhead"
-            android:layout_toLeftOf="@id/tv_chatcontent" />
-    </RelativeLayout>
+            android:layout_marginLeft="15dp"
+            android:text="textview"
+            android:textColor="@color/TittleColor"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/chatfrom_bg"
+            android:paddingLeft="15dp"
+            android:textSize="@dimen/TittleTextSize"
+            />
 
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_username"
+        style="@style/chat_text_name_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/iv_userhead"
+        android:layout_toLeftOf="@id/tv_chatcontent" />
 </LinearLayout>

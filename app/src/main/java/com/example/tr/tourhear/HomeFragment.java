@@ -91,12 +91,21 @@ public class HomeFragment extends Fragment {
         //List<Channel> channels = MainActivity.getChannelList();
         Log.i("login","获取频道：length:"+channelList.size());
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+        //车队
+        Map<String, Object> map2 = new HashMap<String, Object>();
+        map2.put("image", R.mipmap.ic_launcher);
+        map2.put("name","我的车队");
+        map2.put("mess", "平安出行,放心游玩");
+        map2.put("date", "11:03");
+
+       // Log.i("login","获取频道：length:"+c.name);
+        list.add(map2);
         for (Channel c:channelList) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("image", R.mipmap.ic_launcher);
+            map.put("image", R.drawable.timg);
             map.put("name",c.name);
-            //      map.put("mess", "喵喵喵~");
-            map.put("date", "上午 11:03");
+            map.put("mess", "陪我一起,浪迹天涯!");
+            map.put("date", "11:03");
             Log.i("login","获取频道：length:"+c.name);
             list.add(map);
         }
