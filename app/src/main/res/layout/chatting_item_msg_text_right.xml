@@ -37,7 +37,7 @@
 
         <TextView
             android:id="@+id/tv_chatcontent"
-            android:layout_width="150dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@id/iv_userhead"

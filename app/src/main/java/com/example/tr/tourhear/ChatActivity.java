@@ -84,10 +84,10 @@ public class ChatActivity extends Activity implements OnClickListener {
         mEditTextContent = (EditText) findViewById(R.id.et_sendmessage);
         //底部
         bottom = (LinearLayout) findViewById(R.id.bottom);
-    //对讲图标
+        //对讲图标
         iconVoice = (ImageView) findViewById(R.id.icon_voice);
         btnSpeak = (TextView) findViewById(R.id.btn_speak);
-      //  btnSpeak.setOnFocusChangeListener(this);
+        //  btnSpeak.setOnFocusChangeListener(this);
         btnSpeak.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {

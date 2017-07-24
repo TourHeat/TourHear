@@ -180,7 +180,7 @@ public class Login extends AppCompatActivity {
 
                     break;
                 case MsgCode.ASKFOREXIT: //退出登录
-                    mActi.setContentView(R.layout.welcome);
+               //     mActi.setContentView(R.layout.welcome);
                     if (mActi.newBind) {
                         mActi.newBind = false;
                         mActi.needUnbind = true;

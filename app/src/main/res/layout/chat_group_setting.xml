@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/BackgroundColor"
+                android:orientation="vertical">
+    <!--群组设置-->
+    <RelativeLayout
+        android:id="@+id/rl_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/test_backpicture"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/selector_btn_back"
+            android:paddingLeft="10dp"
+            android:textColor="#ffffff"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:layout_marginLeft="30dp"
+            android:text="犀浦自驾五日游"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/NavigationTittleSize"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:text="25762333"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/TextTextSize"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/rl_layout"
+        android:background="@color/BackgroundColor"
+        android:scrollbarStyle="outsideOverlay">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/BackgroundColor"
+            android:orientation="vertical">
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayoutT"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtViewT"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="5dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/MoreThings"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <RelativeLayout
+                    android:id="@+id/MoreThings1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/More_img1"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/add"
+                        android:scaleType="matrix"/>
+
+                    <TextView
+                        android:id="@+id/More_text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/More_img1"
+                        android:layout_centerHorizontal="true"
+                        android:text="群路书"
+                        android:textColor="@color/TittleColor"
+                        android:textSize="@dimen/TittleTextSize"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/MoreThings2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/MoreThings1">
+
+                    <ImageView
+                        android:id="@+id/More_img2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/add"
+                        android:scaleType="matrix"/>
+
+                    <TextView
+                        android:id="@+id/More_text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/More_img2"
+                        android:layout_centerHorizontal="true"
+                        android:text="车队"
+                        android:textColor="@color/TittleColor"
+                        android:textSize="@dimen/TittleTextSize"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/MoreThings3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/MoreThings2">
+
+                    <ImageView
+                        android:id="@+id/More_img3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/add"
+                        android:scaleType="matrix"/>
+
+                    <TextView
+                        android:id="@+id/More_text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/More_img3"
+                        android:layout_centerHorizontal="true"
+                        android:text="群相册"
+                        android:textColor="@color/TittleColor"
+                        android:textSize="@dimen/TittleTextSize"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/MoreThings4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/MoreThings3">
+
+                    <ImageView
+                        android:id="@+id/More_img4"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/add"
+                        android:scaleType="matrix"/>
+
+                    <TextView
+                        android:id="@+id/More_text4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/More_img4"
+                        android:layout_centerHorizontal="true"
+                        android:text="公告"
+                        android:textColor="@color/TittleColor"
+                        android:textSize="@dimen/TittleTextSize"/>
+                </RelativeLayout>
+
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/GroupMember"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="我的群名片"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView1"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="群成员(51)"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="管理群"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="分享群"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout5"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="我的权限"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout6"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="群消息免打扰"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView6"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout7"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="共享位置信息"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView7"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout8"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="升级为车队"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView8"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout9"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@color/TempColor"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="通话设置"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView9"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout10"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="自动播放对讲声音"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView10"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout11"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="按住音量键对讲"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView11"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout12"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="自动屏蔽对讲声音"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView12"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout13"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:padding="8dp"
+                    android:text="本群建立于2017年7月24日"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -47,8 +47,9 @@
         <activity
             android:name=".ChatActivity"
             android:windowSoftInputMode="stateHidden|stateUnchanged"/>
-        <activity android:name=".MainActivity"
-                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"/>
         <activity android:name=".GroupActivity"/>
         <activity android:name=".PersonalActivity"/>
         <activity android:name=".AddressActivity"/>
@@ -56,54 +57,47 @@
         <activity android:name=".CollectionActivity"/>
         <activity android:name=".AlbumActivity"/>
         <activity android:name=".ChatSettingActivity"/>
-        <activity android:name=".ChatGroupActivity"
-                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
-        <activity android:name=".CarGroupActivity"
-                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
-        <activity android:name=".NewFriendActivity"
-                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity
+            android:name=".ChatGroupActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity
+            android:name=".CarGroupActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity
+            android:name=".NewFriendActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"/>
         <activity android:name=".ShowCarGroupActivity"/>
         <activity android:name=".CarGroupSettingActivity"/>
         <activity android:name=".GroupMemberActivity"/>
-        <activity android:name=".PersonSelectActivity"
-                  android:windowSoftInputMode="stateHidden|stateUnchanged"/>
-        <activity android:name=".CarSelectActivity"/>
-            android:windowSoftInputMode="stateHidden|stateUnchanged" />
         <activity
-            android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged" />
-        <activity android:name=".GroupActivity" />
-        <activity android:name=".PersonalActivity" />
-        <activity android:name=".AddressActivity" />
-        <activity android:name=".PersonalSettingActivity" />
-        <activity android:name=".CollectionActivity" />
-        <activity android:name=".AlbumActivity" />
-        <activity android:name=".ChatSettingActivity" />
+            android:name=".PersonSelectActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"/>
         <activity
-            android:name=".ChatGroupActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged" />
-        <activity
-            android:name=".CarGroupActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged" />
-        <activity android:name=".Register"></activity>
-        <service android:name="com.algebra.sdk.Controller" />
+            android:name=".CarSelectActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity android:name=".Register"/>
+        <activity android:name=".PersonDispatchActivity"/>
+        <activity android:name=".CarDispatchActivity"/>
+        <activity android:name=".ChatGroupSettingActivity"/>
+
+        <service android:name="com.algebra.sdk.Controller"/>
 
         <receiver android:name="com.example.tr.tourhear.entity.BootUpReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
 
-                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.HOME"/>
             </intent-filter>
         </receiver>
         <receiver android:name="com.example.tr.tourhear.entity.PttReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.PTT.up" />
-                <action android:name="android.intent.action.PTT.down" />
+                <action android:name="android.intent.action.PTT.up"/>
+                <action android:name="android.intent.action.PTT.down"/>
             </intent-filter>
         </receiver>
         <receiver android:name="com.example.tr.tourhear.utils.MediaKeys">
             <intent-filter android:priority="1000000000">
-                <action android:name="android.intent.action.MEDIA_BUTTON" />
+                <action android:name="android.intent.action.MEDIA_BUTTON"/>
             </intent-filter>
         </receiver>
     </application>
