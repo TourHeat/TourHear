@@ -1,8 +1,11 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,6 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.algebra.sdk.API;
+import com.algebra.sdk.DeviceApi;
+import com.algebra.sdk.SessionApi;
+import com.algebra.sdk.entity.Channel;
+import com.algebra.sdk.entity.Contact;
+import com.example.tr.tourhear.entity.ChaneelMems;
+import com.example.tr.tourhear.myimplements.MyOnMediaListener;
+import com.example.tr.tourhear.myimplements.MyOnSessionListener;
 import com.example.tr.tourhear.utils.ChatMsgEntity;
 import com.example.tr.tourhear.utils.ChatMsgViewAdapter;
 
@@ -38,12 +49,19 @@ public class ChatActivity extends Activity implements OnClickListener {
     private ImageView iconVoice;
     private TextView btnSpeak; //按住发声
     private LinearLayout bottom;
+    private SessionApi sessionapi;//会话操作
+//操作频道
+    private List<Channel> cs = new ArrayList<Channel>();
+    private  Channel channel = null;
+    private DeviceApi deviceApi;//设备操作类
+    private com.example.tr.tourhear.tl_demo.TalkHistory talkHistory = null;//历史
+//媒体操作类
+    private AudioManager mAudioManager = null;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
         initView();// 初始化view
-
         initData();// 初始化数据
         mListView.setSelection(mAdapter.getCount() - 1);
 
@@ -53,6 +71,9 @@ public class ChatActivity extends Activity implements OnClickListener {
      * 初始化view
      */
     public void initView() {
+        mAudioManager = ((AudioManager) getSystemService(Context.AUDIO_SERVICE));//获取媒体
+        talkHistory = new com.example.tr.tourhear.tl_demo.TalkHistory(API.getAccountApi().whoAmI().id);
+
         mListView = (ListView) findViewById(R.id.listview);
         mBtnSend = (Button) findViewById(R.id.btn_send);
         mBtnSend.setOnClickListener(this);
@@ -72,7 +93,8 @@ public class ChatActivity extends Activity implements OnClickListener {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message_press));
-                    bottom.setBackgroundColor(getResources().getColor(R.color.BackgroundColor));
+                    bottom.setBackgroundColor(getResources().getColor(R.color.infosColor));
+                    sessionapi.talkRequest(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
                 }
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message));
@@ -82,6 +104,7 @@ public class ChatActivity extends Activity implements OnClickListener {
             }
         });
         //频道名称
+        cs = HomeFragment.getChannelList();
         //获取频道名称
         Intent intent = getIntent();
         String strChannelName = intent.getStringExtra("channelName");
@@ -89,6 +112,61 @@ public class ChatActivity extends Activity implements OnClickListener {
         if(strChannelName != null && strChannelName !=""){//设置频道名称
             cn.setText(strChannelName);
         }
+        for(Channel c : cs){
+            Log.i("login","获取频道------------"+c.name);
+            if(c.name.equals(strChannelName)){
+                channel  = c;
+                Log.i("login","频道OK------------"+channel.name);
+            }
+        }
+       initSession();
+        //初始化设备
+
+    }
+
+    private void initSession() {
+        sessionapi  = API.getSessionApi();
+        sessionapi.sessionCall(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
+        Log.i("login","创建会话:"+API.getAccountApi().whoAmI().id+" ::  "+channel.cid.getType()+" ::  "+channel.cid.getId());
+        sessionapi.setOnSessionListener(new MyOnSessionListener(){
+            @Override
+            public void onSessionGet(int selfUserId, int type, int sessionId, int initiator) {
+                super.onSessionGet(selfUserId, type, sessionId, initiator);
+                Log.i("login","sessionOK----- sessionId"+sessionId);
+                Log.i("login","sessionOK----- selfUserId"+selfUserId);
+                Log.i("login","sessionOK----- initiator"+initiator);
+            }
+
+            @Override
+            public void onSessionReleased(int i, int i1, int i2) {
+                super.onSessionReleased(i, i1, i2);
+            }
+
+            @Override
+            public void onSessionEstablished(int selfUserId, int type, int sessionId) {
+                super.onSessionEstablished(selfUserId, type, sessionId);
+                Log.i("login","onSessionEstablished----- sessionId"+sessionId);
+
+                sessionapi.talkRequest(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
+               //获取频道成员
+                ChaneelMems cm = HomeFragment.getCmem(channel.cid.getId());
+                int [] ids = new int[cm.getCs().size()];
+                int i = 0;
+                for(Contact c: cm.getCs()){
+                    ids[i++] = c.id;
+                }
+                sessionapi.startDialog(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId(),ids);
+            }
+            @Override
+            public void onDialogEstablished(int i, int i1, int i2, List<Integer> list) {
+                Log.i("login","onDialogEstablished----- sessionId"+i1);
+            }
+        });
+        sessionapi.setOnMediaListener(new MyOnMediaListener(){
+
+        });
+
+       // sessionapi.startDialog(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
 
     }
 
@@ -138,6 +216,8 @@ public class ChatActivity extends Activity implements OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.btn_back:// 返回按钮点击事件
+                //关闭会话
+                sessionapi.sessionBye(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
                 finish();// 结束,实际开发中，可以返回主界面
                 break;
         }

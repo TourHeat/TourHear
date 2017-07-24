@@ -17,6 +17,8 @@ import com.algebra.sdk.API;
 import com.algebra.sdk.AccountApi;
 import com.algebra.sdk.ChannelApi;
 import com.algebra.sdk.entity.Channel;
+import com.algebra.sdk.entity.Contact;
+import com.example.tr.tourhear.entity.ChaneelMems;
 import com.example.tr.tourhear.myimplements.MyOnChannelListener;
 
 import java.util.ArrayList;
@@ -28,7 +30,11 @@ import java.util.Map;
  * Created by ZhangYan on 2017/7/16.
  */
 
+
+
 public class HomeFragment extends Fragment {
+
+    public static List<ChaneelMems> cmems;//频道成员
     private ListView listView;
     //频道
     private Handler uiHandler = null;
@@ -39,7 +45,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.page_01, container, false);
         listView = (ListView) view.findViewById(R.id.listview);
-
+        cmems = new ArrayList<ChaneelMems>();
         uiHandler = Login.getUiHandler();
         channelApi = API.getChannelApi();
         initChannes();
@@ -119,8 +125,35 @@ public class HomeFragment extends Fragment {
                 super.onChannelListGet(i, channel, list);
                 channelList = list;
                 initList();
+                for(Channel c : list){
+                    channelApi.channelMemberGet(API.getAccountApi().whoAmI().id ,c.cid.getType(),c.cid.getId());
+                }
+
+            }
+
+            @Override
+            public void onChannelMemberListGet(int userId, int ctype, int channelId, List<Contact> mems) {
+                super.onChannelMemberListGet(userId, ctype, channelId, mems);
+                cmems.add(new ChaneelMems(mems,channelId));
             }
         });
         Log.i("login","chanel inti"+(me.whoAmI().id));
+
+    }
+
+    public static List<Channel> getChannelList() {
+        return channelList;
+    }
+
+    public static List<ChaneelMems> getCmems() {
+        return cmems;
+    }
+    public static ChaneelMems getCmem(int cid) {
+        for(ChaneelMems cm : cmems){
+            if(cm.getCid() == cid){
+                return  cm;
+            }
+        }
+        return null;
     }
 }

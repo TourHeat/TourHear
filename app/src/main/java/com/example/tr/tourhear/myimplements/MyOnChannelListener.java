@@ -28,7 +28,7 @@ public class MyOnChannelListener implements OnChannelListener {
     }
 
     @Override
-    public void onChannelMemberListGet(int i, int i1, int i2, List<Contact> list) {
+    public void onChannelMemberListGet(int userId, int ctype, int channelId, List<Contact> mems) {
 
     }
 

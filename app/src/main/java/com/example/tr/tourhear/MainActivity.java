@@ -81,7 +81,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
                 super.onChannelListGet(i, channel, list);
                 channelList = list;
                 for(Channel channel2 : list){
-                    Log.i("login","------------"+channel2.toString());
+                    Log.i("login","频道:::------------"+channel2.toString());
                     Log.i("login",channel2.name+channel2.cid);
                     CompactID cid =  channel2.cid;
                     Log.i("login","id"+cid.getId()+" type:"+cid.getType());

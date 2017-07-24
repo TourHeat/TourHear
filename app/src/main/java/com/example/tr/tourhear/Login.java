@@ -63,6 +63,7 @@ public class Login extends AppCompatActivity {
     private Button btn_test;
     private MyProcessDialog myProcessDialog;
     //private
+    private boolean isDebug = true;//调试状态
     //获取频道
     private static List<Channel> channelList = new ArrayList<Channel>();
     private ChannelApi channelApi;
@@ -84,6 +85,20 @@ public class Login extends AppCompatActivity {
         uiHandler = new UIHandler(this);
         if (startStep == StartStage.INITIALIZING)
             uiHandler.postDelayed(delayInitApi, 300);
+        RegisterUser registerUser = new RegisterUser(Login.this,uiHandler);
+        if(registerUser.getUserAccount()!=null && registerUser.getUserAccount()!=""){
+            account.setHint(registerUser.getUserAccount());
+        }
+        if(registerUser.getUserPassword()!=null && registerUser.getUserPassword()!=""){
+            userPassWord.setHint(registerUser.getUserPassword());
+        }
+        if(isDebug){
+            account.setText(registerUser.getUserAccount());
+            userPassWord.setText(registerUser.getUserPassword());
+        }
+
+        //获取保存用户和密码
+
 //        btn_test = (Button) findViewById(R.id.test);
 //        btn_test.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -152,6 +167,8 @@ public class Login extends AppCompatActivity {
 
                     if(msg.arg2 == 0) {
                         if(msg.arg2 == 0){
+                            RegisterUser registerUser = new RegisterUser(wrActi.get(),uiHandler);
+                            registerUser.saveUserInfo(mActi.userAccount, mActi.userNick, mActi.userPass);
                             Intent intent = new Intent(wrActi.get(),MainActivity.class);
                             wrActi.get().startActivity(intent);
                         }
@@ -259,12 +276,25 @@ public class Login extends AppCompatActivity {
     public void subMit(View view){
         String straccount = account.getText().toString();//账号
         String passwd = userPassWord.getText().toString();//密码
+        if(straccount == "" || straccount == null){
+            straccount = account.getHint().toString();
+        }
+        if(passwd == "" || passwd == null){
+            passwd = userPassWord.getHint().toString();
+        }
+
         Log.i("login","nowuid:"+straccount);
         outputInfo.clear();
         Log.i("login","nowuid:"+straccount);
         //添加信息对象
-        outputInfo.put(RegisterUser.KeyPassword,
-                API.md5(passwd));
+        if(passwd.length()>10){
+            outputInfo.put(RegisterUser.KeyPassword,
+                    passwd);
+        } else {
+            outputInfo.put(RegisterUser.KeyPassword,
+                    API.md5(passwd));
+        }
+
         outputInfo.put(RegisterUser.KeyAccount, straccount);
         //发送信息
         uiHandler.obtainMessage(MsgCode.ASKFORLOGIN, 1,

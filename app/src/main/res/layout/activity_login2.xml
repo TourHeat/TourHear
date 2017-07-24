@@ -72,6 +72,8 @@
             >
 
             <EditText
+                android:ems="10"
+                android:inputType="textPassword"
                 android:textColorHint="@color/TextColor"
                 android:textSize="@dimen/TextTextSize"
                 android:drawablePadding="5dp"
