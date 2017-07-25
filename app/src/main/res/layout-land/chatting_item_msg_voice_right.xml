@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:padding="6dp" >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="6dp" >
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -47,11 +47,14 @@
             android:gravity="left|center"
             android:lineSpacingExtra="2dp"
             android:minHeight="50dp"
-            android:text="textview"
+            android:text="12''"
             android:textColor="@color/white"
             android:textSize="@dimen/TittleTextSize"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/iv_userhead" />
+            android:layout_toStartOf="@+id/iv_userhead"
+            android:drawableRight="@drawable/info_voice_right"
+            android:paddingRight="10dp"
+            android:layout_marginEnd="11dp" />
 
         <TextView
             android:id="@+id/tv_username"

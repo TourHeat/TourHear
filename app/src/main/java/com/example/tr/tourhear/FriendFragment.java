@@ -14,6 +14,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.example.tr.tourhear.R.mipmap.headportrait_1;
+import static com.example.tr.tourhear.R.mipmap.headportrait_2;
+import static com.example.tr.tourhear.R.mipmap.headportrait_3;
+import static com.example.tr.tourhear.R.mipmap.jingdian_jiuzai1;
+import static com.example.tr.tourhear.R.mipmap.jingdian_jiuzai2;
+import static com.example.tr.tourhear.R.mipmap.jingdian_kuanzai;
+
 /**
  * Created by ZhangYan on 2017/7/16.
  */
@@ -39,22 +46,26 @@ public class FriendFragment extends Fragment {
     }
 
     public List<Map<String, Object>> getData() {
+        int jingdian[]={jingdian_jiuzai1,jingdian_kuanzai,jingdian_jiuzai2};
+        int headport[]={headportrait_2,headportrait_1,headportrait_3};
+        String jingdiannames[]={"九寨三日游，平安出行，放心游玩！！","成都周边两日游，一起来畅玩！！","九寨三日游，快来跟我一起浪迹天涯吧!!"};
+        String usernames[]={"特立独行的猪","小胖严","张胖胖"};
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         for (int i = 0; i < 3; i++) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("image", R.drawable.timg);
-            map.put("name", "御坂美琴");
+            map.put("image", headport[i]);
+            map.put("name", usernames[i]);
             map.put("time", "2分钟前");
-            map.put("picture", R.drawable.timg);
-            map.put("tittle","西南交通大学抄家三日游，三缺一！！");
+            map.put("picture", jingdian[i]);
+            map.put("tittle",jingdiannames[i]);
             map.put("image_collect",R.drawable.icon_pulldown);
-            map.put("text_collect","123");
+            map.put("text_collect","5人");
             map.put("image_like",R.drawable.icon_pulldown);
-            map.put("text_like","321");
+            map.put("text_like","35");
             map.put("image_comment",R.drawable.icon_pulldown);
-            map.put("text_comment","2333");
+            map.put("text_comment","233");
             map.put("image_forward",R.drawable.icon_pulldown);
-            map.put("text_forward","666");
+            map.put("text_forward","16");
             list.add(map);
         }
         return list;

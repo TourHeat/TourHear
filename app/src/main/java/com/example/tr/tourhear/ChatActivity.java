@@ -245,7 +245,7 @@ public class ChatActivity extends Activity implements OnClickListener, OnMediaLi
                 break;
             case R.id.btn_back:// 返回按钮点击事件
                 //关闭会话
-                sessionapi.sessionBye(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
+                sessionapi.sessionBye(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
                 finish();// 结束,实际开发中，可以返回主界面
                 break;
         }
