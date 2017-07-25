@@ -1,16 +1,22 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 
+import com.amap.api.maps.AMap;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.MyLocationStyle;
 
 /**
  * Created by ZhangYan on 2017/7/25.
  */
 
-public class CarDispatchMapActivity extends Activity {
+public class CarDispatchMapActivity extends Activity implements AMap.OnMyLocationChangeListener {
     MapView mMapView = null;
+    AMap aMap;
+    MyLocationStyle myLocationStyle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +26,30 @@ public class CarDispatchMapActivity extends Activity {
         mMapView = (MapView) findViewById(R.id.map);
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，创建地图
         mMapView.onCreate(savedInstanceState);
+        init();
+    }
+
+    private void init() {
+        if (aMap == null) {
+            aMap = mMapView.getMap();
+            setUpMap();
+        }
+        //设置SDK 自带定位消息监听
+        aMap.setOnMyLocationChangeListener(this);
+
+    }
+
+    private void setUpMap() {
+
+        // 如果要设置定位的默认状态，可以在此处进行设置
+        myLocationStyle = new MyLocationStyle();
+        aMap.setMyLocationStyle(myLocationStyle);
+
+        aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
+        aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
+        //定位模式
+        aMap.setMyLocationStyle(myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW));
+
     }
 
     @Override
@@ -48,5 +78,33 @@ public class CarDispatchMapActivity extends Activity {
         super.onSaveInstanceState(outState);
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，保存地图当前的状态
         mMapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onMyLocationChange(Location location) {
+        // 定位回调监听
+        if(location != null) {
+            Log.e("amap", "onMyLocationChange 定位成功， lat: " + location.getLatitude() + " lon: " + location.getLongitude());
+            Bundle bundle = location.getExtras();
+            if(bundle != null) {
+                int errorCode = bundle.getInt(MyLocationStyle.ERROR_CODE);
+                String errorInfo = bundle.getString(MyLocationStyle.ERROR_INFO);
+                // 定位类型，可能为GPS WIFI等，具体可以参考官网的定位SDK介绍
+                int locationType = bundle.getInt(MyLocationStyle.LOCATION_TYPE);
+
+                /*
+                errorCode
+                errorInfo
+                locationType
+                */
+                Log.e("amap", "定位信息， code: " + errorCode + " errorInfo: " + errorInfo + " locationType: " + locationType );
+            } else {
+                Log.e("amap", "定位信息， bundle is null ");
+
+            }
+
+        } else {
+            Log.e("amap", "定位失败");
+        }
     }
 }
