@@ -49,6 +49,8 @@ public class CarGroupSettingActivity extends Activity {
             @Override
             public void onClick(View view) {
                 //车辆调度
+                Intent intent_car_select = new Intent(CarGroupSettingActivity.this, CarSelectActivity.class);
+                startActivity(intent_car_select);
             }
         });
     }

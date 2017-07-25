@@ -1,6 +1,7 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -25,6 +26,7 @@ public class CarSelectActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.car_select);
+        Button bt_yes = (Button) findViewById(R.id.btn_yes);
         mListview = (ListView) findViewById(R.id.listview);
         String[] contactsArray = getResources().getStringArray(R.array.group);
         mBtnBack = (Button) findViewById(R.id.btn_back);
@@ -33,6 +35,14 @@ public class CarSelectActivity extends Activity {
             public void onClick(View view) {
                 finish();
                 ;
+            }
+        });
+        bt_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CarSelectActivity.this, CarDispatchActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

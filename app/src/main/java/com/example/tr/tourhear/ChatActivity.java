@@ -239,8 +239,10 @@ public class ChatActivity extends Activity implements OnClickListener, OnMediaLi
             case R.id.btn_send:// 发送按钮点击事件
                 send();
                 break;
-            case R.id.btn_more:// 发送按钮点击事件
-                Intent intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
+            case R.id.btn_more:// 设置按钮点击事件
+                //测试暂用
+                Intent intent=new Intent(ChatActivity.this,CarGroupSettingActivity.class);
+               /* Intent intent=new Intent(ChatActivity.this,ChatSettingActivity.class);*/
                 startActivity(intent);
                 break;
             case R.id.btn_back:// 返回按钮点击事件

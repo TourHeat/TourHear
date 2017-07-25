@@ -58,10 +58,8 @@
             android:id="@+id/btn_more"
             android:onClick="setting"
             android:gravity="center"
-            android:layout_marginRight="10dp"
-            >
+            android:layout_marginRight="10dp"            >
             <Button
-                android:onClick="setting"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_width="20dp"

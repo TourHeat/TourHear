@@ -33,7 +33,7 @@
             android:textSize="@dimen/NavigationTittleSize"/>
 
         <Button
-            android:id="@+id/btn_more"
+            android:id="@+id/btn_yes"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"

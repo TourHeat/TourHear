@@ -1,6 +1,7 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -33,9 +34,18 @@ public class PersonSelectActivity extends Activity implements SideBarView.Letter
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.person_select);
         Button bt_back = (Button) findViewById(R.id.btn_back);
+        Button bt_yes = (Button) findViewById(R.id.btn_yes);
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
+            }
+        });
+        bt_yes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PersonSelectActivity.this, PersonDispatchActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
