@@ -21,6 +21,7 @@ import com.algebra.sdk.ChannelApi;
 import com.algebra.sdk.entity.Channel;
 import com.algebra.sdk.entity.CompactID;
 import com.example.tr.tourhear.myimplements.MyOnChannelListener;
+import com.example.tr.tourhear.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -245,6 +246,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         //获取当前点击的频道
         TextView cn = (TextView) view.findViewById(R.id.name);
         intent.putExtra("channelName",cn.getText().toString());
+        //群聊，频道
+        if(cn.getText().toString().equals("我的车队")) {
+            intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_CHEDUI);
+        } else {
+            intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GEREN);
+        }
+
         startActivity(intent);
     }
 }

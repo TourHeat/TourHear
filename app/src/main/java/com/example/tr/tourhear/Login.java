@@ -83,8 +83,8 @@ public class Login extends AppCompatActivity {
 
         uiConntext = this;
         uiHandler = new UIHandler(this);
-        if (startStep == StartStage.INITIALIZING)
-            uiHandler.postDelayed(delayInitApi, 300);
+//        if (startStep == StartStage.INITIALIZING)
+//            uiHandler.postDelayed(delayInitApi, 300);
         RegisterUser registerUser = new RegisterUser(Login.this,uiHandler);
         if(registerUser.getUserAccount()!=null && registerUser.getUserAccount()!=""){
             account.setHint(registerUser.getUserAccount());
@@ -171,6 +171,7 @@ public class Login extends AppCompatActivity {
                             registerUser.saveUserInfo(mActi.userAccount, mActi.userNick, mActi.userPass);
                             Intent intent = new Intent(wrActi.get(),MainActivity.class);
                             wrActi.get().startActivity(intent);
+                         //   wrActi.get().finish();
                         }
                     }
                     break;
@@ -204,6 +205,7 @@ public class Login extends AppCompatActivity {
             deviceApi = API.getDeviceApi();
             if(accountApi!=null && deviceApi !=null){
                 Log.i("login","delayInitApi----"+2);
+
                 accountApi.setOnAccountListener(new MyAccountListener(){
                     @Override
                     public void onLogin(int uid, int result, UserProfile uProfile) {
@@ -257,6 +259,9 @@ public class Login extends AppCompatActivity {
                             + ", link in.");
                     uiHandler.obtainMessage(MsgCode.MC_SDKISRUNNING, me.id,
                             me.state).sendToTarget();
+//                    Intent intent = new Intent(Login.this,MainActivity.class);
+//                    startActivity(intent);
+                    accountApi.logout(selfId);
                 } else {
                     uiHandler.sendEmptyMessage(MsgCode.ASKFORSTARTSDK);
                 }

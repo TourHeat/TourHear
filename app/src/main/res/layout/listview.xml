@@ -60,6 +60,7 @@
         android:layout_gravity="center"
         android:text="TextView" />
     <Button
+        android:id="@+id/msg"
         android:layout_gravity="center"
         android:layout_width="30dp"
         android:textSize="@dimen/smalltext"

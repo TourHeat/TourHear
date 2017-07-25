@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tr.tourhear.view.CircleImageView;
@@ -39,6 +40,7 @@ public class ListViewAdapter extends BaseAdapter {
         public TextView name;
         public TextView mess;
         public TextView date;
+        public Button msg;//信息
     }
 
     @Override
@@ -73,6 +75,7 @@ public class ListViewAdapter extends BaseAdapter {
             zujian.name = (TextView) convertView.findViewById(R.id.name);
             zujian.mess = (TextView) convertView.findViewById(R.id.mess);
             zujian.date = (TextView) convertView.findViewById(R.id.date);
+            zujian.msg = (Button) convertView.findViewById(R.id.msg);
             convertView.setTag(zujian);
         } else {
             zujian = (Zujian) convertView.getTag();
@@ -82,6 +85,12 @@ public class ListViewAdapter extends BaseAdapter {
         zujian.name.setText((String) data.get(position).get("name"));
         zujian.mess.setText((String) data.get(position).get("mess"));
         zujian.date.setText((String) data.get(position).get("date"));
+        //信息数
+        int ms = (int)(Math.random()*100+1);
+        zujian.msg.setText(""+ms);
+        if (position ==0) {//设置车队样式
+            zujian.msg.setBackground(context.getResources().getDrawable(R.drawable.corner_rec_bg_orange_press));
+        }
         return convertView;
     }
 
