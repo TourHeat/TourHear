@@ -76,14 +76,15 @@ public class ChatActivity extends Activity implements OnClickListener {
     private CircleImageView layout_whospeak_headportrait;
     private Handler uiHandler = null;
     private Date speakTime;//对讲时间
+    private boolean someOneisSpeak = false;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         uiHandler = Login.getUiHandler();
 
         initView();// 初始化view
-        initData();// 初始化数据
-        mListView.setSelection(mAdapter.getCount() - 1);
+       // initData();// 初始化数据
+     //   mListView.setSelection(mAdapter.getCount() - 1);
 
     }
 
@@ -122,6 +123,7 @@ public class ChatActivity extends Activity implements OnClickListener {
                     layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(0));
                     layout_whospeak_name.setText("我"+"正在说话...");//我正在说话
                     layout_whospeak.setVisibility(View.VISIBLE);
+                    speakTime.setTime(System.currentTimeMillis());
                     if ( currSession!= null && sessionapi != null){
                         sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
                         talkRequest(currSession);
@@ -129,6 +131,20 @@ public class ChatActivity extends Activity implements OnClickListener {
                     }
                 }
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    long dur = 0;
+                    dur = System.currentTimeMillis() - speakTime.getTime();
+//新增发言
+                    ChatMsgEntity entity = new ChatMsgEntity();
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
+                    speakTime.setTime(System.currentTimeMillis());
+                    entity.setDate(format.format(speakTime).toString());
+                    entity.setMessage(dur/1000+"''");
+                    entity.setMsgType(false);
+                    entity.setName(API.getAccountApi().whoAmI().name);
+                    mDataArrays.add(entity);
+                    mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
+                    mListView.setAdapter(mAdapter);
+                    mListView.setSelection(mAdapter.getCount() - 1);
                     layout_whospeak.setVisibility(View.GONE);
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message));
                     bottom.setBackgroundColor(getResources().getColor(R.color.white));
@@ -189,11 +205,31 @@ public class ChatActivity extends Activity implements OnClickListener {
                 public void onSomeoneSpeaking(int i, int i1, int i2, int i3, int i4) {
                     super.onSomeoneSpeaking(i, i1, i2, i3, i4);
                     setSpeack(i);
+                    if (!someOneisSpeak) {
+                        someOneisSpeak = true;
+                        speakTime.setTime(System.currentTimeMillis());
+                    }
+                    //speakTime.setTime(System.currentTimeMillis());
                 }
 
                 @Override
                 public void onThatoneSayOver(int i, int i1) {
                     super.onThatoneSayOver(i, i1);
+                    someOneisSpeak = false;
+                    long dur = 0;
+                    dur = System.currentTimeMillis() - speakTime.getTime();
+//新增发言
+                    ChatMsgEntity entity = new ChatMsgEntity();
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
+                    speakTime.setTime(System.currentTimeMillis());
+                    entity.setDate(format.format(speakTime).toString());
+                    entity.setMessage(dur/1000+"''");
+                    entity.setMsgType(true);
+                    entity.setName(getMemberName(i));
+                    mDataArrays.add(entity);
+                    mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
+                    mListView.setAdapter(mAdapter);
+                    mListView.setSelection(mAdapter.getCount() - 1);
                     closeSpeack();
                 }
             });
@@ -290,7 +326,8 @@ public class ChatActivity extends Activity implements OnClickListener {
             entity.setMessage(msgArray[i]);
             mDataArrays.add(entity);
         }
-
+//        ChatMsgEntity entity = new ChatMsgEntity();
+//        mDataArrays.add(entity);
         mAdapter = new ChatMsgViewAdapter(this, mDataArrays);
         mListView.setAdapter(mAdapter);
     }

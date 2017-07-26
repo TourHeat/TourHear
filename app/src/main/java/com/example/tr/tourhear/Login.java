@@ -159,7 +159,7 @@ public class Login extends AppCompatActivity {
                         else//图灵号登录
                             mActi.accountApi.login(mActi.userAccount, mActi.userPass);
                     }
-                    mActi.myProcessDialog.showProcessing("Loing...");
+                    mActi.myProcessDialog.showProcessing("Login...");
                     break;
                 case MsgCode.MC_LOGINFINISHED:
                     //登录成功关闭对话框
