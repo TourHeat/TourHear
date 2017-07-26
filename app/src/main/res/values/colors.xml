@@ -163,4 +163,10 @@
     <color name="navy">#000080</color><!--海军色 -->
     <color name="black">#000000</color><!--黑色 -->
     <color name="normal" >#eae8e8</color>
+
+    <!-- action menu color -->
+    <color name="menuNormalRed">#ffff0000</color>
+    <color name="menuPressRed">#ffd2322d</color>
+    <color name="menuNormalInfo">#ff90FB98</color>
+    <color name="menuPressInfo">#ff98ff90</color>
 </resources>

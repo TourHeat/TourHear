@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
+                 xmlns:app = "http://schemas.android.com/apk/res-auto"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:background="@color/BackgroundColor" >
-
+    <com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout
+        xmlns:rfal="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/label_list_sample_rfal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        rfal:rfal_frame_color="#ffffff"
+        rfal:rfal_frame_alpha="0.7"
+        >
     <RelativeLayout
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
@@ -189,13 +197,47 @@
             android:background="@color/PrimaryColor"
             android:layout_gravity="center"
             android:gravity="center"
+            android:id="@+id/send_others"
             >
-            <ImageView
-                android:layout_gravity="center"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/add2"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 />
         </LinearLayout>
     </LinearLayout>
+    <com.lilei.springactionmenu.ActionMenu
+        android:id="@+id/expanded_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:circleRadius="30dp"
+        app:animationDuration="3000"
+        android:layout_marginRight="-15dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        app:buttonNormalColor="@color/PrimaryColor"
+        app:buttonPressColor="@color/PrimaryColor"
+        app:actionMenuIcon="@mipmap/menu_add_open"
+        app:actionMenuOnIcon="@mipmap/menu_add_close"
+        android:visibility="gone"
+        />
+        <!-- 阴影
+                rfab:rfab_shadow_radius="7dp"
+                rfab:rfab_shadow_color="#999999"
+                rfab:rfab_shadow_dx="0dp"
+                rfab:rfab_shadow_dy="5dp"
+                -->
+    <com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton
+        xmlns:rfab="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/add_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        rfab:rfab_drawable="@mipmap/menu_add_open"
+        rfab:rfab_color_normal="@color/PrimaryColor"
+        rfab:rfab_color_pressed="@color/PrimaryColor"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        >
+
+    </com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton>
+    </com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout>
 </RelativeLayout>

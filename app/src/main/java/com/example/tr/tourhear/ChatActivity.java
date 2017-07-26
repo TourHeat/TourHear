@@ -3,6 +3,7 @@ package com.example.tr.tourhear;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
@@ -35,6 +36,14 @@ import com.example.tr.tourhear.utils.ChatMsgEntity;
 import com.example.tr.tourhear.utils.ChatMsgViewAdapter;
 import com.example.tr.tourhear.utils.Constants;
 import com.example.tr.tourhear.view.CircleImageView;
+import com.lilei.springactionmenu.ActionMenu;
+import com.wangjie.androidbucket.utils.ABTextUtil;
+import com.wangjie.androidbucket.utils.imageprocess.ABShape;
+import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionButton;
+import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionHelper;
+import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout;
+import com.wangjie.rapidfloatingactionbutton.contentimpl.labellist.RFACLabelItem;
+import com.wangjie.rapidfloatingactionbutton.contentimpl.labellist.RapidFloatingActionContentLabelList;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,8 +53,7 @@ import java.util.List;
 /**
  * Created by ZhangYan on 2017/7/16.
  */
-
-public class ChatActivity extends Activity implements OnClickListener {
+public class ChatActivity extends Activity implements OnClickListener, RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener {
 
     private Button mBtnSend;// 发送btn
     private Button mBtnBack;// 返回btn
@@ -77,15 +85,70 @@ public class ChatActivity extends Activity implements OnClickListener {
     private Handler uiHandler = null;
     private Date speakTime;//对讲时间
     private boolean someOneisSpeak = false;
+    private ActionMenu actionMenu;
+
+    //
+    private RapidFloatingActionLayout rfaLayout;
+    private RapidFloatingActionButton rfaButton;
+    private RapidFloatingActionHelper rfabHelper;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         uiHandler = Login.getUiHandler();
 
         initView();// 初始化view
+        rfaLayout = (RapidFloatingActionLayout) findViewById(R.id.label_list_sample_rfal);
+        rfaButton = (RapidFloatingActionButton) findViewById(R.id.add_menu);
+        initMenu();
        // initData();// 初始化数据
      //   mListView.setSelection(mAdapter.getCount() - 1);
 
+    }
+
+    private void initMenu() {
+        RapidFloatingActionContentLabelList rfaContent = new RapidFloatingActionContentLabelList(ChatActivity.this);
+        rfaContent.setOnRapidFloatingActionContentLabelListListener(ChatActivity.this);
+        List<RFACLabelItem> items = new ArrayList<>();
+        items.add(new RFACLabelItem<Integer>()
+                .setLabel("图片")
+                .setResId(R.mipmap.menu_photo)
+                .setIconNormalColor(0xffd84315)
+                .setIconPressedColor(0xffbf360c)
+                .setWrapper(0)
+        );
+        items.add(new RFACLabelItem<Integer>()
+                        .setLabel("拍摄")
+//                        .setResId(R.mipmap.ico_test_c)
+                        .setDrawable(getResources().getDrawable(R.mipmap.menu_carmer))
+                        .setIconNormalColor(0xff4e342e)
+                        .setIconPressedColor(0xff3e2723)
+                        .setLabelColor(Color.WHITE)
+                        .setLabelSizeSp(14)
+                        .setLabelBackgroundDrawable(ABShape.generateCornerShapeDrawable(0xaa000000, ABTextUtil.dip2px(ChatActivity.this, 4)))
+                        .setWrapper(1)
+        );
+        items.add(new RFACLabelItem<Integer>()
+                .setLabel("位置")
+                .setResId(R.mipmap.menu_location)
+                .setIconNormalColor(0xff056f00)
+                .setIconPressedColor(0xff0d5302)
+                .setLabelColor(0xff056f00)
+                .setWrapper(2)
+        );
+
+        rfaContent
+                .setItems(items)
+                .setIconShadowRadius(ABTextUtil.dip2px(ChatActivity.this, 5))
+                .setIconShadowColor(0xff888888)
+                .setIconShadowDy(ABTextUtil.dip2px(ChatActivity.this, 5))
+        ;
+
+        rfabHelper = new RapidFloatingActionHelper(
+                this,
+                rfaLayout,
+                rfaButton,
+                rfaContent
+        ).build();
     }
 
     /**
@@ -103,6 +166,13 @@ public class ChatActivity extends Activity implements OnClickListener {
         mBtnmore = (LinearLayout) findViewById(R.id.btn_more);
         mBtnmore.setOnClickListener(this);
         mEditTextContent = (EditText) findViewById(R.id.et_sendmessage);
+
+        actionMenu = (ActionMenu) findViewById(R.id.expanded_menu);
+       // actionMenu.me
+        actionMenu.addView(R.mipmap.menu_carmer, getItemColor(R.color.menuNormalInfo), getItemColor(R.color.menuPressInfo));
+        actionMenu.addView(R.mipmap.menu_photo, getItemColor(R.color.menuNormalRed), getItemColor(R.color.menuPressRed));
+        actionMenu.addView(R.mipmap.menu_location);
+
         //底部
         bottom = (LinearLayout) findViewById(R.id.bottom);
         //对讲图标
@@ -180,6 +250,10 @@ public class ChatActivity extends Activity implements OnClickListener {
 
         //初始化设备
 
+    }
+    //获取颜色
+    private int getItemColor(int colorID) {
+        return getResources().getColor(colorID);
     }
 //获取说话者头像
     private Drawable getSpeakerHeadPortrait(int i) {
@@ -415,7 +489,18 @@ public class ChatActivity extends Activity implements OnClickListener {
     public void startSpeak(View view) {
         //iconVoice
     }
-    private class OEMToneGen implements OEMToneGenerator {
+
+    @Override
+    public void onRFACItemLabelClick(int position, RFACLabelItem item) {
+        rfabHelper.toggleContent();
+    }
+
+    @Override
+    public void onRFACItemIconClick(int position, RFACLabelItem item) {
+        rfabHelper.toggleContent();
+    }
+
+private class OEMToneGen implements OEMToneGenerator {
         private OEMToneProgressListener toneProgressListener = null;
         private ToneGenerator mToneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 15);
 
