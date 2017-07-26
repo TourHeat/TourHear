@@ -3,6 +3,7 @@ package com.example.tr.tourhear;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
@@ -24,7 +25,6 @@ import com.algebra.sdk.SessionApi;
 import com.algebra.sdk.entity.Channel;
 import com.algebra.sdk.entity.CompactID;
 import com.algebra.sdk.entity.Contact;
-import com.algebra.sdk.entity.HistoryRecord;
 import com.algebra.sdk.entity.OEMToneGenerator;
 import com.algebra.sdk.entity.OEMToneProgressListener;
 import com.algebra.sdk.entity.Session;
@@ -34,6 +34,7 @@ import com.example.tr.tourhear.myimplements.MyOnSessionListener;
 import com.example.tr.tourhear.utils.ChatMsgEntity;
 import com.example.tr.tourhear.utils.ChatMsgViewAdapter;
 import com.example.tr.tourhear.utils.Constants;
+import com.example.tr.tourhear.view.CircleImageView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -68,9 +69,13 @@ public class ChatActivity extends Activity implements OnClickListener {
 //媒体操作类
     private AudioManager mAudioManager = null;
     private int CHAT_TYPE = 0;//0,个人聊天;1,
-
-
+    private ChaneelMems cm;//聊天成员
+    //谁正在说话
+    private LinearLayout layout_whospeak;
+    private TextView layout_whospeak_name;
+    private CircleImageView layout_whospeak_headportrait;
     private Handler uiHandler = null;
+    private Date speakTime;//对讲时间
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
@@ -88,7 +93,7 @@ public class ChatActivity extends Activity implements OnClickListener {
     public void initView() {
         mAudioManager = ((AudioManager) getSystemService(Context.AUDIO_SERVICE));//获取媒体
         talkHistory = new com.example.tr.tourhear.tl_demo.TalkHistory(API.getAccountApi().whoAmI().id);
-
+        speakTime = new Date(System.currentTimeMillis());
         mListView = (ListView) findViewById(R.id.listview);
         mBtnSend = (Button) findViewById(R.id.btn_send);
         mBtnSend.setOnClickListener(this);
@@ -101,6 +106,10 @@ public class ChatActivity extends Activity implements OnClickListener {
         bottom = (LinearLayout) findViewById(R.id.bottom);
         //对讲图标
         iconVoice = (ImageView) findViewById(R.id.icon_voice);
+        layout_whospeak = (LinearLayout) findViewById(R.id.whospeaking);//谁正在说话
+        layout_whospeak_name = (TextView) layout_whospeak.findViewById(R.id.name);//名称
+        layout_whospeak_headportrait = (CircleImageView) findViewById(R.id.speacker_headportrait);//头像
+
         btnSpeak = (TextView) findViewById(R.id.btn_speak);
         //  btnSpeak.setOnFocusChangeListener(this);
         btnSpeak.setOnTouchListener(new View.OnTouchListener() {
@@ -110,6 +119,9 @@ public class ChatActivity extends Activity implements OnClickListener {
                     //打开对讲
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message_press));
                     bottom.setBackgroundColor(getResources().getColor(R.color.infosColor));
+                    layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(0));
+                    layout_whospeak_name.setText("我"+"正在说话...");//我正在说话
+                    layout_whospeak.setVisibility(View.VISIBLE);
                     if ( currSession!= null && sessionapi != null){
                         sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
                         talkRequest(currSession);
@@ -117,6 +129,7 @@ public class ChatActivity extends Activity implements OnClickListener {
                     }
                 }
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    layout_whospeak.setVisibility(View.GONE);
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message));
                     bottom.setBackgroundColor(getResources().getColor(R.color.white));
                     if ( currSession!= null && sessionapi != null){
@@ -152,6 +165,14 @@ public class ChatActivity extends Activity implements OnClickListener {
         //初始化设备
 
     }
+//获取说话者头像
+    private Drawable getSpeakerHeadPortrait(int i) {
+        if (i == 0) {
+            return getResources().getDrawable(R.drawable.timg0);
+        }else {
+            return getResources().getDrawable(R.drawable.timg);
+        }
+    }
 
     private void initSession() {
         deviceApi = API.getDeviceApi();//获取媒体操作
@@ -163,15 +184,17 @@ public class ChatActivity extends Activity implements OnClickListener {
         }else {
             sessionapi.setOnMediaListener(new MyOnMediaListener(){
                 //媒体回调
-                @Override
-                public void onMediaInitializedEnd(int i, int i1, int i2) {
-                    Log.i("login","media onMediaInitializedEnd uid"+i+"sid:"+i2+"ct:"+i1);
-                }
                 //获取新的对讲记录
                 @Override
-                public void onNewSpeakingCatched(HistoryRecord historyRecord) {
-                    Log.i("login","media onNewSpeakingCatched: ok"+historyRecord.owner);
+                public void onSomeoneSpeaking(int i, int i1, int i2, int i3, int i4) {
+                    super.onSomeoneSpeaking(i, i1, i2, i3, i4);
+                    setSpeack(i);
+                }
 
+                @Override
+                public void onThatoneSayOver(int i, int i1) {
+                    super.onThatoneSayOver(i, i1);
+                    closeSpeack();
                 }
             });
         }
@@ -199,7 +222,7 @@ public class ChatActivity extends Activity implements OnClickListener {
               //  sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
 
                 //获取频道成员
-                ChaneelMems cm = HomeFragment.getCmem(channel.cid.getId());
+                 cm = HomeFragment.getCmem(channel.cid.getId());
                 int [] ids = new int[cm.getCs().size()];
                 int i = 0;
                 for(Contact c: cm.getCs()){
@@ -218,9 +241,28 @@ public class ChatActivity extends Activity implements OnClickListener {
 
     }
 
-    private String[] msgArray = new String[]{"你好", "你好", "挖掘机学校哪家强", "中国山东找蓝翔",
-            "棒棒哒", "你也棒棒哒", "山东蓝翔", "高级汽修学院",
-            "人生若只如初见", "何事秋风悲画扇", "等闲识却故人心", "却道故人心易变"};
+    private void setSpeack(int owner) {
+        layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(owner));
+        String speakerName = getMemberName(owner);
+        layout_whospeak_name.setText(speakerName+"正在说话...");//用户正在说话
+        layout_whospeak.setVisibility(View.VISIBLE);
+    }
+    private void closeSpeack(){
+        layout_whospeak.setVisibility(View.GONE);
+    }
+//获取频道成员名称,owner是uid
+    private String getMemberName(int owner) {
+        for(Contact c : cm.getCs()){
+            if(c.id == owner){
+                return  c.name;
+            }
+        }
+        return "";
+    }
+
+    private String[] msgArray = new String[]{"13''", "12''", "17''", "55''",
+            "25''", "38''", "75''", "85''",
+            "14''", "17''", "10''", "11''"};
 
     private String[] dataArray = new String[]{"2017-07-15 18:00:02",
             "2017-07-15 18:10:22", "2017-07-15 18:11:24",
@@ -242,7 +284,7 @@ public class ChatActivity extends Activity implements OnClickListener {
                 entity.setName("御坂美琴");
                 entity.setMsgType(true);// 收到的消息
             } else {
-                entity.setName("白井黑子");
+                entity.setName(API.getAccountApi().whoAmI().name);
                 entity.setMsgType(false);// 自己发送的消息
             }
             entity.setMessage(msgArray[i]);
@@ -373,14 +415,15 @@ public class ChatActivity extends Activity implements OnClickListener {
                 sessionapi.setOnMediaListener(new MyOnMediaListener(){
                     //媒体回调
                     @Override
-                    public void onMediaInitializedEnd(int i, int i1, int i2) {
-                        Log.i("login","media onMediaInitializedEnd uid"+i+"sid:"+i2+"ct:"+i1);
+                    public void onSomeoneSpeaking(int i, int i1, int i2, int i3, int i4) {
+                        super.onSomeoneSpeaking(i, i1, i2, i3, i4);
+                        setSpeack(i);
                     }
-                    //获取新的对讲记录
-                    @Override
-                    public void onNewSpeakingCatched(HistoryRecord historyRecord) {
-                        Log.i("login","media onNewSpeakingCatched: ok"+historyRecord.owner);
 
+                    @Override
+                    public void onThatoneSayOver(int i, int i1) {
+                        super.onThatoneSayOver(i, i1);
+                        closeSpeack();
                     }
                 });
 

@@ -101,13 +101,50 @@
             android:singleLine="true"
             android:textSize="18sp" />
     </RelativeLayout>
-
+    <LinearLayout
+        android:id="@+id/whospeaking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/rl_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:visibility="gone"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            >
+        <com.example.tr.tourhear.view.CircleImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/timg"
+            android:id="@+id/speacker_headportrait"
+            />
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/info_voice"
+            />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/name"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:text="xxx正在说话..."
+            />
+    </LinearLayout>
     <ListView
         android:id="@+id/listview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/img"
-        android:layout_below="@id/rl_layout"
+        android:layout_below="@id/whospeaking"
         android:layout_marginLeft="10.0dip"
         android:layout_marginRight="10.0dip"
         android:layout_marginTop="10.0dip"
@@ -145,7 +182,6 @@
             android:text="按住说话"
             android:layout_weight="1"
             android:gravity="center"
-
             />
         <LinearLayout
             android:layout_width="60dp"

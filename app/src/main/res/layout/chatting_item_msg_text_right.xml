@@ -47,19 +47,22 @@
             android:gravity="left|center"
             android:lineSpacingExtra="2dp"
             android:minHeight="50dp"
-            android:text="textview"
+            android:text="12''"
             android:textColor="@color/white"
             android:textSize="@dimen/TittleTextSize"
             android:layout_alignParentTop="true"
-            android:layout_toStartOf="@+id/iv_userhead" />
+            android:layout_toStartOf="@+id/iv_userhead"
+            android:drawableRight="@drawable/info_voice_right"
+            android:paddingRight="10dp"
+            android:layout_marginEnd="11dp" />
 
         <TextView
             android:id="@+id/tv_username"
+            android:text="00662894"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_below="@id/iv_userhead"
-            android:layout_toRightOf="@id/tv_chatcontent"
             android:gravity="center"
             android:textColor="@color/TextColor"
             android:textSize="@dimen/NotesTextSize" />

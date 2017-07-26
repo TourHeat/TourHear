@@ -1,6 +1,8 @@
 package com.example.tr.tourhear.myimplements;
 
 
+import android.util.Log;
+
 import com.algebra.sdk.OnMediaListener;
 import com.algebra.sdk.entity.HistoryRecord;
 
@@ -11,8 +13,35 @@ import com.algebra.sdk.entity.HistoryRecord;
 public class MyOnMediaListener implements OnMediaListener {
     @Override
     public void onMediaInitializedEnd(int i, int i1, int i2) {
+        Log.i("login","media onMediaInitializedEnd uid"+i+"sid:"+i2+"ct:"+i1);
+    }
+    //获取新的对讲记录
+    @Override
+    public void onNewSpeakingCatched(HistoryRecord historyRecord) {
+        Log.i("login","media onNewSpeakingCatched: ok"+historyRecord.owner);
 
     }
+    @Override
+    public void onPlayStopped(int i) {
+      //  super.onPlayStopped(i);
+        Log.i("login","media onPlayStopped: ok"+i);
+    }
+    @Override
+    public void onSomeoneSpeaking(int i, int i1, int i2, int i3, int i4) {
+        Log.i("login","media onSomeoneSpeaking: ok"+i);
+    }
+
+    @Override
+    public void onThatoneSayOver(int i, int i1) {
+        Log.i("login","media onThatoneSayOver: ok"+i);
+    }
+
+    @Override
+    public void onPlayLastSpeakingEnd(int i) {
+        Log.i("login","media onPlayLastSpeakingEnd: ok"+i);
+    }
+
+
 
     @Override
     public void onPttButtonPressed(int i, int i1) {
@@ -50,21 +79,6 @@ public class MyOnMediaListener implements OnMediaListener {
     }
 
     @Override
-    public void onPlayStopped(int i) {
-
-    }
-
-    @Override
-    public void onSomeoneSpeaking(int i, int i1, int i2, int i3, int i4) {
-
-    }
-
-    @Override
-    public void onThatoneSayOver(int i, int i1) {
-
-    }
-
-    @Override
     public void onSomeoneAttempt(int i, int i1, int i2) {
 
     }
@@ -74,20 +88,14 @@ public class MyOnMediaListener implements OnMediaListener {
 
     }
 
-    @Override
-    public void onNewSpeakingCatched(HistoryRecord historyRecord) {
 
-    }
 
     @Override
     public void onPlayLastSpeaking(int i, int i1) {
 
     }
 
-    @Override
-    public void onPlayLastSpeakingEnd(int i) {
 
-    }
 
     @Override
     public void onMediaSenderCutted(int i, int i1) {

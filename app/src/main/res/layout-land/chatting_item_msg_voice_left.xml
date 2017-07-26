@@ -24,19 +24,19 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp" >
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
 
         <com.example.tr.tourhear.view.CircleImageView
             android:id="@+id/iv_userhead"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/timg"
-            android:focusable="false"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:focusable="false"
+            android:src="@drawable/timg" />
 
-       <!-- <TextView
+        <!-- <TextView
             android:id="@+id/tv_chatcontent"
             style="@style/chat_content_date_style"
             android:layout_width="150dp"
@@ -50,26 +50,26 @@
             android:id="@+id/tv_chatcontent"
             android:layout_width="150dp"
             android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="15dp"
+            android:background="@mipmap/dialogleft"
+            android:drawableLeft="@drawable/info_voice"
+            android:gravity="center_vertical|right"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="15''"
             android:textColor="@color/TittleColor"
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical|right"
-            android:background="@mipmap/dialogleft"
-            android:paddingRight="10dp"
-            android:drawableLeft="@drawable/info_voice"
-            android:textSize="@dimen/TittleTextSize"
-            android:paddingLeft="10dp"
-            />
+            android:textSize="@dimen/TittleTextSize" />
+
         <ImageView
             android:layout_width="5dp"
             android:layout_height="5dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/corner_rec_bg_blue_press"
-            />
+            android:background="@drawable/corner_rec_bg_blue_press" />
 
     </LinearLayout>
+
     <TextView
         android:id="@+id/tv_username"
         style="@style/chat_text_name_style"
