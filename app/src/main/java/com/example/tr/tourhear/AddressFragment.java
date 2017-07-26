@@ -54,7 +54,7 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
             users.add(user);
         }
         //前三个按钮
-        int temp[]={R.drawable.addfriend,R.drawable.qunzu,R.drawable.carteam};
+        int temp[]={R.drawable.addfriend,R.drawable.qunzu,R.drawable.chedui};
         //图表的icon存放在数组中循环调用
         for (int i = 0; i < headArray.length; i++) {
             User user = new User();

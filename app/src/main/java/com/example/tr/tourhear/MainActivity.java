@@ -144,7 +144,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
         // 提交事务
         transaction.commit();
-
     }
 
     //隐藏Fragment
@@ -208,7 +207,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
                 initFragment(0);
                 break;
             case R.id.ll_address:
-                iv_address.setImageResource(R.drawable.tab_address_press);
+                iv_address.setImageResource(R.drawable.tongxunl);
                 tv_address.setTextColor(0xff1B940A);
                 initFragment(1);
                 break;
@@ -252,7 +251,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         } else {
             intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GEREN);
         }
-
         startActivity(intent);
     }
 }
