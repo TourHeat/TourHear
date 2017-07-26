@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 
@@ -17,6 +18,7 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
     MapView mMapView = null;
     AMap aMap;
     MyLocationStyle myLocationStyle;
+    int LocationChangedTime=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
         //定位模式
         aMap.setMyLocationStyle(myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW));
+
 
     }
 
@@ -84,6 +87,10 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
     public void onMyLocationChange(Location location) {
         // 定位回调监听
         if(location != null) {
+            if (LocationChangedTime==1){
+                aMap.moveCamera(CameraUpdateFactory.zoomTo(14));
+            }
+            LocationChangedTime++;
             Log.e("amap", "onMyLocationChange 定位成功， lat: " + location.getLatitude() + " lon: " + location.getLongitude());
             Bundle bundle = location.getExtras();
             if(bundle != null) {

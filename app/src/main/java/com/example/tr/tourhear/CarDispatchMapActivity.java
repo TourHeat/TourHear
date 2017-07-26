@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.model.MyLocationStyle;
 
@@ -17,6 +18,7 @@ public class CarDispatchMapActivity extends Activity implements AMap.OnMyLocatio
     MapView mMapView = null;
     AMap aMap;
     MyLocationStyle myLocationStyle;
+    int LocationChangedTime=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,10 @@ public class CarDispatchMapActivity extends Activity implements AMap.OnMyLocatio
     public void onMyLocationChange(Location location) {
         // 定位回调监听
         if(location != null) {
+            if (LocationChangedTime==1){
+                aMap.moveCamera(CameraUpdateFactory.zoomTo(14));
+            }
+            LocationChangedTime++;
             Log.e("amap", "onMyLocationChange 定位成功， lat: " + location.getLatitude() + " lon: " + location.getLongitude());
             Bundle bundle = location.getExtras();
             if(bundle != null) {
