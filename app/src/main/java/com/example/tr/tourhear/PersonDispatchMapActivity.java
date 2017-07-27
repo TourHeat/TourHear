@@ -1,6 +1,7 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,9 @@ import android.widget.LinearLayout;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 
 /**
@@ -20,7 +24,7 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
     MapView mMapView = null;
     AMap aMap;
     MyLocationStyle myLocationStyle;
-    int LocationChangedTime=0;
+    int LocationChangedTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +64,20 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
         //定位模式
         aMap.setMyLocationStyle(myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW));
+        SetMarker();
 
+    }
 
+    private void SetMarker() {
+        MarkerOptions markerOption = new MarkerOptions();
+        markerOption.position(new LatLng(103.982808,30.764013));
+        markerOption.title("皮卡丘").snippet("皮卡皮卡丘");
+
+        markerOption.draggable(true);//设置Marker可拖动
+        markerOption.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+                .decodeResource(getResources(),R.drawable.marker_member)));
+        // 将Marker设置为贴地显示，可以双指下拉地图查看效果
+        markerOption.setFlat(true);//设置marker平贴地图效果
     }
 
     @Override
@@ -95,14 +111,14 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
     @Override
     public void onMyLocationChange(Location location) {
         // 定位回调监听
-        if(location != null) {
-            if (LocationChangedTime==1){
+        if (location != null) {
+            if (LocationChangedTime == 1) {
                 aMap.moveCamera(CameraUpdateFactory.zoomTo(14));
             }
             LocationChangedTime++;
             Log.e("amap", "onMyLocationChange 定位成功， lat: " + location.getLatitude() + " lon: " + location.getLongitude());
             Bundle bundle = location.getExtras();
-            if(bundle != null) {
+            if (bundle != null) {
                 int errorCode = bundle.getInt(MyLocationStyle.ERROR_CODE);
                 String errorInfo = bundle.getString(MyLocationStyle.ERROR_INFO);
                 // 定位类型，可能为GPS WIFI等，具体可以参考官网的定位SDK介绍
@@ -113,7 +129,7 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
                 errorInfo
                 locationType
                 */
-                Log.e("amap", "定位信息， code: " + errorCode + " errorInfo: " + errorInfo + " locationType: " + locationType );
+                Log.e("amap", "定位信息， code: " + errorCode + " errorInfo: " + errorInfo + " locationType: " + locationType);
             } else {
                 Log.e("amap", "定位信息， bundle is null ");
 
