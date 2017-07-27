@@ -207,7 +207,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
                 initFragment(0);
                 break;
             case R.id.ll_address:
-                iv_address.setImageResource(R.drawable.tongxunl);
+                iv_address.setImageResource(R.drawable.tongxunlu);
                 tv_address.setTextColor(0xff1B940A);
                 initFragment(1);
                 break;

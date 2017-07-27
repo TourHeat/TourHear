@@ -35,6 +35,7 @@ import com.example.tr.tourhear.myimplements.MyOnSessionListener;
 import com.example.tr.tourhear.utils.ChatMsgEntity;
 import com.example.tr.tourhear.utils.ChatMsgViewAdapter;
 import com.example.tr.tourhear.utils.Constants;
+import com.example.tr.tourhear.utils.MyLocation;
 import com.example.tr.tourhear.view.CircleImageView;
 import com.lilei.springactionmenu.ActionMenu;
 import com.wangjie.androidbucket.utils.ABTextUtil;
@@ -44,6 +45,7 @@ import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionHelper;
 import com.wangjie.rapidfloatingactionbutton.RapidFloatingActionLayout;
 import com.wangjie.rapidfloatingactionbutton.contentimpl.labellist.RFACLabelItem;
 import com.wangjie.rapidfloatingactionbutton.contentimpl.labellist.RapidFloatingActionContentLabelList;
+import com.wangjie.rapidfloatingactionbutton.listener.OnRapidFloatingButtonSeparateListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,7 +55,7 @@ import java.util.List;
 /**
  * Created by ZhangYan on 2017/7/16.
  */
-public class ChatActivity extends Activity implements OnClickListener, RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener {
+public class ChatActivity extends Activity implements OnClickListener, RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener, OnRapidFloatingButtonSeparateListener {
 
     private Button mBtnSend;// 发送btn
     private LinearLayout mBtnBack;// 返回btn
@@ -86,16 +88,17 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private Date speakTime;//对讲时间
     private boolean someOneisSpeak = false;
     private ActionMenu actionMenu;
-
+    private LinearLayout sendOthers;
     //
     private RapidFloatingActionLayout rfaLayout;
     private RapidFloatingActionButton rfaButton;
     private RapidFloatingActionHelper rfabHelper;
+    private MyLocation myLocation;//位置信息
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         uiHandler = Login.getUiHandler();
-
+        myLocation = new MyLocation(ChatActivity.this);//实例化位置
         initView();// 初始化view
         rfaLayout = (RapidFloatingActionLayout) findViewById(R.id.label_list_sample_rfal);
         rfaButton = (RapidFloatingActionButton) findViewById(R.id.add_menu);
@@ -108,6 +111,8 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private void initMenu() {
         RapidFloatingActionContentLabelList rfaContent = new RapidFloatingActionContentLabelList(ChatActivity.this);
         rfaContent.setOnRapidFloatingActionContentLabelListListener(ChatActivity.this);
+
+
         List<RFACLabelItem> items = new ArrayList<>();
         items.add(new RFACLabelItem<Integer>()
                 .setLabel("图片")
@@ -149,6 +154,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 rfaButton,
                 rfaContent
         ).build();
+       rfaButton.setOnRapidFloatingButtonSeparateListener(this);
     }
 
     /**
@@ -166,7 +172,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         mBtnmore = (LinearLayout) findViewById(R.id.btn_more);
         mBtnmore.setOnClickListener(this);
         mEditTextContent = (EditText) findViewById(R.id.et_sendmessage);
-
+        sendOthers = (LinearLayout) findViewById(R.id.send_others);
         actionMenu = (ActionMenu) findViewById(R.id.expanded_menu);
        // actionMenu.me
         actionMenu.addView(R.mipmap.menu_carmer, getItemColor(R.color.menuNormalInfo), getItemColor(R.color.menuPressInfo));
@@ -210,11 +216,13 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                     entity.setDate(format.format(speakTime).toString());
                     entity.setMessage(dur/1000+"''");
                     entity.setMsgType(false);
+                    entity.setMsgType(0);
                     entity.setName(API.getAccountApi().whoAmI().name);
-                    mDataArrays.add(entity);
-                    mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
-                    mListView.setAdapter(mAdapter);
-                    mListView.setSelection(mAdapter.getCount() - 1);
+                    sendMsg(entity);
+//                    mDataArrays.add(entity);
+//                    mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
+//                    mListView.setAdapter(mAdapter);
+//                    mListView.setSelection(mAdapter.getCount() - 1);
                     layout_whospeak.setVisibility(View.GONE);
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message));
                     bottom.setBackgroundColor(getResources().getColor(R.color.white));
@@ -299,11 +307,9 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                     entity.setDate(format.format(speakTime).toString());
                     entity.setMessage(dur/1000+"''");
                     entity.setMsgType(true);
+                    entity.setMsgType(0);
                     entity.setName(getMemberName(i));
-                    mDataArrays.add(entity);
-                    mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
-                    mListView.setAdapter(mAdapter);
-                    mListView.setSelection(mAdapter.getCount() - 1);
+                    sendMsg(entity);
                     closeSpeack();
                 }
             });
@@ -330,7 +336,6 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 Log.i("login","onSessionEstablished----- sessionId"+sessionId);
                 currSession = new CompactID(type,sessionId);
               //  sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
-
                 //获取频道成员
                  cm = HomeFragment.getCmem(channel.cid.getId());
                 int [] ids = new int[cm.getCs().size()];
@@ -348,8 +353,15 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         });
 
        // sessionapi.startDialog(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
-
     }
+    //发送信息
+    public void sendMsg ( ChatMsgEntity entity) {
+        mDataArrays.add(entity);
+        mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
+        mListView.setAdapter(mAdapter);
+        mListView.setSelection(mAdapter.getCount() - 1);
+    }
+    //接受信息
 
     private void setSpeack(int owner) {
         layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(owner));
@@ -500,17 +512,10 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         //iconVoice
     }
 
-    @Override
-    public void onRFACItemLabelClick(int position, RFACLabelItem item) {
-        rfabHelper.toggleContent();
-    }
 
-    @Override
-    public void onRFACItemIconClick(int position, RFACLabelItem item) {
-        rfabHelper.toggleContent();
-    }
 
-private class OEMToneGen implements OEMToneGenerator {
+
+    private class OEMToneGen implements OEMToneGenerator {
         private OEMToneProgressListener toneProgressListener = null;
         private ToneGenerator mToneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 15);
 
@@ -576,4 +581,61 @@ private class OEMToneGen implements OEMToneGenerator {
         if (session != null && sessionapi != null)
             sessionapi.talkRelease(API.getAccountApi().whoAmI().id, session.getType(), session.getId());
     }
+//弹出菜单监听事件
+    @Override
+    public void onRFACItemLabelClick(int position, RFACLabelItem item) {
+        switch (position){
+            case 0:
+                ChatMsgEntity entity = new ChatMsgEntity();
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
+                speakTime.setTime(System.currentTimeMillis());
+                entity.setDate(format.format(speakTime).toString());
+                entity.setMessage("西南交大 | 1.2km");
+                entity.setMsgType(false);
+                entity.setMsgType(1);
+                entity.setName(API.getAccountApi().whoAmI().name);
+                sendMsg(entity);
+                break;
+            case 1:
+                break;
+            case 2:
+
+                break;
+        }
+        sendOthers.setVisibility(View.VISIBLE);
+        rfabHelper.toggleContent();
+    }
+
+    @Override
+    public void onRFACItemIconClick(int position, RFACLabelItem item) {
+        Log.i("login",""+position);
+        switch (position){
+            case 0:
+                ChatMsgEntity entity = new ChatMsgEntity();
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
+                speakTime.setTime(System.currentTimeMillis());
+                entity.setDate(format.format(speakTime).toString());
+                entity.setMessage("西南交大 | 1.2km");
+                entity.setMsgType(false);
+                entity.setMsgType(1);
+                entity.setName(API.getAccountApi().whoAmI().name);
+                sendMsg(entity);
+                break;
+            case 1:
+                break;
+            case 2:
+
+                break;
+        }
+        sendOthers.setVisibility(View.VISIBLE);
+        rfabHelper.toggleContent();
+    }
+
+
+    @Override
+    public void onRFABClick() {
+        Log.i("login","OK22onRFABClick");
+        sendOthers.setVisibility(View.INVISIBLE);
+    }
 }
+

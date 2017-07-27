@@ -207,6 +207,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:id="@+id/send_others"
+            android:visibility="visible"
             >
             <TextView
                 android:layout_width="match_parent"
@@ -242,7 +243,7 @@
         android:layout_height="wrap_content"
         rfab:rfab_drawable="@mipmap/menu_add_open"
         rfab:rfab_color_normal="@color/PrimaryColor"
-        rfab:rfab_color_pressed="@color/PrimaryColor"
+        rfab:rfab_color_pressed="@color/infosColor"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         >

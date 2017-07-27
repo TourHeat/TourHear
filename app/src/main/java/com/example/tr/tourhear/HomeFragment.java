@@ -166,4 +166,14 @@ public class HomeFragment extends Fragment {
         }
         return null;
     }
+    public static int getCmemId(String name) {
+        for(ChaneelMems cm : cmems){
+            for(Contact c : cm.getCs()){
+                if(c.name.equals(name)){
+                    return c.id;
+                }
+            }
+        }
+        return 0;
+    }
 }

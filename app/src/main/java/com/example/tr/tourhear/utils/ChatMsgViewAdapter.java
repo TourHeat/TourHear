@@ -8,8 +8,13 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.tr.tourhear.R;
+import com.example.tr.tourhear.view.CircleImageView;
 
 import java.util.List;
+
+import static com.example.tr.tourhear.R.layout.chatting_item_msg_photo_right;
+import static com.example.tr.tourhear.R.layout.chatting_item_msg_text_left;
+import static com.example.tr.tourhear.R.layout.chatting_item_msg_text_right;
 
 /**
  * Created by ZhangYan on 2017/7/16.
@@ -49,7 +54,7 @@ public class ChatMsgViewAdapter extends BaseAdapter {
     public int getItemViewType(int position) {
         ChatMsgEntity entity = coll.get(position);
 
-        if (entity.getMsgType()) {//收到的消息
+        if (entity.isComMeg()) {//收到的消息
             return IMsgViewType.IMVT_COM_MSG;
         } else {//自己发送的消息
             return IMsgViewType.IMVT_TO_MSG;
@@ -66,16 +71,18 @@ public class ChatMsgViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ChatMsgEntity entity = coll.get(position);
-        boolean isComMsg = entity.getMsgType();
-
+        boolean isComMsg = entity.isComMeg();
+        int type = entity.getMsgType();
         ViewHolder viewHolder = null;
+        int laylefts[] = {chatting_item_msg_text_left,chatting_item_msg_text_left,chatting_item_msg_text_left};
+        int layrights[] = {chatting_item_msg_text_right,chatting_item_msg_photo_right,chatting_item_msg_text_right};
         if (convertView == null) {
             if (isComMsg) {
                 convertView = mInflater.inflate(
-                        R.layout.chatting_item_msg_text_left, null);
+                        laylefts[entity.getMsgType()], null);
             } else {
                 convertView = mInflater.inflate(
-                        R.layout.chatting_item_msg_text_right, null);
+                        layrights[entity.getMsgType()], null);
             }
 
             viewHolder = new ViewHolder();
@@ -86,6 +93,8 @@ public class ChatMsgViewAdapter extends BaseAdapter {
             viewHolder.tvContent = (TextView) convertView
                     .findViewById(R.id.tv_chatcontent);
             viewHolder.isComMsg = isComMsg;
+//设置头像
+            viewHolder.headportrait = (CircleImageView) convertView.findViewById(R.id.iv_userhead);
 
             convertView.setTag(viewHolder);
         } else {
@@ -94,6 +103,15 @@ public class ChatMsgViewAdapter extends BaseAdapter {
         viewHolder.tvSendTime.setText(entity.getDate());
         viewHolder.tvUserName.setText(entity.getName());
         viewHolder.tvContent.setText(entity.getMessage());
+        try {
+            //getCmemId
+            //int hh = Constants.headPortaits[HomeFragment.getCmemId(entity.getName())%5];
+            //设置头像
+            int hh = Constants.headPortaits[Integer.parseInt(entity.getName())%5];
+            viewHolder.headportrait.setImageDrawable(convertView.getResources().getDrawable(hh));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return convertView;
     }
 
@@ -101,6 +119,7 @@ public class ChatMsgViewAdapter extends BaseAdapter {
         public TextView tvSendTime;
         public TextView tvUserName;
         public TextView tvContent;
+        public CircleImageView headportrait;//头像
         public boolean isComMsg = true;
     }
 
