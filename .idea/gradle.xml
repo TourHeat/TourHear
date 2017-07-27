@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/library" />
             <option value="$PROJECT_DIR$/springactionmenu" />
+            <option value="$PROJECT_DIR$/switchbutton" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

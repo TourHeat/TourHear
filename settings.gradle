@@ -1,1 +1,1 @@
-include ':app', ':springactionmenu', ':library'
+include ':app', ':springactionmenu', ':library', ':switchbutton'

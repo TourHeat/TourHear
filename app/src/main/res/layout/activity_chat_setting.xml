@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:background="@color/BackgroundColor"
-              android:orientation="vertical" >
+              android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
@@ -92,8 +93,8 @@
                     android:id="@+id/text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
                     android:layout_below="@id/img1"
+                    android:padding="8dp"
                     android:text="御坂美琴"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TextTextSize"/>
@@ -103,8 +104,8 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/img1"
                     android:layout_marginLeft="25dp"
+                    android:layout_toRightOf="@id/img1"
                     android:background="@drawable/icon_add_more"
                     android:scaleType="matrix"/>
 
@@ -136,14 +137,14 @@
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
+                <ch.ielse.view.SwitchView
                     android:id="@+id/SimageView2"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    app:hasShadow="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -164,14 +165,14 @@
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
+                <ch.ielse.view.SwitchView
                     android:id="@+id/SimageView3"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    app:hasShadow="true"/>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

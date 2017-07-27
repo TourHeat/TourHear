@@ -3,6 +3,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:background="@color/BackgroundColor"
                 android:orientation="vertical">
     <!--群组设置-->
@@ -361,14 +362,14 @@
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
+                <ch.ielse.view.SwitchView
                     android:id="@+id/SimageView6"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    app:hasShadow="true"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -391,14 +392,14 @@
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
+                <ch.ielse.view.SwitchView
                     android:id="@+id/SimageView7"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    app:hasShadow="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -482,14 +483,14 @@
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
+                <ch.ielse.view.SwitchView
                     android:id="@+id/SimageView10"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    app:hasShadow="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -512,14 +513,14 @@
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
+                <ch.ielse.view.SwitchView
                     android:id="@+id/SimageView11"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    app:hasShadow="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -542,14 +543,14 @@
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
-                <ImageView
+                <ch.ielse.view.SwitchView
                     android:id="@+id/SimageView12"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    app:hasShadow="true"/>
             </RelativeLayout>
 
             <RelativeLayout
