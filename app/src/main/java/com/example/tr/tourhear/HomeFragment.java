@@ -20,6 +20,7 @@ import com.algebra.sdk.entity.Channel;
 import com.algebra.sdk.entity.Contact;
 import com.example.tr.tourhear.entity.ChaneelMems;
 import com.example.tr.tourhear.myimplements.MyOnChannelListener;
+import com.example.tr.tourhear.utils.Constants;
 import com.example.tr.tourhear.utils.ListViewAdapter;
 
 import java.util.ArrayList;
@@ -101,9 +102,10 @@ public class HomeFragment extends Fragment {
 
        // Log.i("login","获取频道：length:"+c.name);
         list.add(map2);
+        int i = 0;
         for (Channel c:channelList) {
             Map<String, Object> map = new HashMap<String, Object>();
-            map.put("image", R.drawable.timg);
+            map.put("image", Constants.headPortaits[(i++)%5]);
             map.put("name",c.name);
             map.put("mess", "陪我一起,浪迹天涯!");
             map.put("date", "11:03");

@@ -94,9 +94,11 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private RapidFloatingActionButton rfaButton;
     private RapidFloatingActionHelper rfabHelper;
     private MyLocation myLocation;//位置信息
+    private Bundle bundle = null;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        bundle = savedInstanceState;
         uiHandler = Login.getUiHandler();
         myLocation = new MyLocation(ChatActivity.this);//实例化位置
         initView();// 初始化view
@@ -357,7 +359,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     //发送信息
     public void sendMsg ( ChatMsgEntity entity) {
         mDataArrays.add(entity);
-        mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
+        mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays,bundle);
         mListView.setAdapter(mAdapter);
         mListView.setSelection(mAdapter.getCount() - 1);
     }
@@ -624,7 +626,15 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
             case 1:
                 break;
             case 2:
-
+                ChatMsgEntity entity2 = new ChatMsgEntity();
+                SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
+                speakTime.setTime(System.currentTimeMillis());
+                entity2.setDate(format2.format(speakTime).toString());
+                entity2.setMessage("西南交大 | 1.2km");
+                entity2.setMsgType(false);
+                entity2.setMsgType(2);
+                entity2.setName(API.getAccountApi().whoAmI().name);
+                sendMsg(entity2);
                 break;
         }
         sendOthers.setVisibility(View.VISIBLE);

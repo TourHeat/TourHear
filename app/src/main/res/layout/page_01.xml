@@ -40,8 +40,8 @@
         android:layout_marginBottom="5dp">
 
         <EditText
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:id="@+id/friend_search_bar"
             android:layout_width="match_parent"
             android:layout_height="35dp"

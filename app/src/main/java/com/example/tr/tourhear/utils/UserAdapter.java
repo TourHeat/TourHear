@@ -69,6 +69,11 @@ public class UserAdapter extends BaseAdapter{
 
         viewHolder.tvName.setText(users.get(position).getName());
         viewHolder.tvicon.setImageResource(users.get(position).getIcon());
+       if (position < 3) {//前三颜色
+           viewHolder.tvicon.setPadding(10,10,10,10);
+           viewHolder.tvicon.setBackgroundColor(convertView.getResources().getColor(R.color.PrimaryColor));
+       }
+
         viewHolder.tvItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

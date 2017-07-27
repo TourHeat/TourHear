@@ -36,39 +36,39 @@
             android:src="@drawable/timg0" />
 
         <LinearLayout
-            android:id="@+id/lay_photo"
-            android:layout_width="150dp"
+            android:layout_below="@+id/tv_chatcontent"
+            android:id="@+id/lay_map"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@+id/iv_userhead"
             android:orientation="vertical">
 
-            <com.example.tr.tourhear.view.XCRoundRectImageView
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:adjustViewBounds="false"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/jingdian_jiuzai1" />
+           <com.amap.api.maps.MapView
+               android:layout_width="match_parent"
+               android:layout_height="100dp"
+               android:id="@+id/map"
+               >
+
+           </com.amap.api.maps.MapView>
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_chatcontent"
-            android:layout_width="150dp"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_below="@+id/lay_photo"
             android:layout_marginRight="10dp"
             android:layout_marginTop="-5dp"
             android:layout_toLeftOf="@+id/iv_userhead"
             android:background="@color/white"
             android:clickable="true"
-            android:drawableLeft="@drawable/location_svg"
             android:focusable="true"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:text="12''"
             android:textColor="@color/black"
-            android:textSize="@dimen/NotesTextSize" />
+            android:textSize="@dimen/TittleTextSize" />
 
         <TextView
             android:id="@+id/tv_username"

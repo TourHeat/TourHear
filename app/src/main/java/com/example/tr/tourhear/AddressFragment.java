@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.tr.tourhear.utils.ChineseToEnglish;
 import com.example.tr.tourhear.utils.CompareSort;
+import com.example.tr.tourhear.utils.Constants;
 import com.example.tr.tourhear.utils.SideBarView;
 import com.example.tr.tourhear.utils.User;
 import com.example.tr.tourhear.utils.UserAdapter;
@@ -51,10 +52,11 @@ public class AddressFragment extends Fragment implements SideBarView.LetterSelec
             } else {
                 user.setLetter("#");
             }
+            user.setIcon(Constants.headPortaits[i%5]);
             users.add(user);
         }
         //前三个按钮
-        int temp[]={R.drawable.addfriend,R.drawable.qunzu,R.drawable.chedui};
+        int temp[]={R.drawable.add2,R.drawable.qunliao,R.drawable.car};
         //图表的icon存放在数组中循环调用
         for (int i = 0; i < headArray.length; i++) {
             User user = new User();

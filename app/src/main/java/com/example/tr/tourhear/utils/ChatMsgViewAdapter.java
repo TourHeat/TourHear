@@ -1,17 +1,22 @@
 package com.example.tr.tourhear.utils;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.MapView;
 import com.example.tr.tourhear.R;
 import com.example.tr.tourhear.view.CircleImageView;
 
 import java.util.List;
 
+import static com.example.tr.tourhear.R.layout.chatting_item_msg_location_right;
 import static com.example.tr.tourhear.R.layout.chatting_item_msg_photo_right;
 import static com.example.tr.tourhear.R.layout.chatting_item_msg_text_left;
 import static com.example.tr.tourhear.R.layout.chatting_item_msg_text_right;
@@ -30,12 +35,17 @@ public class ChatMsgViewAdapter extends BaseAdapter {
     private static final int ITEMCOUNT = 2;// 消息类型的总数
     private List<ChatMsgEntity> coll;// 消息对象数组
     private LayoutInflater mInflater;
-
+    private Bundle bundle;
     public ChatMsgViewAdapter(Context context, List<ChatMsgEntity> coll) {
         this.coll = coll;
         mInflater = LayoutInflater.from(context);
     }
 
+    public ChatMsgViewAdapter(Context context, List<ChatMsgEntity> coll,Bundle bundle) {
+        this.coll = coll;
+        mInflater = LayoutInflater.from(context);
+        this.bundle = bundle;
+    }
     public int getCount() {
         return coll.size();
     }
@@ -75,7 +85,7 @@ public class ChatMsgViewAdapter extends BaseAdapter {
         int type = entity.getMsgType();
         ViewHolder viewHolder = null;
         int laylefts[] = {chatting_item_msg_text_left,chatting_item_msg_text_left,chatting_item_msg_text_left};
-        int layrights[] = {chatting_item_msg_text_right,chatting_item_msg_photo_right,chatting_item_msg_text_right};
+        int layrights[] = {chatting_item_msg_text_right,chatting_item_msg_photo_right,chatting_item_msg_location_right};
         if (convertView == null) {
             if (isComMsg) {
                 convertView = mInflater.inflate(
@@ -95,7 +105,15 @@ public class ChatMsgViewAdapter extends BaseAdapter {
             viewHolder.isComMsg = isComMsg;
 //设置头像
             viewHolder.headportrait = (CircleImageView) convertView.findViewById(R.id.iv_userhead);
+            try {
+                if(entity.getMsgType() == 2){
+                    viewHolder.mapView = (MapView) convertView.findViewById(R.id.map);
+                    viewHolder.aMap =  viewHolder.mapView.getMap();
+                    viewHolder.mapView.onCreate(bundle);   //必须重写
+                }
+            }catch (Exception e){
 
+            }
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -119,6 +137,9 @@ public class ChatMsgViewAdapter extends BaseAdapter {
         public TextView tvSendTime;
         public TextView tvUserName;
         public TextView tvContent;
+        public AMap aMap;
+        public MapView mapView;//地图
+        public ImageView imageView;//景点照片
         public CircleImageView headportrait;//头像
         public boolean isComMsg = true;
     }

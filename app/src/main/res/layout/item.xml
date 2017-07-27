@@ -29,8 +29,10 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_vertical"
-            android:paddingLeft="5dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/qunliao"
+            android:layout_margin="5dp"
+
+            />
 
 
         <TextView
@@ -43,7 +45,7 @@
             android:paddingLeft="5dip"
             android:paddingTop="10dip"
             android:text="hhhh"
-            android:textColor="@color/TittleColor"
+            android:textColor="@color/black"
             android:textSize="@dimen/TextTextSize"/>
 
     </LinearLayout>
