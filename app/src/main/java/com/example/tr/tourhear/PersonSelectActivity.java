@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,7 +34,7 @@ public class PersonSelectActivity extends Activity implements SideBarView.Letter
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.person_select);
-        Button bt_back = (Button) findViewById(R.id.btn_back);
+        LinearLayout bt_back = (LinearLayout) findViewById(R.id.btn_back);
         Button bt_yes = (Button) findViewById(R.id.btn_yes);
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -56,7 +56,7 @@ import java.util.List;
 public class ChatActivity extends Activity implements OnClickListener, RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener {
 
     private Button mBtnSend;// 发送btn
-    private Button mBtnBack;// 返回btn
+    private LinearLayout mBtnBack;// 返回btn
     private LinearLayout mBtnmore;// 聊天设置btn
     private EditText mEditTextContent;
     private ListView mListView;
@@ -161,7 +161,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         mListView = (ListView) findViewById(R.id.listview);
         mBtnSend = (Button) findViewById(R.id.btn_send);
         mBtnSend.setOnClickListener(this);
-        mBtnBack = (Button) findViewById(R.id.btn_back);
+        mBtnBack = (LinearLayout) findViewById(R.id.btn_back);
         mBtnBack.setOnClickListener(this);
         mBtnmore = (LinearLayout) findViewById(R.id.btn_more);
         mBtnmore.setOnClickListener(this);
@@ -414,8 +414,18 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 break;
             case R.id.btn_more:// 设置按钮点击事件
                 //测试暂用
-                Intent intent=new Intent(ChatActivity.this,CarGroupSettingActivity.class);
-               /* Intent intent=new Intent(ChatActivity.this,ChatSettingActivity.class);*/
+                Intent intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
+                if(CHAT_TYPE == Constants.CHAT_TYPE_CHEDUI) {//车队
+                    intent=new Intent(ChatActivity.this,CarGroupSettingActivity.class);
+                }
+
+                if(CHAT_TYPE == Constants.CHAT_TYPE_GEREN) {//个人
+                    intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
+                }
+
+                if(CHAT_TYPE == Constants.CHAT_TYPE_GROUP) {//群聊
+                    intent=new Intent(ChatActivity.this,ChatGroupSettingActivity.class);
+                }
                 startActivity(intent);
                 break;
             case R.id.btn_back:// 返回按钮点击事件
@@ -473,7 +483,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         Intent intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
       //
         if(CHAT_TYPE == Constants.CHAT_TYPE_CHEDUI) {//车队
-            intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
+            intent=new Intent(ChatActivity.this,CarGroupSettingActivity.class);
         }
 
         if(CHAT_TYPE == Constants.CHAT_TYPE_GEREN) {//各人
@@ -481,7 +491,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         }
 
         if(CHAT_TYPE == Constants.CHAT_TYPE_GROUP) {//群聊
-            intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
+            intent=new Intent(ChatActivity.this,ChatGroupSettingActivity.class);
         }
         startActivity(intent);
     }

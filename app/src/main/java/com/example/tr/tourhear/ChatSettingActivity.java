@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import static com.example.tr.tourhear.R.id.img2;
 
@@ -23,7 +23,7 @@ public class ChatSettingActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.activity_chat_setting);
-        Button bt_back=(Button)findViewById(R.id.btn_back);
+        LinearLayout bt_back=(LinearLayout)findViewById(R.id.btn_back);
         ImageView show_list=(ImageView) findViewById(img2);
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override

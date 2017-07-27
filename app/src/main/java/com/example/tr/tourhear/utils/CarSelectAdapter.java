@@ -5,7 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.tr.tourhear.R;
@@ -51,9 +52,9 @@ public class CarSelectAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_group, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_car_select, null);
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.name);
-            viewHolder.tvItem = (LinearLayout) convertView.findViewById(R.id.item);
+            viewHolder.tvItem = (RelativeLayout) convertView.findViewById(R.id.item);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -65,6 +66,12 @@ public class CarSelectAdapter extends BaseAdapter {
             public void onClick(View v) {
                 //Toast.makeText(mContext,users.get(position).getName(),Toast.LENGTH_SHORT).show();
                 //选择与取消选择响应事件
+                ImageView imageView = (ImageView) v.findViewById(R.id.select_it);
+                if (imageView.getVisibility() == View.GONE) {
+                    imageView.setVisibility(View.VISIBLE);
+                } else if (imageView.getVisibility() == View.VISIBLE) {
+                    imageView.setVisibility(View.GONE);
+                }
             }
 
         });
@@ -109,7 +116,7 @@ public class CarSelectAdapter extends BaseAdapter {
 
     class ViewHolder {
         TextView tvName;
-        LinearLayout tvItem;
+        RelativeLayout tvItem;
     }
 
 }

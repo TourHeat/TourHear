@@ -10,13 +10,25 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="@color/colorIconBlue">
-        <Button
-            android:layout_marginTop="10dp"
-            android:onClick="back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/btn_bg_back_white_blue"
-            android:id="@+id/button" />
+        <LinearLayout
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:onClick="setting">
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back_white"
+                android:paddingLeft="10dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"/>
+        </LinearLayout>
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"

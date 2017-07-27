@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.tr.tourhear.utils.CarSelectAdapter;
@@ -19,7 +20,7 @@ import java.util.Collections;
 public class CarSelectActivity extends Activity {
     ListView mListview;
     CarSelectAdapter mAdapter;
-    Button mBtnBack;// 返回btn
+    LinearLayout mBtnBack;// 返回btn
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class CarSelectActivity extends Activity {
         Button bt_yes = (Button) findViewById(R.id.btn_yes);
         mListview = (ListView) findViewById(R.id.listview);
         String[] contactsArray = getResources().getStringArray(R.array.group);
-        mBtnBack = (Button) findViewById(R.id.btn_back);
+        mBtnBack = (LinearLayout) findViewById(R.id.btn_back);
         mBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

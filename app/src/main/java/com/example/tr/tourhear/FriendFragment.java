@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.example.tr.tourhear.utils.TraBookAdapter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

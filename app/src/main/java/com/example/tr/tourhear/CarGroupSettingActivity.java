@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 /**
@@ -19,7 +19,7 @@ public class CarGroupSettingActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.car_group_setting);
-        Button bt_back = (Button) findViewById(R.id.btn_back);
+        LinearLayout bt_back = (LinearLayout) findViewById(R.id.btn_back);
         final RelativeLayout group_member = (RelativeLayout) findViewById(R.id.GroupMember);
         final RelativeLayout person_select = (RelativeLayout) findViewById(R.id.SrelativeLayout3);
         final RelativeLayout car_select = (RelativeLayout) findViewById(R.id.SrelativeLayout4);

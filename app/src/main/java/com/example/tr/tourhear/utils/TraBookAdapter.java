@@ -1,4 +1,4 @@
-package com.example.tr.tourhear;
+package com.example.tr.tourhear.utils;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tr.tourhear.R;
 import com.example.tr.tourhear.view.CircleImageView;
 
 import java.util.List;

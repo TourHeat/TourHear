@@ -21,16 +21,25 @@
             android:textColor="#ffffff"
             android:textSize="@dimen/NavigationTittleSize"/>
 
-        <Button
+        <LinearLayout
             android:id="@+id/btn_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/selector_btn_back"
-            android:paddingLeft="10dp"
-            android:textColor="#ffffff"
-            android:textSize="16sp"/>
+            android:gravity="center"
+            android:onClick="setting">
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back_white"
+                android:paddingLeft="10dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_yes"

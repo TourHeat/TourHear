@@ -14,16 +14,25 @@
         android:background="@color/PrimaryColor"
         android:orientation="vertical">
 
-        <Button
+        <LinearLayout
             android:id="@+id/btn_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/selector_btn_back"
-            android:paddingLeft="10dp"
-            android:textColor="#ffffff"
-            android:textSize="16sp"/>
+            android:gravity="center"
+            android:onClick="setting">
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back_white"
+                android:paddingLeft="10dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/channel_name"
@@ -61,10 +70,10 @@
             android:onClick="setting">
 
             <Button
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:background="@drawable/setting"
+                android:background="@drawable/tomap"
                 android:gravity="center"
                 android:textColor="#ffffff"
                 android:textSize="16sp"/>

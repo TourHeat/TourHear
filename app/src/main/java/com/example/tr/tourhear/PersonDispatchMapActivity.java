@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
@@ -23,6 +25,13 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LinearLayout bt_back = (LinearLayout) findViewById(R.id.btn_back);
+        bt_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         setContentView(R.layout.person_dispatch_map);
         //获取地图控件引用
         mMapView = (MapView) findViewById(R.id.map);

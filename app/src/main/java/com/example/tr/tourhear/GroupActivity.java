@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.tr.tourhear.utils.ChineseToEnglish;
@@ -18,7 +18,7 @@ import java.util.Collections;
 public class GroupActivity extends Activity {
     ListView mListview;
     GroupAdapter mAdapter;
-    Button mBtnBack;// 返回btn
+    LinearLayout mBtnBack;// 返回btn
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class GroupActivity extends Activity {
         setContentView(R.layout.activity_group);
         mListview = (ListView) findViewById(R.id.listview);
         String[] contactsArray = getResources().getStringArray(R.array.group);
-        mBtnBack = (Button) findViewById(R.id.btn_back);
+        mBtnBack = (LinearLayout) findViewById(R.id.btn_back);
         mBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.tr.tourhear.R;
@@ -17,19 +17,19 @@ import java.util.List;
 /**
  * Created by ZhangYan on 2017/7/16.
  */
-public class PersonSelectAdapter extends BaseAdapter{
+public class PersonSelectAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<User> users;
+
     public PersonSelectAdapter(Context context) {
         this.mContext = context;
         users = new ArrayList<>();
     }
 
-    public void setData(List<User> data){
+    public void setData(List<User> data) {
         this.users.clear();
         this.users.addAll(data);
     }
-
 
 
     @Override
@@ -52,11 +52,11 @@ public class PersonSelectAdapter extends BaseAdapter{
         ViewHolder viewHolder = null;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_person_select, null);
             viewHolder.tvTitle = (TextView) convertView.findViewById(R.id.title);
             viewHolder.tvName = (TextView) convertView.findViewById(R.id.name);
             viewHolder.tvicon = (ImageView) convertView.findViewById(R.id.icon);
-            viewHolder.tvItem = (LinearLayout) convertView.findViewById(R.id.item);
+            viewHolder.tvItem = (RelativeLayout) convertView.findViewById(R.id.item);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
@@ -69,14 +69,21 @@ public class PersonSelectAdapter extends BaseAdapter{
             public void onClick(View v) {
                 //Toast.makeText(mContext,users.get(position).getName(),Toast.LENGTH_SHORT).show();
                 //选中与取消选中事件
+             //   Log.i("test","here");
+                ImageView imageView = (ImageView) v.findViewById(R.id.select_it);
+                if (imageView.getVisibility() == View.GONE) {
+                    imageView.setVisibility(View.VISIBLE);
+                } else if (imageView.getVisibility() == View.VISIBLE) {
+                    imageView.setVisibility(View.GONE);
+                }
 
             }
         });
         //当前的item的title与上一个item的title不同的时候回显示title(A,B,C......)
-        if(position == getFirstLetterPosition(position) && !users.get(position).getLetter().equals("@")){
+        if (position == getFirstLetterPosition(position) && !users.get(position).getLetter().equals("@")) {
             viewHolder.tvTitle.setVisibility(View.VISIBLE);
             viewHolder.tvTitle.setText(users.get(position).getLetter().toUpperCase());
-        }else {
+        } else {
             viewHolder.tvTitle.setVisibility(View.GONE);
         }
 
@@ -96,7 +103,7 @@ public class PersonSelectAdapter extends BaseAdapter{
         int cnAscii = ChineseToEnglish.getCnAscii(letter.toUpperCase().charAt(0));
         int size = users.size();
         for (int i = 0; i < size; i++) {
-            if(cnAscii == users.get(i).getLetter().charAt(0)){
+            if (cnAscii == users.get(i).getLetter().charAt(0)) {
                 return i;
             }
         }
@@ -105,13 +112,14 @@ public class PersonSelectAdapter extends BaseAdapter{
 
     /**
      * 顺序遍历所有元素．找到letter下的第一个item对应的position
+     *
      * @param letter
      * @return
      */
-    public int getFirstLetterPosition(String letter){
+    public int getFirstLetterPosition(String letter) {
         int size = users.size();
         for (int i = 0; i < size; i++) {
-            if(letter.charAt(0) == users.get(i).getLetter().charAt(0)){
+            if (letter.charAt(0) == users.get(i).getLetter().charAt(0)) {
                 return i;
             }
         }
@@ -122,7 +130,7 @@ public class PersonSelectAdapter extends BaseAdapter{
         TextView tvName;
         TextView tvTitle;
         ImageView tvicon;
-        LinearLayout tvItem;
+        RelativeLayout tvItem;
     }
 
 }

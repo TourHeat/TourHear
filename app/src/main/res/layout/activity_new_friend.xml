@@ -11,16 +11,25 @@
         android:background="@color/PrimaryColor"
         android:orientation="vertical" >
 
-        <Button
+        <LinearLayout
             android:id="@+id/btn_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/selector_btn_back"
-            android:paddingLeft="10dp"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:gravity="center"
+            android:onClick="setting">
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back_white"
+                android:paddingLeft="10dp"
+                android:textColor="#ffffff"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -95,6 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
+                    android:layout_toRightOf="@id/SimageView1"
                     android:text="扫一扫"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
@@ -103,9 +113,10 @@
                     android:id="@+id/SimageView1"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/saoyisao"
                     android:scaleType="matrix"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
@@ -123,6 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
+                    android:layout_toRightOf="@id/SimageView2"
                     android:text="匹配通讯录"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
@@ -131,9 +143,10 @@
                     android:id="@+id/SimageView2"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/tongxunlu"
                     android:scaleType="matrix"/>
             </RelativeLayout>
 

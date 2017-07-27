@@ -20,6 +20,7 @@ import com.algebra.sdk.entity.Channel;
 import com.algebra.sdk.entity.Contact;
 import com.example.tr.tourhear.entity.ChaneelMems;
 import com.example.tr.tourhear.myimplements.MyOnChannelListener;
+import com.example.tr.tourhear.utils.ListViewAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

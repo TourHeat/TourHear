@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/_TourHear.iml" filepath="$PROJECT_DIR$/_TourHear.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springactionmenu/springactionmenu.iml" filepath="$PROJECT_DIR$/springactionmenu/springactionmenu.iml" />
     </modules>
   </component>
 </project>
