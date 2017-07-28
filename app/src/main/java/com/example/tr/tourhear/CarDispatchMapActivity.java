@@ -1,15 +1,23 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.AMapUtils;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 
 /**
@@ -20,12 +28,18 @@ public class CarDispatchMapActivity extends Activity implements AMap.OnMyLocatio
     MapView mMapView = null;
     AMap aMap;
     MyLocationStyle myLocationStyle;
-    int LocationChangedTime=0;
+    int LocationChangedTime = 0;
+    double lat = 0, lon = 0;
+    int num = 3;
+    double _lon[] = {103.986241, 103.991078, 103.979577};
+    double _lat[] = {30.764382, 30.761877, 30.76243};
+    String name[] = {"御坂美琴", "白井黑子", "西南交大小透明"};
+    Marker marker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.car_dispatch_map);
+        setContentView(R.layout.person_dispatch_map);
         LinearLayout bt_back = (LinearLayout) findViewById(R.id.btn_back);
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,9 +73,49 @@ public class CarDispatchMapActivity extends Activity implements AMap.OnMyLocatio
         aMap.getUiSettings().setMyLocationButtonEnabled(true);// 设置默认定位按钮是否显示
         aMap.setMyLocationEnabled(true);// 设置为true表示显示定位层并可触发定位，false表示隐藏定位层并不可触发定位，默认是false
         //定位模式
-        aMap.setMyLocationStyle(myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW));
+        aMap.setMyLocationStyle(myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE_NO_CENTER));
 
     }
+
+    AMap.InfoWindowAdapter infoWindowAdapter = new AMap.InfoWindowAdapter() {
+        @Override
+        public View getInfoWindow(Marker marker) {
+            View infoWindow = getLayoutInflater().inflate(R.layout.item_info_window, null);//display为自定义layout文件
+            TextView name = (TextView) infoWindow.findViewById(R.id.name);
+            name.setText(marker.getTitle());
+            LatLng l = marker.getPosition();// 获取标签的位置
+            TextView dis = (TextView) infoWindow.findViewById(R.id.mess);
+            float distance = ((float) (int) AMapUtils.calculateLineDistance(l, new LatLng(lat, lon))) / 1000;// 调用函数计算距离
+            dis.setText("距离 " + distance + " 千米");
+            ImageView img = (ImageView) infoWindow.findViewById(R.id.image);
+            img.setImageResource(R.drawable.timg);
+            //此处省去长篇代码
+            return infoWindow;
+        }
+
+        @Override
+        public View getInfoContents(Marker marker) {
+            return null;
+        }
+    };
+
+    private void SetMarker(double _lat, double _lon, String name) {
+        aMap.setInfoWindowAdapter(infoWindowAdapter);
+        LatLng latlng = new LatLng(_lat, _lon);
+        MarkerOptions markerOption = new MarkerOptions();
+        markerOption.position(latlng);
+        markerOption.title(name);
+        markerOption.visible(true);
+        markerOption.draggable(true);//设置Marker可拖动
+        markerOption.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory
+                .decodeResource(getResources(), R.drawable.marker_member)));
+        // 将Marker设置为贴地显示，可以双指下拉地图查看效果
+        markerOption.setFlat(true);//设置marker平贴地图效果
+        marker = aMap.addMarker(markerOption);
+        marker.showInfoWindow();
+
+    }
+
 
     @Override
     protected void onDestroy() {
@@ -94,14 +148,18 @@ public class CarDispatchMapActivity extends Activity implements AMap.OnMyLocatio
     @Override
     public void onMyLocationChange(Location location) {
         // 定位回调监听
-        if(location != null) {
-            if (LocationChangedTime==1){
-                aMap.moveCamera(CameraUpdateFactory.zoomTo(14));
+        if (location != null) {
+            lat = location.getLatitude();
+            lon = location.getLongitude();
+            if (LocationChangedTime == 1) {
+                aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lon), 14));
+                for (int i = 0; i < num; i++)
+                    SetMarker(_lat[i], _lon[i], name[i]);
             }
             LocationChangedTime++;
             Log.e("amap", "onMyLocationChange 定位成功， lat: " + location.getLatitude() + " lon: " + location.getLongitude());
             Bundle bundle = location.getExtras();
-            if(bundle != null) {
+            if (bundle != null) {
                 int errorCode = bundle.getInt(MyLocationStyle.ERROR_CODE);
                 String errorInfo = bundle.getString(MyLocationStyle.ERROR_INFO);
                 // 定位类型，可能为GPS WIFI等，具体可以参考官网的定位SDK介绍
@@ -112,7 +170,7 @@ public class CarDispatchMapActivity extends Activity implements AMap.OnMyLocatio
                 errorInfo
                 locationType
                 */
-                Log.e("amap", "定位信息， code: " + errorCode + " errorInfo: " + errorInfo + " locationType: " + locationType );
+                Log.e("amap", "定位信息， code: " + errorCode + " errorInfo: " + errorInfo + " locationType: " + locationType);
             } else {
                 Log.e("amap", "定位信息， bundle is null ");
 

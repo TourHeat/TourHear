@@ -21,8 +21,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:onClick="setting">
+            android:gravity="center">
 
             <Button
                 android:layout_width="20dp"

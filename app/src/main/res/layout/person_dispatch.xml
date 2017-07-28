@@ -66,8 +66,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:gravity="center"
-            android:onClick="setting">
+            android:gravity="center">
 
             <Button
                 android:layout_width="25dp"

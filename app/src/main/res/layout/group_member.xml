@@ -102,12 +102,21 @@
                 android:clickable="true"
                 android:gravity="center_vertical">
 
+                <com.example.tr.tourhear.view.CircleImageView
+                    android:id="@+id/image2"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/test_backpicture"/>
+
                 <TextView
                     android:id="@+id/StxtView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/image2"
                     android:padding="8dp"
                     android:text="皮卡丘"
                     android:textColor="@color/TittleColor"
@@ -124,12 +133,21 @@
                 android:clickable="true"
                 android:gravity="center_vertical">
 
+                <com.example.tr.tourhear.view.CircleImageView
+                    android:id="@+id/image3"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/timg"/>
+
                 <TextView
                     android:id="@+id/StxtView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/image3"
                     android:padding="8dp"
                     android:text="御坂美琴"
                     android:textColor="@color/TittleColor"
@@ -146,12 +164,21 @@
                 android:clickable="true"
                 android:gravity="center_vertical">
 
+                <com.example.tr.tourhear.view.CircleImageView
+                    android:id="@+id/image4"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/timg0"/>
+
                 <TextView
                     android:id="@+id/StxtView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/image4"
                     android:padding="8dp"
                     android:text="何华均"
                     android:textColor="@color/TittleColor"
@@ -190,12 +217,21 @@
                 android:clickable="true"
                 android:gravity="center_vertical">
 
+                <com.example.tr.tourhear.view.CircleImageView
+                    android:id="@+id/image6"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/timg"/>
+
                 <TextView
                     android:id="@+id/StxtView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/image6"
                     android:padding="8dp"
                     android:text="邹诗琪"
                     android:textColor="@color/TittleColor"
@@ -212,12 +248,21 @@
                 android:clickable="true"
                 android:gravity="center_vertical">
 
+                <com.example.tr.tourhear.view.CircleImageView
+                    android:id="@+id/image7"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/timg0"/>
+
                 <TextView
                     android:id="@+id/StxtView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/image7"
                     android:padding="8dp"
                     android:text="白井黑子"
                     android:textColor="@color/TittleColor"
@@ -234,12 +279,21 @@
                 android:clickable="true"
                 android:gravity="center_vertical">
 
+                <com.example.tr.tourhear.view.CircleImageView
+                    android:id="@+id/image8"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/test_backpicture"/>
+
                 <TextView
                     android:id="@+id/StxtView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
+                    android:layout_toRightOf="@id/image8"
                     android:padding="8dp"
                     android:text="交大小微"
                     android:textColor="@color/TittleColor"
@@ -263,9 +317,9 @@
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/icon_to"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
+                    android:background="@drawable/icon_to"
                     android:scaleType="matrix"/>
             </RelativeLayout>
         </LinearLayout>

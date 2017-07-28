@@ -24,7 +24,7 @@ import com.amap.api.maps.model.MyLocationStyle;
  * Created by ZhangYan on 2017/7/25.
  */
 
-public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLocationChangeListener {
+public class CarGroupMapActivity extends Activity implements AMap.OnMyLocationChangeListener {
     MapView mMapView = null;
     AMap aMap;
     MyLocationStyle myLocationStyle;
@@ -39,7 +39,7 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.person_dispatch_map);
+        setContentView(R.layout.car_group_map);
         LinearLayout bt_back = (LinearLayout) findViewById(R.id.btn_back);
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override

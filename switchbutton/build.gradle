@@ -83,6 +83,7 @@ install {
 }
 
 dependencies {
+testCompile 'junit:junit:4.12'
 }
 
 task sourcesJar(type: Jar) {
