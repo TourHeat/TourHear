@@ -26,6 +26,8 @@ import com.example.tr.tourhear.utils.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.tr.tourhear.utils.Constants.ISDEBUG;
+
 public class MainActivity extends FragmentActivity implements OnClickListener {
     // 底部菜单4个Linearlayout
     private LinearLayout ll_home;
@@ -66,9 +68,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         initEvent();
         // 初始化并设置当前Fragment
         initFragment(0);
-        uiHandler = Login.getUiHandler();
-        channelApi = API.getChannelApi();
-        initChannes();
+        if(!ISDEBUG){
+            uiHandler = Login.getUiHandler();
+            channelApi = API.getChannelApi();
+            initChannes();
+        }
+//
     }
 
     private void initChannes() {

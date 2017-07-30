@@ -32,6 +32,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.tr.tourhear.utils.Constants.ISDEBUG;
+
 public class Login extends AppCompatActivity {
     private static Handler uiHandler =null;
     private Context uiConntext;
@@ -79,10 +81,12 @@ public class Login extends AppCompatActivity {
         userPassWord = (EditText) findViewById(R.id.user_pass);//输入密码
         uiConntext = this;
         startStep = StartStage.INITIALIZING;//当前状态为初始化
-        newBind = API.init(this);//初始化对讲服务
+        if (!ISDEBUG) {
+            newBind = API.init(this);//初始化对讲服务
+            uiConntext = this;
+            uiHandler = new UIHandler(this);
+        }
 
-        uiConntext = this;
-        uiHandler = new UIHandler(this);
 //        if (startStep == StartStage.INITIALIZING)
 //            uiHandler.postDelayed(delayInitApi, 300);
         RegisterUser registerUser = new RegisterUser(Login.this,uiHandler);
@@ -117,8 +121,10 @@ public class Login extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.i("login","onresume----");
-        if (startStep == StartStage.INITIALIZING)
-            uiHandler.postDelayed(delayInitApi, 300);
+        if (!ISDEBUG) {
+            if (startStep == StartStage.INITIALIZING)
+                uiHandler.postDelayed(delayInitApi, 300);
+        }
     }
 
     private static class UIHandler extends  Handler{
@@ -211,7 +217,7 @@ public class Login extends AppCompatActivity {
                     public void onLogin(int uid, int result, UserProfile uProfile) {
                         super.onLogin(uid, result, uProfile);
                         uiHandler.obtainMessage(MsgCode.MC_LOGINFINISHED, 2, result).sendToTarget();//登录成功，关闭对话框
-                        Log.i("login","result"+result);
+                        Log.i("login","result: "+result);
                         //登录成功状态
                         if(result == Constant.ACCOUNT_RESULT_OK
                                 || result == Constant.ACCOUNT_RESULT_ALREADY_LOGIN) {
@@ -261,7 +267,7 @@ public class Login extends AppCompatActivity {
                             me.state).sendToTarget();
 //                    Intent intent = new Intent(Login.this,MainActivity.class);
 //                    startActivity(intent);
-                    accountApi.logout(selfId);
+                   accountApi.logout(selfId);
                 } else {
                     uiHandler.sendEmptyMessage(MsgCode.ASKFORSTARTSDK);
                 }
@@ -302,9 +308,16 @@ public class Login extends AppCompatActivity {
 
         outputInfo.put(RegisterUser.KeyAccount, straccount);
         //发送信息
-        uiHandler.obtainMessage(MsgCode.ASKFORLOGIN, 1,
-                0, outputInfo)
-                .sendToTarget();
+        if (!ISDEBUG) {
+            uiHandler.obtainMessage(MsgCode.ASKFORLOGIN, 1,
+                    0, outputInfo)
+                    .sendToTarget();
+        } else {
+            Intent i = new Intent(Login.this,MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+
     }
     //退出
     public void quit(View view){

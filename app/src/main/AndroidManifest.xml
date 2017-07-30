@@ -90,8 +90,8 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="e9391f447afbc3110c8378e2e34ec014"/>
-        <!--bea6b69ef024b035b15f7be40dff32ea -->
+            android:value="bea6b69ef024b035b15f7be40dff32ea"/>
+        <!--e9391f447afbc3110c8378e2e34ec014 -->
         <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
         <service android:name="com.amap.api.location.APSService" />
         <activity
@@ -107,11 +107,12 @@
         </activity>
         <activity android:name=".Test2"></activity>
         <activity
-            android:name=".ChatActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged"/>
-        <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+        <activity
+            android:name=".ChatActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged"/>
+
         <activity android:name=".GroupActivity"/>
         <activity android:name=".PersonalActivity"/>
         <activity android:name=".AddressActivity"/>
@@ -145,25 +146,29 @@
         <activity android:name=".CarDispatchMapActivity"/>
         <activity android:name=".CarGroupMapActivity"/>
 
-        <service android:name="com.algebra.sdk.Controller"/>
-        <service android:name="com.amap.api.location.APSService"></service>
+        <!--<activity-->
+            <!--android:name="com.example.tr.tourhear.tl_sdk.NotificationActivity"-->
+            <!--android:screenOrientation="portrait" />-->
+        <!--<activity android:name=".TLActivity" />-->
+        <!-- <activity android:name="com.example.tr.tourhear.tourhear1"></activity> -->
+        <service android:name="com.algebra.sdk.Controller" />
 
         <receiver android:name="com.example.tr.tourhear.entity.BootUpReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
 
-                <category android:name="android.intent.category.HOME"/>
+                <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.example.tr.tourhear.entity.PttReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.PTT.up"/>
-                <action android:name="android.intent.action.PTT.down"/>
+                <action android:name="android.intent.action.PTT.up" />
+                <action android:name="android.intent.action.PTT.down" />
             </intent-filter>
         </receiver>
         <receiver android:name="com.example.tr.tourhear.utils.MediaKeys">
             <intent-filter android:priority="1000000000">
-                <action android:name="android.intent.action.MEDIA_BUTTON"/>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
             </intent-filter>
         </receiver>
     </application>

@@ -52,14 +52,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.example.tr.tourhear.utils.Constants.ISDEBUG;
+
 /**
  * Created by ZhangYan on 2017/7/16.
  */
 public class ChatActivity extends Activity implements OnClickListener, RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener, OnRapidFloatingButtonSeparateListener {
 
     private Button mBtnSend;// 发送btn
-    private LinearLayout mBtnBack;// 返回btn
-    private LinearLayout mBtnmore;// 聊天设置btn
+
     private EditText mEditTextContent;
     private ListView mListView;
     private ChatMsgViewAdapter mAdapter;// 消息视图的Adapter
@@ -71,12 +72,12 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private SessionApi sessionapi;//会话操作
     private CompactID currSession = null;//会话
     private Session session;
-    //操作频道
+//操作频道
     private List<Channel> cs = new ArrayList<Channel>();
-    private Channel channel = null;
+    private  Channel channel = null;
     private DeviceApi deviceApi;//设备操作类
     private com.example.tr.tourhear.tl_demo.TalkHistory talkHistory = null;//历史
-    //媒体操作类
+//媒体操作类
     private AudioManager mAudioManager = null;
     private int CHAT_TYPE = 0;//0,个人聊天;1,
     private ChaneelMems cm;//聊天成员
@@ -95,19 +96,22 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private RapidFloatingActionHelper rfabHelper;
     private MyLocation myLocation;//位置信息
     private Bundle bundle = null;
-
+    private boolean startSessionOK = false;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         bundle = savedInstanceState;
-        uiHandler = Login.getUiHandler();
+        if(!ISDEBUG){
+            uiHandler = Login.getUiHandler();
+        }
+
         myLocation = new MyLocation(ChatActivity.this);//实例化位置
         initView();// 初始化view
         rfaLayout = (RapidFloatingActionLayout) findViewById(R.id.label_list_sample_rfal);
         rfaButton = (RapidFloatingActionButton) findViewById(R.id.add_menu);
         initMenu();
-        // initData();// 初始化数据
-        //   mListView.setSelection(mAdapter.getCount() - 1);
+       // initData();// 初始化数据
+     //   mListView.setSelection(mAdapter.getCount() - 1);
 
     }
 
@@ -164,20 +168,20 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
      * 初始化view
      */
     public void initView() {
-        mAudioManager = ((AudioManager) getSystemService(Context.AUDIO_SERVICE));//获取媒体
-        talkHistory = new com.example.tr.tourhear.tl_demo.TalkHistory(API.getAccountApi().whoAmI().id);
+        if (!ISDEBUG) {
+            mAudioManager = ((AudioManager) getSystemService(Context.AUDIO_SERVICE));//获取媒体
+            talkHistory = new com.example.tr.tourhear.tl_demo.TalkHistory(API.getAccountApi().whoAmI().id);
+        }
+
         speakTime = new Date(System.currentTimeMillis());
         mListView = (ListView) findViewById(R.id.listview);
         mBtnSend = (Button) findViewById(R.id.btn_send);
         mBtnSend.setOnClickListener(this);
-        mBtnBack = (LinearLayout) findViewById(R.id.btn_back);
-        mBtnBack.setOnClickListener(this);
-        mBtnmore = (LinearLayout) findViewById(R.id.btn_more);
-        mBtnmore.setOnClickListener(this);
+
         mEditTextContent = (EditText) findViewById(R.id.et_sendmessage);
         sendOthers = (LinearLayout) findViewById(R.id.send_others);
         actionMenu = (ActionMenu) findViewById(R.id.expanded_menu);
-        // actionMenu.me
+       // actionMenu.me
         actionMenu.addView(R.mipmap.menu_carmer, getItemColor(R.color.menuNormalInfo), getItemColor(R.color.menuPressInfo));
         actionMenu.addView(R.mipmap.menu_photo, getItemColor(R.color.menuNormalRed), getItemColor(R.color.menuPressRed));
         actionMenu.addView(R.mipmap.menu_location);
@@ -195,52 +199,60 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         btnSpeak.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
                     //打开对讲
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message_press));
                     bottom.setBackgroundColor(getResources().getColor(R.color.infosColor));
                     layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(0));
-                    layout_whospeak_name.setText("我" + "正在说话...");//我正在说话
+                    layout_whospeak_name.setText("我"+"正在说话...");//我正在说话
                     layout_whospeak.setVisibility(View.VISIBLE);
                     speakTime.setTime(System.currentTimeMillis());
-                    if (currSession != null && sessionapi != null) {
-                        sessionapi.talkRequest(API.getAccountApi().whoAmI().id, currSession.getType(), currSession.getId());
+                    if ( currSession!= null && sessionapi != null){
+                        sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
                         talkRequest(currSession);
-                        Log.i("login", "alkRequest:" + "uid: " + API.getAccountApi().whoAmI().id + "type" + currSession.getType() + " id :" + currSession.getId());
+                        Log.i("login","alkRequest:"+"uid: "+API.getAccountApi().whoAmI().id+"type"+currSession.getType()+" id :"+ currSession.getId());
                     }
                 }
-                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                if(motionEvent.getAction() == MotionEvent.ACTION_UP){
                     long dur = 0;
                     dur = System.currentTimeMillis() - speakTime.getTime();
-                    //新增发言
+//新增发言
                     ChatMsgEntity entity = new ChatMsgEntity();
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
                     speakTime.setTime(System.currentTimeMillis());
                     entity.setDate(format.format(speakTime).toString());
-                    entity.setMessage(dur / 1000 + "''");
+                    entity.setMessage(dur/1000+"''");
                     entity.setMsgType(false);
                     entity.setMsgType(0);
-                    entity.setName(API.getAccountApi().whoAmI().name);
+                    if(!ISDEBUG) {
+                        entity.setName(API.getAccountApi().whoAmI().name);
+                    } else {
+                        entity.setName("我");
+                    }
+
                     sendMsg(entity);
-                    //                    mDataArrays.add(entity);
-                    //                    mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
-                    //                    mListView.setAdapter(mAdapter);
-                    //                    mListView.setSelection(mAdapter.getCount() - 1);
+//                    mDataArrays.add(entity);
+//                    mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays);
+//                    mListView.setAdapter(mAdapter);
+//                    mListView.setSelection(mAdapter.getCount() - 1);
                     layout_whospeak.setVisibility(View.GONE);
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message));
                     bottom.setBackgroundColor(getResources().getColor(R.color.white));
-                    if (currSession != null && sessionapi != null) {
-                        sessionapi.talkRequest(API.getAccountApi().whoAmI().id, currSession.getType(), currSession.getId());
+                    if ( currSession!= null && sessionapi != null){
+                        sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
                         talkRelease(currSession);
-                        Log.i("login", "alkRequest:" + "uid: " + API.getAccountApi().whoAmI().id + "type" + currSession.getType() + " id :" + currSession.getId());
+                        Log.i("login","alkRequest:"+"uid: "+API.getAccountApi().whoAmI().id+"type"+currSession.getType()+" id :"+ currSession.getId());
                     }
                 }
 
                 return true;
             }
         });
-        //频道名称
-        cs = HomeFragment.getChannelList();
+        if (!ISDEBUG) {
+            //频道名称
+            cs = HomeFragment.getChannelList();
+        }
+
         //获取频道名称
         Intent intent = getIntent();
         String strChannelName = intent.getStringExtra("channelName");
@@ -257,46 +269,50 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
             });
         }
 
-        TextView cn = (TextView) findViewById(R.id.channel_name);
-        if (strChannelName != null && strChannelName != "") {//设置频道名称
+        TextView cn =  (TextView) findViewById(R.id.channel_name);
+        if(strChannelName != null && strChannelName !=""){//设置频道名称
             cn.setText(strChannelName);
         }
-        for (Channel c : cs) {
-            Log.i("login", "获取频道------------" + c.name);
-            if (c.name.equals(strChannelName)) {
-                channel = c;
-                initSession();
-                Log.i("login", "频道OK------------" + channel.name);
+        if (!ISDEBUG) {
+            for(Channel c : cs){
+                Log.i("login","获取频道------------"+c.name);
+                if(c.name.equals(strChannelName)){
+                    channel  = c;
+                    initSession();
+                    Log.i("login","频道OK------------"+channel.name);
+                }
             }
         }
+
 
         //初始化设备
 
     }
-
     //获取颜色
     private int getItemColor(int colorID) {
         return getResources().getColor(colorID);
     }
-
-    //获取说话者头像
+//获取说话者头像
     private Drawable getSpeakerHeadPortrait(int i) {
-        if (i == 0) {
-            return getResources().getDrawable(R.drawable.timg0);
-        } else {
-            return getResources().getDrawable(R.drawable.timg);
-        }
+        //HomeFragment.get
+        int h = Constants.headPortaits[Integer.parseInt(getMemberName(i))%5];
+        return getResources().getDrawable(h);
+//        if (i == 0) {
+//            return getResources().getDrawable(R.drawable.timg0);
+//        }else {
+//            return getResources().getDrawable(R.drawable.timg);
+//        }
     }
 
     private void initSession() {
         deviceApi = API.getDeviceApi();//获取媒体操作
-        //  deviceApi.setOemToneGenerator();
+      //  deviceApi.setOemToneGenerator();
         setupToneGen();
-        sessionapi = API.getSessionApi();
-        if (sessionapi == null) {
+        sessionapi  = API.getSessionApi();
+        if(sessionapi == null){
             uiHandler.postDelayed(delayInitApi, 300);
-        } else {
-            sessionapi.setOnMediaListener(new MyOnMediaListener() {
+        }else {
+            sessionapi.setOnMediaListener(new MyOnMediaListener(){
                 //媒体回调
                 //获取新的对讲记录
                 @Override
@@ -316,12 +332,12 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                     someOneisSpeak = false;
                     long dur = 0;
                     dur = System.currentTimeMillis() - speakTime.getTime();
-                    //新增发言
+//新增发言
                     ChatMsgEntity entity = new ChatMsgEntity();
                     SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
                     speakTime.setTime(System.currentTimeMillis());
                     entity.setDate(format.format(speakTime).toString());
-                    entity.setMessage(dur / 1000 + "''");
+                    entity.setMessage(dur/1000+"''");
                     entity.setMsgType(true);
                     entity.setMsgType(0);
                     entity.setName(getMemberName(i));
@@ -330,15 +346,15 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 }
             });
         }
-        sessionapi.sessionCall(API.getAccountApi().whoAmI().id, channel.cid.getType(), channel.cid.getId());
-        Log.i("login", "创建会话:" + API.getAccountApi().whoAmI().id + " ::  " + channel.cid.getType() + " ::  " + channel.cid.getId());
-        sessionapi.setOnSessionListener(new MyOnSessionListener() {
+        sessionapi.sessionCall(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
+        Log.i("login","创建会话:"+API.getAccountApi().whoAmI().id+" ::  "+channel.cid.getType()+" ::  "+channel.cid.getId());
+        sessionapi.setOnSessionListener(new MyOnSessionListener(){
             @Override
             public void onSessionGet(int selfUserId, int type, int sessionId, int initiator) {
                 super.onSessionGet(selfUserId, type, sessionId, initiator);
-                Log.i("login", "sessionOK----- sessionId" + sessionId);
-                Log.i("login", "sessionOK----- selfUserId" + selfUserId);
-                Log.i("login", "sessionOK----- initiator" + initiator);
+                Log.i("login","sessionOK----- sessionId"+sessionId);
+                Log.i("login","sessionOK----- selfUserId"+selfUserId);
+                Log.i("login","sessionOK----- initiator"+initiator);
             }
 
             @Override
@@ -349,32 +365,31 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
             @Override
             public void onSessionEstablished(int selfUserId, int type, int sessionId) {
                 super.onSessionEstablished(selfUserId, type, sessionId);
-                Log.i("login", "onSessionEstablished----- sessionId" + sessionId);
-                currSession = new CompactID(type, sessionId);
-                //  sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
+                Log.i("login","onSessionEstablished----- sessionId"+sessionId);
+                currSession = new CompactID(type,sessionId);
+              //  sessionapi.talkRequest(API.getAccountApi().whoAmI().id,currSession.getType(),currSession.getId());
                 //获取频道成员
-                cm = HomeFragment.getCmem(channel.cid.getId());
-                int[] ids = new int[cm.getCs().size()];
+                 cm = HomeFragment.getCmem(channel.cid.getId());
+                int [] ids = new int[cm.getCs().size()];
                 int i = 0;
-                for (Contact c : cm.getCs()) {
+                for(Contact c: cm.getCs()){
                     ids[i++] = c.id;
                 }
-                sessionapi.startDialog(API.getAccountApi().whoAmI().id, channel.cid.getType(), channel.cid.getId(), ids);
+                sessionapi.startDialog(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId(),ids);
             }
 
             @Override
             public void onDialogEstablished(int i, int i1, int i2, List<Integer> list) {
-                Log.i("login", "onDialogEstablished----- sessionId" + i1);
+                Log.i("login","onDialogEstablished----- sessionId"+i1);
             }
         });
 
-        // sessionapi.startDialog(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
+       // sessionapi.startDialog(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
     }
-
     //发送信息
-    public void sendMsg(ChatMsgEntity entity) {
+    public void sendMsg ( ChatMsgEntity entity) {
         mDataArrays.add(entity);
-        mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays, bundle);
+        mAdapter = new ChatMsgViewAdapter(getBaseContext(), mDataArrays,bundle);
         mListView.setAdapter(mAdapter);
         mListView.setSelection(mAdapter.getCount() - 1);
     }
@@ -383,19 +398,18 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private void setSpeack(int owner) {
         layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(owner));
         String speakerName = getMemberName(owner);
-        layout_whospeak_name.setText(speakerName + "正在说话...");//用户正在说话
+        layout_whospeak_name.setText(speakerName+"正在说话...");//用户正在说话
         layout_whospeak.setVisibility(View.VISIBLE);
     }
-
-    private void closeSpeack() {
+    private void closeSpeack(){
         layout_whospeak.setVisibility(View.GONE);
     }
 
     //获取频道成员名称,owner是uid
     private String getMemberName(int owner) {
-        for (Contact c : cm.getCs()) {
-            if (c.id == owner) {
-                return c.name;
+        for(Contact c : cm.getCs()){
+            if(c.id == owner){
+                return  c.name;
             }
         }
         return "";
@@ -431,8 +445,8 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
             entity.setMessage(msgArray[i]);
             mDataArrays.add(entity);
         }
-        //        ChatMsgEntity entity = new ChatMsgEntity();
-        //        mDataArrays.add(entity);
+//        ChatMsgEntity entity = new ChatMsgEntity();
+//        mDataArrays.add(entity);
         mAdapter = new ChatMsgViewAdapter(this, mDataArrays);
         mListView.setAdapter(mAdapter);
     }
@@ -442,27 +456,6 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         switch (v.getId()) {
             case R.id.btn_send:// 发送按钮点击事件
                 send();
-                break;
-            case R.id.btn_more:// 设置按钮点击事件
-                //测试暂用
-                Intent intent = new Intent(ChatActivity.this, ChatSettingActivity.class);
-                if (CHAT_TYPE == Constants.CHAT_TYPE_CHEDUI) {//车队
-                    intent = new Intent(ChatActivity.this, CarGroupSettingActivity.class);
-                }
-
-                if (CHAT_TYPE == Constants.CHAT_TYPE_GEREN) {//个人
-                    intent = new Intent(ChatActivity.this, ChatSettingActivity.class);
-                }
-
-                if (CHAT_TYPE == Constants.CHAT_TYPE_GROUP) {//群聊
-                    intent = new Intent(ChatActivity.this, ChatGroupSettingActivity.class);
-                }
-                startActivity(intent);
-                break;
-            case R.id.btn_back:// 返回按钮点击事件
-                //关闭会话
-                sessionapi.sessionBye(API.getAccountApi().whoAmI().id, channel.cid.getType(), channel.cid.getId());
-                finish();// 结束,实际开发中，可以返回主界面
                 break;
         }
     }
@@ -499,37 +492,35 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     }
 
     public void setVoiceState(View view) {
-        ImageView v = (ImageView) view.findViewById(R.id.voice);
-        if (voiceable) {
-            voiceable = voiceable ? false : true;
+        ImageView v = (ImageView) findViewById(R.id.voice);
+        if(voiceable) {
+            voiceable = voiceable?false:true;
             v.setBackground(getResources().getDrawable(R.drawable.novoice));
         } else {
-            voiceable = voiceable ? false : true;
+            voiceable = voiceable?false:true;
             v.setBackground(getResources().getDrawable(R.drawable.voice));
         }
 
     }
 
-    /*public void setting(View view) {
+    public void setting(View view) {
         Intent intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
       //
         if(CHAT_TYPE == Constants.CHAT_TYPE_CHEDUI) {//车队
             intent=new Intent(ChatActivity.this,CarGroupSettingActivity.class);
-        }
-
-        if(CHAT_TYPE == Constants.CHAT_TYPE_GEREN) {//各人
+        } else if(CHAT_TYPE == Constants.CHAT_TYPE_GEREN) {//各人
             intent=new Intent(ChatActivity.this,ChatSettingActivity.class);
-        }
-
-        if(CHAT_TYPE == Constants.CHAT_TYPE_GROUP) {//群聊
+        } else  {//群聊
             intent=new Intent(ChatActivity.this,ChatGroupSettingActivity.class);
         }
         startActivity(intent);
-    }*/
+    }
 
     public void startSpeak(View view) {
         //iconVoice
     }
+
+
 
 
     private class OEMToneGen implements OEMToneGenerator {
@@ -543,7 +534,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         @Override
         public void alertTone(final int type) {
             mToneGen.startTone(ToneGenerator.TONE_DTMF_5);
-            uiHandler.postDelayed(new Runnable() {
+            uiHandler.postDelayed(new Runnable(){
                 @Override
                 public void run() {
                     mToneGen.stopTone();
@@ -555,20 +546,18 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     }
 
     private OEMToneGen oemToneGen = new OEMToneGen();
-
     private void setupToneGen() {
         deviceApi.setOemToneGenerator(oemToneGen);
         OEMToneProgressListener listener = deviceApi.getToneProgressListener();
         oemToneGen.setToneProgressListener(listener);
     }
-
     //
     private Runnable delayInitApi = new Runnable() {
         @Override
         public void run() {
             if ((sessionapi = API.getSessionApi()) != null) {
                 deviceApi = API.getDeviceApi();
-                sessionapi.setOnMediaListener(new MyOnMediaListener() {
+                sessionapi.setOnMediaListener(new MyOnMediaListener(){
                     //媒体回调
                     @Override
                     public void onSomeoneSpeaking(int i, int i1, int i2, int i3, int i4) {
@@ -588,25 +577,22 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
             }
         }
     };
-
     //获取话权
     private void talkRequest(CompactID session) {
         //isPttPressed = true;
         if (session != null && sessionapi != null)
             sessionapi.talkRequest(API.getAccountApi().whoAmI().id, session.getType(), session.getId());
     }
-
     //释放
     private void talkRelease(CompactID session) {
-        // isPttPressed = false;
+       // isPttPressed = false;
         if (session != null && sessionapi != null)
             sessionapi.talkRelease(API.getAccountApi().whoAmI().id, session.getType(), session.getId());
     }
-
-    //弹出菜单监听事件
+//弹出菜单监听事件
     @Override
     public void onRFACItemLabelClick(int position, RFACLabelItem item) {
-        switch (position) {
+        switch (position){
             case 0:
                 ChatMsgEntity entity = new ChatMsgEntity();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
@@ -630,8 +616,8 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
 
     @Override
     public void onRFACItemIconClick(int position, RFACLabelItem item) {
-        Log.i("login", "" + position);
-        switch (position) {
+        Log.i("login",""+position);
+        switch (position){
             case 0:
                 ChatMsgEntity entity = new ChatMsgEntity();
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
@@ -640,7 +626,12 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 entity.setMessage("西南交大 | 1.2km");
                 entity.setMsgType(false);
                 entity.setMsgType(1);
-                entity.setName(API.getAccountApi().whoAmI().name);
+                if(!ISDEBUG){
+                    entity.setName(API.getAccountApi().whoAmI().name);
+                } else {
+                    entity.setName("我");
+                }
+
                 sendMsg(entity);
                 break;
             case 1:
@@ -653,7 +644,11 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 entity2.setMessage("西南交大 | 1.2km");
                 entity2.setMsgType(false);
                 entity2.setMsgType(2);
-                entity2.setName(API.getAccountApi().whoAmI().name);
+                if(!ISDEBUG){
+                    entity2.setName(API.getAccountApi().whoAmI().name);
+                } else {
+                    entity2.setName("我");
+                }
                 sendMsg(entity2);
                 break;
         }
@@ -664,8 +659,15 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
 
     @Override
     public void onRFABClick() {
-        Log.i("login", "OK22onRFABClick");
+        Log.i("login","OK22onRFABClick");
         sendOthers.setVisibility(View.INVISIBLE);
+    }
+
+    public void back(View view){
+        if(currSession != null){
+            sessionapi.sessionBye(API.getAccountApi().whoAmI().id,channel.cid.getType(),channel.cid.getId());
+        }
+        finish();// 结束,实际开发中，可以返回主界面
     }
 }
 

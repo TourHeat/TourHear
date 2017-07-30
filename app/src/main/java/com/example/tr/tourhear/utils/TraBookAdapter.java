@@ -23,11 +23,17 @@ public class TraBookAdapter extends BaseAdapter {
     private List<Map<String, Object>> data;
     private LayoutInflater layoutInflater;
     private Context context;
-
+    private int type = Constants.LISTVIEW_MYPUBLISH;
     public TraBookAdapter(Context context, List<Map<String, Object>> data) {
         this.context = context;
         this.data = data;
         this.layoutInflater = LayoutInflater.from(context);
+    }
+    public TraBookAdapter(Context context, List<Map<String, Object>> data,int type) {
+        this.context = context;
+        this.data = data;
+        this.layoutInflater = LayoutInflater.from(context);
+        this.type = type;
     }
 
     /**
@@ -78,7 +84,13 @@ public class TraBookAdapter extends BaseAdapter {
         if (convertView == null) {
             zujian = new Zujian();
             //获得组件，实例化组件
-            convertView = layoutInflater.inflate(R.layout.item_tra_book, null);
+            //item_tra_book
+
+            if (this.type == Constants.LISTVIEW_MYPUBLISH) {
+                convertView = layoutInflater.inflate(R.layout.item_mine_publish, null);
+            }else {
+                convertView = layoutInflater.inflate(R.layout.item_tra_book, null);
+            }
             zujian.image = (CircleImageView) convertView.findViewById(R.id.image);
             zujian.name = (TextView) convertView.findViewById(R.id.name);
             zujian.time = (TextView) convertView.findViewById(R.id.time);

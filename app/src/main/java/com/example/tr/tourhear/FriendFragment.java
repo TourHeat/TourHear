@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
+import com.example.tr.tourhear.utils.Constants;
 import com.example.tr.tourhear.utils.TraBookAdapter;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class FriendFragment extends Fragment {
         View view = inflater.inflate(R.layout.page_03, container, false);
         mylistView = (MyListView) view.findViewById(R.id.tra_book_list);
         List<Map<String, Object>> list = getData();
-        mylistView.setAdapter(new TraBookAdapter(getActivity(), list));
+        mylistView.setAdapter(new TraBookAdapter(getActivity(), list, Constants.LISTVIEW_MYCOLLECTION));
         mylistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

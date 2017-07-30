@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/BackgroundColor">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:voiceView="http://schemas.android.com/apk/res-auto"
+    android:background="@color/PrimaryColor">
 
     <RelativeLayout
         android:id="@+id/rl_layout"
@@ -13,18 +14,17 @@
         android:layout_alignParentTop="true"
         android:background="@color/PrimaryColor"
         android:orientation="vertical">
-
         <LinearLayout
             android:id="@+id/btn_back"
             android:layout_width="40dp"
+            android:onClick="back"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:onClick="setting">
+            android:gravity="center">
 
             <Button
+                android:onClick="back"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
@@ -44,13 +44,14 @@
             android:textSize="@dimen/NavigationTittleSize"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_alignRight="@+id/btn_more"
+            android:layout_alignRight="@+id/btn_onmap"
             android:layout_marginRight="50dp"
+            android:gravity="center"
             android:onClick="setVoiceState">
-
             <ImageView
+                android:onClick="setVoiceState"
                 android:id="@+id/voice"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -60,31 +61,42 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/btn_more"
+            android:id="@+id/btn_onmap"
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:onClick="openMap">
 
             <Button
+                android:onClick="openMap"
+                android:id="@+id/button"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:background="@drawable/tomap"
+                android:background="@drawable/icon_map"
                 android:gravity="center"
                 android:textColor="#ffffff"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
         </LinearLayout>
 
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/rl_layout"
+        android:background="@drawable/bg_dispatch2"
+        >
 
     <RelativeLayout
         android:id="@+id/PersonDispatchMe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_layout">
+        android:layout_below="@id/rl_layout"
+        >
 
         <com.example.tr.tourhear.view.CircleImageView
             android:id="@+id/ImageMe"
@@ -93,7 +105,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/timg"/>
+            android:src="@mipmap/headportrait_2"/>
 
         <TextView
             android:id="@+id/TextMe"
@@ -101,88 +113,120 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/ImageMe"
             android:layout_centerHorizontal="true"
-            android:text="御坂美琴"
-            android:textColor="@color/TittleColor"
+            android:text="何导游"
+            android:textColor="@color/colorPrimary"
             android:textSize="@dimen/TittleTextSize"/>
 
     </RelativeLayout>
 
     <RelativeLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:id="@+id/PersonDispatchOthers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/PersonDispatchMe"
+        android:background="@drawable/anse_corner"
         android:layout_marginTop="70dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
+            >
         <RelativeLayout
             android:id="@+id/PersonDispatchOthers1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp">
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="5dp"
+                android:background="@drawable/primary_corner"
 
+                />
             <com.example.tr.tourhear.view.CircleImageView
                 android:id="@+id/ImageOthers1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/timg0"/>
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/headportrait_1"/>
 
             <TextView
                 android:id="@+id/TextOthers1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ImageOthers1"
-                android:text="白井黑子"
-                android:layout_centerHorizontal="true"
+                android:text="胖胖严"
+                android:gravity="center"
                 android:textColor="@color/TittleColor"
                 android:textSize="@dimen/TextTextSize"/>
-
-            <com.example.tr.tourhear.view.CircleImageView
+            </LinearLayout>
+            <ImageView
+                android:onClick="changeMikeState"
                 android:id="@+id/ImageOthersMike1"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_above="@id/TextOthers1"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/tab_message_press"/>
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="35dp"
+                android:src="@mipmap/mic_on"/>
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/PersonDispatchOthers2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_toRightOf="@id/PersonDispatchOthers1">
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="5dp"
+                    android:background="@drawable/corner_rec_bg_blue_press"
+                    android:visibility="invisible"
+                    />
             <com.example.tr.tourhear.view.CircleImageView
                 android:id="@+id/ImageOthers2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/timg"/>
+                android:src="@mipmap/headportrait_3"/>
 
             <TextView
                 android:id="@+id/TextOthers2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ImageOthers2"
-                android:text="御坂妹妹"
-                android:layout_centerHorizontal="true"
+                android:text="张胖胖"
                 android:textColor="@color/TittleColor"
                 android:textSize="@dimen/TextTextSize"/>
-
-            <com.example.tr.tourhear.view.CircleImageView
+            </LinearLayout>
+            <ImageView
+                android:onClick="changeMikeState"
                 android:id="@+id/ImageOthersMike2"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_above="@id/TextOthers2"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/tab_message_press"/>
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="35dp"
+                android:src="@mipmap/mic_off"/>
 
         </RelativeLayout>
 
@@ -190,36 +234,47 @@
             android:id="@+id/PersonDispatchOthers3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_toRightOf="@+id/PersonDispatchOthers2">
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="5dp"
+                    android:background="@drawable/corner_rec_bg_blue_press"
+                    android:visibility="invisible"
+                    />
             <com.example.tr.tourhear.view.CircleImageView
                 android:id="@+id/ImageOthers3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/timg"/>
+                android:src="@mipmap/headportrai_4"/>
 
             <TextView
                 android:id="@+id/TextOthers3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ImageOthers3"
-                android:text="御坂一号"
-                android:layout_centerHorizontal="true"
+                android:text="哈士奇"
                 android:textColor="@color/TittleColor"
                 android:textSize="@dimen/TextTextSize"/>
-
-            <com.example.tr.tourhear.view.CircleImageView
+</LinearLayout>
+            <ImageView
+                android:onClick="changeMikeState"
                 android:id="@+id/ImageOthersMike3"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_above="@id/TextOthers3"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/tab_message_press"/>
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="35dp"
+                android:src="@mipmap/mic_off"/>
 
         </RelativeLayout>
 
@@ -227,45 +282,129 @@
             android:id="@+id/PersonDispatchOthers4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_toRightOf="@+id/PersonDispatchOthers3">
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="5dp"
+                    android:background="@drawable/corner_rec_bg_blue_press"
+                    android:visibility="invisible"
+                    />
             <com.example.tr.tourhear.view.CircleImageView
                 android:id="@+id/ImageOthers4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:src="@drawable/timg"/>
+                android:src="@mipmap/headportrait_5"/>
 
             <TextView
                 android:id="@+id/TextOthers4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ImageOthers4"
-                android:text="御坂二号"
-                android:layout_centerHorizontal="true"
+                android:text="大均哥"
                 android:textColor="@color/TittleColor"
                 android:textSize="@dimen/TextTextSize"/>
-
-            <com.example.tr.tourhear.view.CircleImageView
+            </LinearLayout>
+            <ImageView
+                android:onClick="changeMikeState"
                 android:id="@+id/ImageOthersMike4"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_above="@id/TextOthers4"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="5dp"
-                android:src="@drawable/tab_message_press"/>
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="35dp"
+                android:src="@mipmap/mic_off"/>
 
         </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+        <LinearLayout
+            android:id="@+id/whospeaking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:visibility="invisible"
+            >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                >
+                <com.example.tr.tourhear.view.CircleImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/headportrait_2"
+                    android:id="@+id/speacker_headportrait"
+                    />
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/info_voice"
+                    />
+            </LinearLayout>
+            <TextView
+                android:id="@+id/name"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:text="我正在说话..."
+                />
 
+        </LinearLayout>
+        <com.carlos.voiceline.mylibrary.VoiceLineView
+            android:id="@+id/boxing"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            voiceView:middleLineHeight="1dp"
+            voiceView:rectSpace="2dp"
+            voiceView:rectWidth="5dp"
+            voiceView:viewMode="line"
+            voiceView:voiceLine="@color/infosColor"
+            />
+        <!--
+         voiceView:middleLine="@android:color/holo_red_light"  
+                voiceView:middleLineHeight="1dp"  
+                voiceView:rectSpace="2dp"  
+                voiceView:rectWidth="5dp"  
+                voiceView:viewMode="line"  
+                voiceView:voiceLine="@android:color/holo_red_light"
+        -->
+    </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray"
+            />
     <LinearLayout
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal">
@@ -290,9 +429,12 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:background="@color/PrimaryColor"
+            android:onClick="ChangeCallModel"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/call_mode"
+                android:onClick="ChangeCallModel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -301,5 +443,6 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/TittleTextSize"/>
         </RelativeLayout>
+    </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

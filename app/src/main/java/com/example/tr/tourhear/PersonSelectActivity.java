@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.tr.tourhear.utils.ChineseToEnglish;
 import com.example.tr.tourhear.utils.CompareSort;
+import com.example.tr.tourhear.utils.Constants;
 import com.example.tr.tourhear.utils.PersonSelectAdapter;
 import com.example.tr.tourhear.utils.SideBarView;
 import com.example.tr.tourhear.utils.User;
@@ -61,6 +62,7 @@ public class PersonSelectActivity extends Activity implements SideBarView.Letter
         for (int i = 0; i < length; i++) {
             User user = new User();
             user.setName(contactsArray[i]);
+            user.setIcon(Constants.headPortaits[i%5]);
             String firstSpell = ChineseToEnglish.getFirstSpell(contactsArray[i]);
             String substring = firstSpell.substring(0, 1).toUpperCase();
             if (substring.matches("[A-Z]")) {
