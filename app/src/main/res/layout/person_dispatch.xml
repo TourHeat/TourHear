@@ -173,6 +173,7 @@
                 android:textSize="@dimen/TextTextSize"/>
             </LinearLayout>
             <ImageView
+                android:elevation="4dp"
                 android:onClick="changeMikeState"
                 android:id="@+id/ImageOthersMike1"
                 android:layout_width="25dp"
@@ -220,6 +221,7 @@
                 android:textSize="@dimen/TextTextSize"/>
             </LinearLayout>
             <ImageView
+                android:elevation="4dp"
                 android:onClick="changeMikeState"
                 android:id="@+id/ImageOthersMike2"
                 android:layout_width="25dp"
@@ -268,6 +270,7 @@
                 android:textSize="@dimen/TextTextSize"/>
 </LinearLayout>
             <ImageView
+                android:elevation="4dp"
                 android:onClick="changeMikeState"
                 android:id="@+id/ImageOthersMike3"
                 android:layout_width="25dp"
@@ -316,6 +319,7 @@
                 android:textSize="@dimen/TextTextSize"/>
             </LinearLayout>
             <ImageView
+                android:elevation="4dp"
                 android:onClick="changeMikeState"
                 android:id="@+id/ImageOthersMike4"
                 android:layout_width="25dp"

@@ -61,7 +61,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     }
 
     public List<Map<String, Object>> getData() {
-        int jingdian[]={jingdian_jiuzai1,jingdian_kuanzai,jingdian_jiuzai2};
+        int jingdian[]={jingdian_jiuzai2,jingdian_kuanzai,jingdian_jiuzai1};
         int headport[]={headportrait_2,headportrait_1,headportrait_3};
         String jingdiannames[]={"九寨三日游，平安出行，放心游玩！！","成都周边两日游，一起来畅玩！！","九寨三日游，快来跟我一起浪迹天涯吧!!"};
         String usernames[]={"特立独行的猪","小胖严","张胖胖"};

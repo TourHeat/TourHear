@@ -203,7 +203,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                     //打开对讲
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message_press));
                     bottom.setBackgroundColor(getResources().getColor(R.color.infosColor));
-                    layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(0));
+                    layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(API.getAccountApi().whoAmI().id));
                     layout_whospeak_name.setText("我"+"正在说话...");//我正在说话
                     layout_whospeak.setVisibility(View.VISIBLE);
                     speakTime.setTime(System.currentTimeMillis());

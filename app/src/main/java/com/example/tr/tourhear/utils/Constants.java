@@ -14,7 +14,7 @@ public class Constants {
             R.mipmap.headportrait_3, R.mipmap.headportrai_4,R.mipmap.headportrait_5};//头像
     public static int LISTVIEW_MYPUBLISH = 0;
     public static int LISTVIEW_MYCOLLECTION = 1;
-    public static boolean ISDEBUG = true;//调试版
+    public static boolean ISDEBUG = false;//调试版
     public static int CALL_MODE_SIGNAL = 0;//单呼
     public static int CALL_MODE_MULT = 1;//单呼
 
