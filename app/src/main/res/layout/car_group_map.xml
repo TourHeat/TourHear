@@ -70,6 +70,38 @@
         android:layout_above="@+id/bottom"/>
 
     <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rl_layout"
+        android:orientation="horizontal">
+
+    <AutoCompleteTextView
+        android:id="@+id/keyWord"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:layout_weight="1"
+        android:background="@drawable/icon_search_push2"
+        android:paddingLeft="10dp"
+        android:completionThreshold="1"
+        android:dropDownVerticalOffset="1.0dip"
+        android:hint="请输入目的地"
+        android:inputType="text|textAutoComplete"
+        android:imeOptions="actionSearch"
+        android:maxLength="20"
+        android:paddingRight="37.0dip"
+        android:singleLine="true"
+        android:textColor="#000000"
+        android:textColorHint="#999999"
+        android:textSize="16.0sp" />
+
+    </LinearLayout>
+
+
+
+    <!--<LinearLayout
         android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -109,5 +141,5 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/TittleTextSize"/>
         </RelativeLayout>
-    </LinearLayout>
+    </LinearLayout>-->
 </RelativeLayout>

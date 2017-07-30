@@ -23,6 +23,7 @@ public class CarGroupSettingActivity extends Activity {
         final RelativeLayout group_member = (RelativeLayout) findViewById(R.id.GroupMember);
         final RelativeLayout person_select = (RelativeLayout) findViewById(R.id.SrelativeLayout3);
         final RelativeLayout car_select = (RelativeLayout) findViewById(R.id.SrelativeLayout4);
+        final RelativeLayout set_here = (RelativeLayout) findViewById(R.id.SrelativeLayout15);
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,6 +52,14 @@ public class CarGroupSettingActivity extends Activity {
                 //车辆调度
                 Intent intent_car_select = new Intent(CarGroupSettingActivity.this, CarSelectActivity.class);
                 startActivity(intent_car_select);
+            }
+        });
+        set_here.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //车辆调度
+                Intent intent_set_here = new Intent(CarGroupSettingActivity.this, CarGroupMapActivity.class);
+                startActivity(intent_set_here);
             }
         });
     }

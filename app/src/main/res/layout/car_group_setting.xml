@@ -260,10 +260,10 @@
                     android:id="@+id/SimageView7"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
                     android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    android:scaleType="matrix"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -478,6 +478,66 @@
                     android:layout_marginRight="12dp"
                     android:layout_centerVertical="true"
                     app:hasShadow="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout15"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="设置集合点"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+                <ImageView
+                    android:id="@+id/SimageView15"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout16"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="紧急发布"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+                <ImageView
+                    android:id="@+id/SimageView16"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
+
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

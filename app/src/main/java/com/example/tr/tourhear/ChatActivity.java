@@ -263,7 +263,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
             btn_tomap.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(ChatActivity.this,CarGroupMapActivity.class);
+                    Intent intent=new Intent(ChatActivity.this,GPSNaviActivity.class);
                     startActivity(intent);
                 }
             });
