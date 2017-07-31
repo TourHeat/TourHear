@@ -39,7 +39,7 @@ public class CarDispatchActivity extends Activity {
         }
     }
     public void openMap (View view) {
-        Intent intent=new Intent(CarDispatchActivity.this,CarDispatchMapActivity.class);
+        Intent intent=new Intent(CarDispatchActivity.this,ShowRouteActivity.class);
         startActivity(intent);
     }
 
