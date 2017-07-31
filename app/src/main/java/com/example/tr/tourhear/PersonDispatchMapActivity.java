@@ -31,8 +31,8 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
     int LocationChangedTime = 0;
     double lat = 0, lon = 0;
     int num = 3;
-    double _lon[] = {103.971478, 103.974881, 104.004686};
-    double _lat[] = {30.760989, 30.773103, 30.764191};
+    double _lon[] = {104.032732, 104.013677, 103.975108};
+    double _lat[] = {30.716125, 30.760683, 30.773147};
     String name[] = {"邹诗琪", "程梓羚", "何华均"};
     Marker marker;
 
@@ -88,7 +88,7 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
             float distance = ((float) (int) AMapUtils.calculateLineDistance(l, new LatLng(lat, lon))) / 1000;// 调用函数计算距离
             dis.setText("距离 " + distance + " 千米");
             ImageView img = (ImageView) infoWindow.findViewById(R.id.image);
-            img.setImageResource(R.drawable.timg);
+            img.setImageResource(R.mipmap.headportrait_2);
             //此处省去长篇代码
             return infoWindow;
         }
