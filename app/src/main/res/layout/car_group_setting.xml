@@ -48,6 +48,7 @@
         android:layout_height="fill_parent"
         android:background="@color/BackgroundColor"
         android:scrollbarStyle="outsideOverlay"
+        android:layout_below="@id/rl_layout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true">
 
