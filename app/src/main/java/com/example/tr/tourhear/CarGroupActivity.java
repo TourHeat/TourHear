@@ -1,6 +1,7 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.LinearLayout;
  */
 
 public class CarGroupActivity extends Activity {
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,5 +27,16 @@ public class CarGroupActivity extends Activity {
                 finish();
             }
         });
+
+    }
+
+    public void setSchedule(View view) {
+        Intent intent = new Intent(CarGroupActivity.this,SetMySchedule.class);
+        startActivity(intent);
+        //finish();
+    }
+    //获取颜色
+    private int getItemColor(int colorID) {
+        return getResources().getColor(colorID);
     }
 }

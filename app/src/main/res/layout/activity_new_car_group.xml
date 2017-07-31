@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="车队名称"
-                    android:textColor="@color/TittleColor"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <EditText
@@ -92,10 +92,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_centerVertical="true"
+                    android:background="@drawable/qq_edit_login"
                     android:layout_toRightOf="@id/StxtView1"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/SrelativeLayout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -109,14 +111,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="车队队长"
-                    android:textColor="@color/TittleColor"
+                    android:text="车队领队"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <EditText
                     android:id="@+id/CarGroupLeader"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@drawable/qq_edit_login"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/StxtView2"/>
             </RelativeLayout>
@@ -132,26 +135,29 @@
 
                 <TextView
                     android:id="@+id/StxtView3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
                     android:text="成员"
-                    android:textColor="@color/TittleColor"
+                    android:textColor="@color/black"
+                    android:background="@color/bgofdefault"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <RelativeLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/StxtView3">
-                    <ImageView
+                    <com.example.tr.tourhear.view.CircleImageView
                         android:id="@+id/img1"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_alignParentLeft="true"
                         android:layout_marginLeft="13dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/timg"
-                        android:scaleType="matrix"/>
+                        android:src="@mipmap/headportrait_5"
+                        />
 
                     <TextView
                         android:id="@+id/text1"
@@ -160,18 +166,18 @@
                         android:padding="8dp"
                         android:layout_below="@id/img1"
                         android:text="御坂美琴"
-                        android:textColor="@color/TittleColor"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/TextTextSize"/>
 
-                    <ImageView
+                    <com.example.tr.tourhear.view.CircleImageView
                         android:id="@+id/img0"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_toRightOf="@id/img1"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
-                        android:background="@drawable/timg0"
-                        android:scaleType="matrix"/>
+                        android:src="@mipmap/headportrait_2"
+                        />
 
                     <TextView
                         android:id="@+id/text0"
@@ -181,18 +187,18 @@
                         android:layout_below="@id/img0"
                         android:layout_toRightOf="@id/text1"
                         android:text="白井黑子"
-                        android:textColor="@color/TittleColor"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/TextTextSize"/>
 
                     <ImageView
                         android:id="@+id/img2"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_centerVertical="true"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_toRightOf="@id/img0"
                         android:layout_marginLeft="25dp"
+                        android:layout_marginTop="20dp"
                         android:background="@drawable/icon_add_more"
-                        android:scaleType="matrix"/>
+                        />
 
                 </RelativeLayout>
             </RelativeLayout>
@@ -212,7 +218,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="车辆"
-                    android:textColor="@color/TittleColor"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
@@ -221,7 +227,7 @@
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="0dp"
                     android:background="@drawable/icon_add_more"
                     android:scaleType="matrix"/>
             </RelativeLayout>
@@ -239,8 +245,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="一队(4人)"
-                    android:textColor="@color/TittleColor"
+                    android:text="一车(4人)"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
@@ -267,7 +273,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="车牌号：川A666666"
-                    android:textColor="@color/TittleColor"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
@@ -293,8 +299,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="驾驶员：皮卡丘"
-                    android:textColor="@color/TittleColor"
+                    android:text="驾驶员：张严"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
@@ -321,8 +327,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="二队(4人)"
-                    android:textColor="@color/TittleColor"
+                    android:text="二车(4人)"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
@@ -350,7 +356,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="车牌号：川A233333"
-                    android:textColor="@color/TittleColor"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
@@ -376,8 +382,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="驾驶员：皮卡皮卡"
-                    android:textColor="@color/TittleColor"
+                    android:text="驾驶员：朱浩南"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
@@ -405,7 +411,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="行程设置"
-                    android:textColor="@color/TittleColor"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
             </RelativeLayout>
 
@@ -416,15 +422,17 @@
                 android:layout_marginTop="1px"
                 android:background="@drawable/select_btn"
                 android:clickable="true"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:onClick="setSchedule"
+                >
 
                 <TextView
                     android:id="@+id/StxtView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="路程"
-                    android:textColor="@color/TittleColor"
+                    android:text="日程"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
                 <ImageView
@@ -442,7 +450,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:layout_toLeftOf="@id/SimageView12"
-                    android:text="导入路书"
+                    android:text="自定义日程|导入路书"
                     android:textColor="@color/TextColor"
                     android:textSize="@dimen/TextTextSize"/>
 
@@ -463,7 +471,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="出发时间：2017.7.22"
-                    android:textColor="@color/TittleColor"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
 
             </RelativeLayout>
@@ -484,7 +492,7 @@
                     android:padding="12dp"
                     android:text="确定创立"
                     android:layout_centerHorizontal="true"
-                    android:textColor="@color/TittleColor"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/TittleTextSize"/>
             </RelativeLayout>
         </LinearLayout>

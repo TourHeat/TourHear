@@ -7,17 +7,22 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.algebra.sdk.API;
@@ -97,9 +102,20 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private MyLocation myLocation;//位置信息
     private Bundle bundle = null;
     private boolean startSessionOK = false;
+    private boolean isEmergecy = false;
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(isEmergecy){
+            Window window = this.getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(this.getResources().getColor(R.color.red));
+        }
         setContentView(R.layout.main);
+        if(isEmergecy){
+            RelativeLayout rl_title = (RelativeLayout) findViewById(R.id.rl_layout);
+            rl_title.setBackgroundColor(getResources().getColor(R.color.red));
+        }
         bundle = savedInstanceState;
         if(!ISDEBUG){
             uiHandler = Login.getUiHandler();

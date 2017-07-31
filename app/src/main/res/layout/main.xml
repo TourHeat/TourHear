@@ -12,7 +12,8 @@
         android:layout_height="match_parent"
         rfal:rfal_frame_color="#ffffff"
         rfal:rfal_frame_alpha="0.7"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
     <RelativeLayout
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
