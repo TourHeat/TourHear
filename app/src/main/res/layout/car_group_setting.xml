@@ -102,6 +102,108 @@
                     android:background="@drawable/icon_to"
                     android:scaleType="matrix"/>
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout8"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="设置加群方式"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <TextView
+                    android:id="@+id/text8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@id/SimageView8"
+                    android:padding="8dp"
+                    android:text="需要通过身份验证"
+                    android:textColor="@color/TextColor"
+                    android:textSize="@dimen/TextTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView8"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout9"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="通过队伍号加群"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ch.ielse.view.SwitchView
+                    android:id="@+id/SimageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_centerVertical="true"
+                    app:hasShadow="true"/>
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout10"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="成员邀请加群"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ch.ielse.view.SwitchView
+                    android:id="@+id/SimageView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_centerVertical="true"
+                    app:hasShadow="true"/>
+            </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
                 android:id="@+id/SrelativeLayout2"
@@ -183,6 +285,35 @@
                     android:layout_centerVertical="true"
                     android:background="@drawable/icon_to"
                     android:scaleType="matrix"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout15"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="设置集合点"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+                <ImageView
+                    android:id="@+id/SimageView15"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -312,50 +443,90 @@
                     app:hasShadow="true"/>
             </RelativeLayout>
 
+
+            <!--   ***********************************************************************   -->
             <RelativeLayout
-                android:id="@+id/SrelativeLayout8"
+                android:id="@+id/SrelativeLayout00"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:background="@drawable/select_btn"
+                android:background="@color/TempColor"
                 android:clickable="true"
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/StxtView8"
+                    android:id="@+id/StxtView00"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
-                    android:text="设置加群方式"
+                    android:text="安全设置"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
 
+            </RelativeLayout>
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout01"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
                 <TextView
-                    android:id="@+id/text8"
+                    android:id="@+id/StxtView01"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@id/SimageView8"
+                    android:layout_marginLeft="5dp"
                     android:padding="8dp"
-                    android:text="需要通过身份验证"
-                    android:textColor="@color/TextColor"
-                    android:textSize="@dimen/TextTextSize"/>
+                    android:text="安全模式"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
 
+                <ch.ielse.view.SwitchView
+                    android:id="@+id/SimageView01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="12dp"
+                    android:layout_centerVertical="true"
+                    app:hasShadow="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout16"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="紧急发布"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
                 <ImageView
-                    android:id="@+id/SimageView8"
+                    android:id="@+id/SimageView16"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
                     android:background="@drawable/icon_to"
-                    android:scaleType="matrix"/>
+                    android:scaleType="matrix"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"/>
+
             </RelativeLayout>
-            <!--   ***********************************************************************   -->
             <RelativeLayout
-                android:id="@+id/SrelativeLayout9"
+                android:id="@+id/SrelativeLayout17"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1px"
@@ -364,54 +535,24 @@
                 android:gravity="center_vertical">
 
                 <TextView
-                    android:id="@+id/StxtView9"
+                    android:id="@+id/StxtView17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="5dp"
                     android:padding="8dp"
-                    android:text="通过队伍号加群"
+                    android:text="紧急呼叫"
                     android:textColor="@color/TittleColor"
                     android:textSize="@dimen/TittleTextSize"/>
-
-                <ch.ielse.view.SwitchView
-                    android:id="@+id/SimageView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="12dp"
+                <ImageView
+                    android:id="@+id/SimageView17"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"
                     android:layout_centerVertical="true"
-                    app:hasShadow="true"/>
-            </RelativeLayout>
-            <!--   ***********************************************************************   -->
-            <RelativeLayout
-                android:id="@+id/SrelativeLayout10"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1px"
-                android:background="@drawable/select_btn"
-                android:clickable="true"
-                android:gravity="center_vertical">
+                    android:layout_alignParentEnd="true"/>
 
-                <TextView
-                    android:id="@+id/StxtView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:padding="8dp"
-                    android:text="成员邀请加群"
-                    android:textColor="@color/TittleColor"
-                    android:textSize="@dimen/TittleTextSize"/>
-
-                <ch.ielse.view.SwitchView
-                    android:id="@+id/SimageView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="12dp"
-                    android:layout_centerVertical="true"
-                    app:hasShadow="true"/>
             </RelativeLayout>
             <!--   ***********************************************************************   -->
             <RelativeLayout
@@ -526,65 +667,7 @@
                     app:hasShadow="true"/>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/SrelativeLayout15"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:background="@drawable/select_btn"
-                android:clickable="true"
-                android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/StxtView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:padding="8dp"
-                    android:text="设置集合点"
-                    android:textColor="@color/TittleColor"
-                    android:textSize="@dimen/TittleTextSize"/>
-                <ImageView
-                    android:id="@+id/SimageView15"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/SrelativeLayout16"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1px"
-                android:background="@drawable/select_btn"
-                android:clickable="true"
-                android:gravity="center_vertical">
-
-                <TextView
-                    android:id="@+id/StxtView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="5dp"
-                    android:padding="8dp"
-                    android:text="紧急发布"
-                    android:textColor="@color/TittleColor"
-                    android:textSize="@dimen/TittleTextSize"/>
-                <ImageView
-                    android:id="@+id/SimageView16"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/icon_to"
-                    android:scaleType="matrix"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true"/>
-
-            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 

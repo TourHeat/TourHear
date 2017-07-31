@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/shape_corners_white_corner_all">
+
+
+        <ImageView
+            android:id="@+id/top_img"
+            android:layout_width="190dp"
+            android:layout_height="155dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/icon_sos"/>
+
+        <TextView
+            android:id="@+id/top_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top_img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="紧急呼叫"
+            android:textColor="@color/red"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:id="@+id/top_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_tittle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="即将连接队长对讲机"
+            android:textColor="@color/TextColor"
+            android:textSize="@dimen/TextTextSize"/>
+
+        <Button
+            android:id="@+id/top_button"
+            android:layout_width="220dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/top_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@color/red"
+            android:text="确定呼叫"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TittleTextSize"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_button"
+            android:layout_marginTop="30dp"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/shape_corners_white_corner_all">
+
+        <TextView
+            android:id="@+id/top_tittle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="85dp"
+            android:text="紧急公告"
+            android:textColor="@color/red"
+            android:textSize="23sp"/>
+
+        <TextView
+            android:id="@+id/top_text"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_tittle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="前方5公处发生车祸，大家放慢速度，跟紧车队"
+            android:textColor="@color/red"
+            android:textSize="@dimen/TittleTextSize"/>
+
+        <Button
+            android:id="@+id/top_button"
+            android:layout_width="240dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/top_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@color/red"
+            android:text="确定发布"
+            android:textColor="@color/white"
+            android:textSize="@dimen/TittleTextSize"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_button"
+            android:layout_marginTop="30dp"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/top_img"
+        android:layout_width="190dp"
+        android:layout_height="155dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/icon_sos"/>
+</RelativeLayout>

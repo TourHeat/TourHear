@@ -1,6 +1,7 @@
 package com.example.tr.tourhear;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,6 +25,8 @@ public class CarGroupSettingActivity extends Activity {
         final RelativeLayout person_select = (RelativeLayout) findViewById(R.id.SrelativeLayout3);
         final RelativeLayout car_select = (RelativeLayout) findViewById(R.id.SrelativeLayout4);
         final RelativeLayout set_here = (RelativeLayout) findViewById(R.id.SrelativeLayout15);
+        final RelativeLayout urgent = (RelativeLayout) findViewById(R.id.SrelativeLayout16);
+        final RelativeLayout urgent_sos = (RelativeLayout) findViewById(R.id.SrelativeLayout17);
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,9 +60,31 @@ public class CarGroupSettingActivity extends Activity {
         set_here.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //车辆调度
+                //设置集合点
                 Intent intent_set_here = new Intent(CarGroupSettingActivity.this, CarGroupMapActivity.class);
                 startActivity(intent_set_here);
+            }
+        });
+        urgent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //紧急发布
+                AlertDialog alertDialog = new AlertDialog.Builder(CarGroupSettingActivity.this).create();
+                alertDialog.show();
+                Window window = alertDialog.getWindow();
+                window.setContentView(R.layout.dialog_info);
+
+            }
+        });
+        urgent_sos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //紧急发布
+                AlertDialog alertDialog = new AlertDialog.Builder(CarGroupSettingActivity.this).create();
+                alertDialog.show();
+                Window window = alertDialog.getWindow();
+                window.setContentView(R.layout.dialog_info_call);
+
             }
         });
     }

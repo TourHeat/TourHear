@@ -5,42 +5,42 @@
                 android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/rl_layout"
-        android:layout_width="fill_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/PrimaryColor"
-        android:orientation="vertical">
+            android:id="@+id/rl_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/PrimaryColor"
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/btn_back"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:onClick="setting">
-
-            <Button
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+            <LinearLayout
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/back_white"
-                android:paddingLeft="10dp"
-                android:textColor="#ffffff"
-                android:textSize="16sp"/>
-        </LinearLayout>
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:onClick="setting">
 
-        <TextView
-            android:id="@+id/channel_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="导航中"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/NavigationTittleSize"/>
+                <Button
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/back_white"
+                    android:paddingLeft="10dp"
+                    android:textColor="#ffffff"
+                    android:textSize="16sp"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/channel_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="导航中"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/NavigationTittleSize"/>
 
     </RelativeLayout>
 
