@@ -31,9 +31,9 @@ public class PersonDispatchMapActivity extends Activity implements AMap.OnMyLoca
     int LocationChangedTime = 0;
     double lat = 0, lon = 0;
     int num = 3;
-    double _lon[] = {103.986241, 103.991078, 103.979577};
-    double _lat[] = {30.764382, 30.761877, 30.76243};
-    String name[] = {"御坂美琴", "白井黑子", "西南交大小透明"};
+    double _lon[] = {103.971478, 103.974881, 104.004686};
+    double _lat[] = {30.760989, 30.773103, 30.764191};
+    String name[] = {"邹诗琪", "程梓羚", "何华均"};
     Marker marker;
 
     @Override

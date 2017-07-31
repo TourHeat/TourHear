@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="我的车队"
+            android:text="设置集合点"
             android:textColor="#ffffff"
             android:textSize="@dimen/NavigationTittleSize"/>
 
@@ -52,11 +52,11 @@
 
             <ImageView
                 android:id="@+id/voice"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:background="@drawable/voice"/>
+                android:background="@drawable/btn_yes"/>
         </LinearLayout>
 
 
