@@ -162,6 +162,23 @@ public class ShowRouteActivity extends Activity implements AMap.OnMyLocationChan
         RouteOverLay routeOverLay = new RouteOverLay(aMap, path, this);
         routeOverLay.setTrafficLine(true);
         routeOverLay.setStartPointBitmap(makeRoundCorner(BitmapFactory.decodeResource(getResources(), R.mipmap.chengdu1)));
+        Bitmap bit=BitmapFactory.decodeResource(getResources(), R.drawable.come_here);
+
+        int oldwidth = bit.getWidth();
+        int oldheight = bit.getHeight();
+        // 设置想要的大小
+        int width = 60;
+        int height = 60;
+        // 计算缩放比例
+        float scaleWidth = ((float) width) / oldwidth;
+        float scaleHeight = ((float) height) / oldheight;
+        // 取得想要缩放的matrix参数
+        Matrix matrix = new Matrix();
+        matrix.postScale(scaleWidth, scaleHeight);
+        // 得到新的图片
+        bit = Bitmap.createBitmap(bit, 0, 0, oldwidth, oldheight, matrix, true);
+
+        routeOverLay.setEndPointBitmap(bit);
         routeOverLay.addToMap();
         routeOverlays.put(routeId, routeOverLay);
         Log.i("routes","==================++++"+routeId);
