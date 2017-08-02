@@ -20,8 +20,6 @@ public class CarDispatchActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);//去掉标题栏
         setContentView(R.layout.car_dispatch);
-
-
     }
 
     public void back(View view) {

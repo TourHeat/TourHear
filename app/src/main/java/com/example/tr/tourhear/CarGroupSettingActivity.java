@@ -47,6 +47,7 @@ public class CarGroupSettingActivity extends Activity {
                 //人员调度
                 Intent intent_person_select = new Intent(CarGroupSettingActivity.this, PersonSelectActivity.class);
                 startActivity(intent_person_select);
+                finish();
             }
         });
         car_select.setOnClickListener(new View.OnClickListener() {
@@ -69,18 +70,17 @@ public class CarGroupSettingActivity extends Activity {
             @Override
             public void onClick(View view) {
                 //紧急发布
-                AlertDialog alertDialog = new AlertDialog.Builder(CarGroupSettingActivity.this).create();
+                AlertDialog alertDialog = new AlertDialog.Builder(CarGroupSettingActivity.this,R.style.AlertDialog).create();
                 alertDialog.show();
                 Window window = alertDialog.getWindow();
                 window.setContentView(R.layout.dialog_info);
-
             }
         });
         urgent_sos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //紧急发布
-                AlertDialog alertDialog = new AlertDialog.Builder(CarGroupSettingActivity.this).create();
+                AlertDialog alertDialog = new AlertDialog.Builder(CarGroupSettingActivity.this,R.style.AlertDialog).create();
                 alertDialog.show();
                 Window window = alertDialog.getWindow();
                 window.setContentView(R.layout.dialog_info_call);

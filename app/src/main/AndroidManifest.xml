@@ -88,8 +88,8 @@
         android:theme="@style/AppTheme">
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="e9391f447afbc3110c8378e2e34ec014"/>
-        <!--bea6b69ef024b035b15f7be40dff32ea -->
+            android:value="bea6b69ef024b035b15f7be40dff32ea" />
+        <!-- e9391f447afbc3110c8378e2e34ec014 -->
 
         <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
         <service android:name="com.amap.api.location.APSService" />
@@ -148,6 +148,7 @@
             android:windowSoftInputMode="stateHidden|stateUnchanged"/>
         <activity android:name=".GPSNaviActivity"/>
         <activity android:name=".ShowRouteActivity"/>
+>>>>>>> Stashed changes
 
         <!-- <activity -->
         <!-- android:name="com.example.tr.tourhear.tl_sdk.NotificationActivity" -->

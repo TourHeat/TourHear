@@ -13,8 +13,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -260,8 +258,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         if(cn.getText().toString().equals("我的车队")) {
             intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_CHEDUI);
         } else {
-            intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GEREN);
+           // intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GEREN);
+            intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GROUP);
         }
+        startActivity(intent);
+    }
+    public void publishRouteBook(View view) {
+        Intent intent = new Intent(MainActivity.this,SetMySchedule.class);
         startActivity(intent);
     }
 }

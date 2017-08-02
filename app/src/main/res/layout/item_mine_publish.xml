@@ -44,21 +44,6 @@
             android:textColor="@color/TittleColor"
             android:textSize="@dimen/TittleTextSize"
             android:textStyle="bold"/>
-        <TextView
-            android:background="@color/white"
-            android:id="@+id/time"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="1dp"
-            android:paddingBottom="1dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="TextView"
-            android:elevation="4dp"
-            android:textColor="@color/TextColor"
-            android:textSize="@dimen/TextTextSize"/>
 
     </LinearLayout>
     <TextView
@@ -70,7 +55,20 @@
         android:layout_marginLeft="5dp"
         android:textColor="@color/TittleColor"
         android:textSize="@dimen/TittleTextSize"/>
-
+    <TextView
+        android:id="@+id/time"
+        android:layout_below="@+id/picture"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:elevation="4dp"
+        android:textColor="@color/TextColor"
+        android:textSize="@dimen/TextTextSize"
+        />
     <LinearLayout
         android:id="@+id/evalute"
         android:layout_width="fill_parent"

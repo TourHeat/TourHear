@@ -104,7 +104,14 @@ public class PersonDispatchActivity extends Activity implements Runnable {//äººå
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mMediaRecorder.start();
+
+        try {
+            mMediaRecorder.start();
+        }
+        catch (Exception e) {
+
+        }
+
 
         Thread thread = new Thread(this);
         thread.start();

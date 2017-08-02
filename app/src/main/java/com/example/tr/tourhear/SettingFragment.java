@@ -61,7 +61,8 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
     }
 
     public List<Map<String, Object>> getData() {
-        int jingdian[]={jingdian_jiuzai2,jingdian_kuanzai,jingdian_jiuzai1};
+        int jingdian2[]={jingdian_jiuzai2,jingdian_kuanzai,jingdian_jiuzai1};
+        int jingdian[]={R.mipmap.jingdian7,R.mipmap.jingdian8,R.mipmap.jingdian9,R.mipmap.jingdian10,R.mipmap.jingdian11,R.mipmap.jingdian12};
         int headport[]={headportrait_2,headportrait_1,headportrait_3};
         String jingdiannames[]={"九寨三日游，平安出行，放心游玩！！","成都周边两日游，一起来畅玩！！","九寨三日游，快来跟我一起浪迹天涯吧!!"};
         String usernames[]={"特立独行的猪","小胖严","张胖胖"};
@@ -86,7 +87,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
         return list;
     }
     public List<Map<String, Object>> getData2() {
-        int jingdian[]={jingdian_jiuzai1,jingdian_kuanzai,jingdian_jiuzai2};
+        int jingdian[]={R.mipmap.jingdian7,R.mipmap.jingdian8,R.mipmap.jingdian9,R.mipmap.jingdian10,R.mipmap.jingdian11,R.mipmap.jingdian12};
         int headport[]={headportrait_2,headportrait_1,headportrait_3};
         String jingdiannames[]={"九寨三日游，平安出行，放心游玩！！","成都周边两日游，一起来畅玩！！","九寨三日游，快来跟我一起浪迹天涯吧!!"};
         String usernames[]={"特立独行的猪","小胖严","张胖胖"};
@@ -99,7 +100,7 @@ public class SettingFragment extends Fragment implements View.OnClickListener {
             map.put("name", usernames[i]);
             map.put("time", simpleFormat.format(date).toString());
             date.setTime(date.getTime()-1000*60*60*24*((int)(Math.random()*10)));
-            map.put("picture", jingdian[i]);
+            map.put("picture", jingdian[i+3]);
             map.put("tittle",jingdiannames[i]);
             map.put("image_collect",R.drawable.icon_pulldown);
             map.put("text_collect","5人");

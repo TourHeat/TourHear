@@ -40,6 +40,7 @@ import com.amap.api.navi.model.NaviInfo;
 import com.amap.api.navi.model.NaviLatLng;
 import com.amap.api.navi.view.RouteOverLay;
 import com.autonavi.tbt.TrafficFacilityInfo;
+import com.example.tr.tourhear.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,10 +60,15 @@ public class ShowRouteActivity extends Activity implements AMap.OnMyLocationChan
     double lat = 0, lon = 0;
     protected NaviLatLng mEndLatlng = new NaviLatLng(30.756846,103.976026);
     protected NaviLatLng mStartLatlng = new NaviLatLng(30.771375,103.99154);
-    protected NaviLatLng mStartLatlng1 = new NaviLatLng(30.784,103.975952);
-    protected final List<NaviLatLng> sList = new ArrayList<NaviLatLng>();
-    protected final List<NaviLatLng> sList1 = new ArrayList<NaviLatLng>();
+    protected NaviLatLng mStartLatlng1 = new NaviLatLng(30.6963828704,103.9993286133);
+    protected NaviLatLng mStartLatlng2 = new NaviLatLng(30.6787419882,104.0684223175);
+    protected NaviLatLng mStartLatlng3 = new NaviLatLng(30.6589567474,104.0202713013);
+    protected  List<NaviLatLng> sList = new ArrayList<NaviLatLng>();
+    protected  List<NaviLatLng> sList1 = new ArrayList<NaviLatLng>();
+    protected  List<NaviLatLng> sList2 = new ArrayList<NaviLatLng>();
+    protected  List<NaviLatLng> sList3 = new ArrayList<NaviLatLng>();
     protected final List<NaviLatLng> eList = new ArrayList<NaviLatLng>();
+    private HashMap<Integer,List<NaviLatLng>> sls = new HashMap<Integer,List<NaviLatLng>>();
     private SparseArray<RouteOverLay> routeOverlays = new SparseArray<RouteOverLay>();
 
     @Override
@@ -88,6 +94,12 @@ public class ShowRouteActivity extends Activity implements AMap.OnMyLocationChan
         mAMapNavi.addAMapNaviListener(this);
         sList.add(mStartLatlng);
         sList1.add(mStartLatlng1);
+        sList2.add(mStartLatlng2);
+        sList3.add(mStartLatlng3);
+        sls.put(0,sList);
+        sls.put(1,sList1);
+        sls.put(2,sList2);
+        sls.put(3,sList3);
         eList.add(mEndLatlng);
     }
     private void init() {
@@ -157,12 +169,21 @@ public class ShowRouteActivity extends Activity implements AMap.OnMyLocationChan
         canvas.drawBitmap(bitmap, rect, rect, paint);
         return output;
     }
-
+    private int ii = 0;
     private void drawRoutes(int routeId, AMapNaviPath path) {
         RouteOverLay routeOverLay = new RouteOverLay(aMap, path, this);
         routeOverLay.setTrafficLine(true);
-        routeOverLay.setStartPointBitmap(makeRoundCorner(BitmapFactory.decodeResource(getResources(), R.mipmap.chengdu1)));
-        Bitmap bit=BitmapFactory.decodeResource(getResources(), R.drawable.come_here);
+        routeOverLay.setStartPointBitmap(makeRoundCorner(BitmapFactory.decodeResource(getResources(), Constants.headPortaits[ii++])));
+
+        int strategy=0;
+
+        try {
+            strategy = mAMapNavi.strategyConvert(true, false, false, false, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+       mAMapNavi.calculateDriveRoute(sls.get(ii), eList, null, strategy);
+        Bitmap bit=BitmapFactory.decodeResource(getResources(), R.mipmap.jihedian4);
 
         int oldwidth = bit.getWidth();
         int oldheight = bit.getHeight();
@@ -252,7 +273,9 @@ public class ShowRouteActivity extends Activity implements AMap.OnMyLocationChan
             e.printStackTrace();
         }
         mAMapNavi.calculateDriveRoute(sList, eList, null, strategy);
-        mAMapNavi.calculateDriveRoute(sList1, eList, null, strategy);
+//        mAMapNavi.calculateDriveRoute(sList1, eList, null, strategy);
+//        mAMapNavi.calculateDriveRoute(sList2, eList, null, strategy);
+//        mAMapNavi.calculateDriveRoute(sList3, eList, null, strategy);
     }
 
     @Override

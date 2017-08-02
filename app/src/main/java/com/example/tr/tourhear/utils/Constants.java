@@ -17,5 +17,7 @@ public class Constants {
     public static boolean ISDEBUG = false;//调试版
     public static int CALL_MODE_SIGNAL = 0;//单呼
     public static int CALL_MODE_MULT = 1;//单呼
+    public static int EMERGENCY_SIGNAL =0;
+    public static int EMERGENCY_GONGGAO =1;
 
 }

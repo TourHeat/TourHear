@@ -6,12 +6,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
+import android.media.MediaRecorder;
 import android.media.ToneGenerator;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +39,7 @@ import com.algebra.sdk.entity.Contact;
 import com.algebra.sdk.entity.OEMToneGenerator;
 import com.algebra.sdk.entity.OEMToneProgressListener;
 import com.algebra.sdk.entity.Session;
+import com.carlos.voiceline.mylibrary.VoiceLineView;
 import com.example.tr.tourhear.entity.ChaneelMems;
 import com.example.tr.tourhear.myimplements.MyOnMediaListener;
 import com.example.tr.tourhear.myimplements.MyOnSessionListener;
@@ -52,17 +58,21 @@ import com.wangjie.rapidfloatingactionbutton.contentimpl.labellist.RFACLabelItem
 import com.wangjie.rapidfloatingactionbutton.contentimpl.labellist.RapidFloatingActionContentLabelList;
 import com.wangjie.rapidfloatingactionbutton.listener.OnRapidFloatingButtonSeparateListener;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.example.tr.tourhear.utils.Constants.EMERGENCY_GONGGAO;
+import static com.example.tr.tourhear.utils.Constants.EMERGENCY_SIGNAL;
 import static com.example.tr.tourhear.utils.Constants.ISDEBUG;
 
 /**
  * Created by ZhangYan on 2017/7/16.
  */
-public class ChatActivity extends Activity implements OnClickListener, RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener, OnRapidFloatingButtonSeparateListener {
+public class ChatActivity extends Activity implements Runnable,OnClickListener, RapidFloatingActionContentLabelList.OnRapidFloatingActionContentLabelListListener, OnRapidFloatingButtonSeparateListener {
 
     private Button mBtnSend;// 发送btn
 
@@ -77,6 +87,9 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private SessionApi sessionapi;//会话操作
     private CompactID currSession = null;//会话
     private Session session;
+    //声纹
+    private MediaRecorder mMediaRecorder;
+    private boolean isAlive = true;
 //操作频道
     private List<Channel> cs = new ArrayList<Channel>();
     private  Channel channel = null;
@@ -103,6 +116,27 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
     private Bundle bundle = null;
     private boolean startSessionOK = false;
     private boolean isEmergecy = false;
+   private int EmergencyType = EMERGENCY_GONGGAO;
+    private AlertDialog dialog;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(mMediaRecorder==null) return;
+            double ratio = (double) mMediaRecorder.getMaxAmplitude() / 100;
+            double db = 0;// 分贝
+            //默认的最大音量是100,可以修改，但其实默认的，在测试过程中就有不错的表现
+            //你可以传自定义的数字进去，但需要在一定的范围内，比如0-200，就需要在xml文件中配置maxVolume
+            //同时，也可以配置灵敏度sensibility
+            if (ratio > 1)
+                db = 20 * Math.log10(ratio);
+            //只要有一个线程，不断调用这个方法，就可以使波形变化
+            //主要，这个方法必须在ui线程中调用
+            voiceLineView.setVolume((int) (db));
+        }
+    };
+    private VoiceLineView voiceLineView;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,6 +144,27 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
             Window window = this.getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(this.getResources().getColor(R.color.red));
+            if(EmergencyType == EMERGENCY_SIGNAL){
+                AlertDialog.Builder builder=new AlertDialog.Builder(this,R.style.AlertDialog);
+                LayoutInflater inflater = LayoutInflater.from (this);
+                View view = inflater.inflate(R.layout.dialog_info_get,null);
+               // view.setBackgroundColor(getResources().getColor(R.color.transparent));
+                builder.setView(view);
+
+                dialog = builder.create();
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+
+            } else {
+                AlertDialog.Builder builder=new AlertDialog.Builder(this);
+                LayoutInflater inflater = LayoutInflater.from (this);
+                View view = inflater.inflate(R.layout.dialog_info_call_get,null);
+
+                builder.setView(view);
+                dialog = builder.create();
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+            }
         }
         setContentView(R.layout.main);
         if(isEmergecy){
@@ -126,11 +181,48 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         rfaLayout = (RapidFloatingActionLayout) findViewById(R.id.label_list_sample_rfal);
         rfaButton = (RapidFloatingActionButton) findViewById(R.id.add_menu);
         initMenu();
+
+        voiceLineView = (VoiceLineView) findViewById(R.id.boxing);
+        if (mMediaRecorder == null)
+            mMediaRecorder = new MediaRecorder();
+
+        mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.AMR_NB);
+        mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+        File file = new File(Environment.getExternalStorageDirectory().getPath(), "hello.log");
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        mMediaRecorder.setOutputFile(file.getAbsolutePath());
+        mMediaRecorder.setMaxDuration(1000 * 60 * 10);
+        try {
+            mMediaRecorder.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mMediaRecorder.start();
+
+        Thread thread = new Thread(this);
+        thread.start();
        // initData();// 初始化数据
      //   mListView.setSelection(mAdapter.getCount() - 1);
 
     }
-
+    @Override
+    public void run() {
+        while (isAlive) {
+            handler.sendEmptyMessage(0);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     private void initMenu() {
         RapidFloatingActionContentLabelList rfaContent = new RapidFloatingActionContentLabelList(ChatActivity.this);
         rfaContent.setOnRapidFloatingActionContentLabelListListener(ChatActivity.this);
@@ -219,7 +311,10 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                     //打开对讲
                     iconVoice.setBackground(getResources().getDrawable(R.drawable.tab_message_press));
                     bottom.setBackgroundColor(getResources().getColor(R.color.infosColor));
-                    layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(API.getAccountApi().whoAmI().id));
+                    if (API.getAccountApi() != null) {
+                        layout_whospeak_headportrait.setImageDrawable(getSpeakerHeadPortrait(API.getAccountApi().whoAmI().id));
+                    }
+
                     layout_whospeak_name.setText("我"+"正在说话...");//我正在说话
                     layout_whospeak.setVisibility(View.VISIBLE);
                     speakTime.setTime(System.currentTimeMillis());
@@ -228,8 +323,10 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                         talkRequest(currSession);
                         Log.i("login","alkRequest:"+"uid: "+API.getAccountApi().whoAmI().id+"type"+currSession.getType()+" id :"+ currSession.getId());
                     }
+                    voiceLineView.setVisibility(View.VISIBLE);
                 }
                 if(motionEvent.getAction() == MotionEvent.ACTION_UP){
+                    voiceLineView.setVisibility(View.INVISIBLE);
                     long dur = 0;
                     dur = System.currentTimeMillis() - speakTime.getTime();
 //新增发言
@@ -423,12 +520,14 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
 
     //获取频道成员名称,owner是uid
     private String getMemberName(int owner) {
-        for(Contact c : cm.getCs()){
-            if(c.id == owner){
-                return  c.name;
+        if (cm != null) {
+            for(Contact c : cm.getCs()){
+                if(c.id == owner){
+                    return  c.name;
+                }
             }
         }
-        return "";
+        return "1";
     }
 
     private String[] msgArray = new String[]{"13''", "12''", "17''", "55''",
@@ -529,7 +628,9 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         } else  {//群聊
             intent=new Intent(ChatActivity.this,ChatGroupSettingActivity.class);
         }
+        mMediaRecorder.stop();
         startActivity(intent);
+      //  finish();
     }
 
     public void startSpeak(View view) {
@@ -614,7 +715,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
                 speakTime.setTime(System.currentTimeMillis());
                 entity.setDate(format.format(speakTime).toString());
-                entity.setMessage("西南交大 | 1.2km");
+                entity.setMessage("林湾村 | 1.2km");
                 entity.setMsgType(false);
                 entity.setMsgType(1);
                 entity.setName(API.getAccountApi().whoAmI().name);
@@ -639,7 +740,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
                 speakTime.setTime(System.currentTimeMillis());
                 entity.setDate(format.format(speakTime).toString());
-                entity.setMessage("西南交大 | 1.2km");
+                entity.setMessage("林湾村 | 1.2km");
                 entity.setMsgType(false);
                 entity.setMsgType(1);
                 if(!ISDEBUG){
@@ -657,7 +758,7 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
                 SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd  hh:mm:ss");//时间
                 speakTime.setTime(System.currentTimeMillis());
                 entity2.setDate(format2.format(speakTime).toString());
-                entity2.setMessage("西南交大 | 1.2km");
+                entity2.setMessage("林湾村 | 1.2km");
                 entity2.setMsgType(false);
                 entity2.setMsgType(2);
                 if(!ISDEBUG){
@@ -671,7 +772,13 @@ public class ChatActivity extends Activity implements OnClickListener, RapidFloa
         sendOthers.setVisibility(View.VISIBLE);
         rfabHelper.toggleContent();
     }
-
+    @Override
+    protected void onDestroy() {
+        isAlive = false;
+        mMediaRecorder.release();
+        mMediaRecorder = null;
+        super.onDestroy();
+    }
 
     @Override
     public void onRFABClick() {
