@@ -60,6 +60,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
     private Channel channel;
     private static List<Channel> channelList = new ArrayList<Channel>();
     private static String[] channelsname;
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +73,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         initEvent();
         // 初始化并设置当前Fragment
         initFragment(0);
-        if(!ISDEBUG){
+        if (!ISDEBUG) {
             uiHandler = Login.getUiHandler();
             channelApi = API.getChannelApi();
             initChannes();
         }
-//
+        //
     }
 
     private void initChannes() {
@@ -90,19 +91,21 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
             public void onChannelListGet(int i, Channel channel, List<Channel> list) {
                 super.onChannelListGet(i, channel, list);
                 channelList = list;
-                for(Channel channel2 : list){
-                    Log.i("login","频道:::------------"+channel2.toString());
-                    Log.i("login",channel2.name+channel2.cid);
-                    CompactID cid =  channel2.cid;
-                    Log.i("login","id"+cid.getId()+" type:"+cid.getType());
+                for (Channel channel2 : list) {
+                    Log.i("login", "频道:::------------" + channel2.toString());
+                    Log.i("login", channel2.name + channel2.cid);
+                    CompactID cid = channel2.cid;
+                    Log.i("login", "id" + cid.getId() + " type:" + cid.getType());
                 }
             }
         });
-        Log.i("login","chanel inti"+(me.whoAmI().id));
+        Log.i("login", "chanel inti" + (me.whoAmI().id));
     }
-    public static List<Channel> getChannelList(){
+
+    public static List<Channel> getChannelList() {
         return channelList;
     }
+
     private void initFragment(int index) {
         // 由于是引用了V4包下的Fragment，所以这里的管理器要用getSupportFragmentManager获取
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -249,22 +252,26 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
         tv_friend.setTextColor(0xff50597e);
         tv_setting.setTextColor(0xff50597e);
     }
-    public void toChatActivity(View view){
-        Intent intent=new Intent(this,ChatActivity.class);
+
+    public void toChatActivity(View view) {
+        Intent intent = new Intent(this, ChatActivity.class);
         //获取当前点击的频道
         TextView cn = (TextView) view.findViewById(R.id.name);
-        intent.putExtra("channelName",cn.getText().toString());
+        intent.putExtra("channelName", cn.getText().toString());
         //群聊，频道
-        if(cn.getText().toString().equals("我的车队")) {
+        if (cn.getText().toString().equals("我的车队")) {
             intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_CHEDUI);
-        } else {
-           // intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GEREN);
+        } else if (cn.getText().toString().equals("成都队")) {
             intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GROUP);
+        } else {
+             intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GEREN);
+         //   intent.putExtra("CHATTYPE", Constants.CHAT_TYPE_GROUP);
         }
         startActivity(intent);
     }
+
     public void publishRouteBook(View view) {
-        Intent intent = new Intent(MainActivity.this,SetMySchedule.class);
+        Intent intent = new Intent(MainActivity.this, SetMySchedule.class);
         startActivity(intent);
     }
 }

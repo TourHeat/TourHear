@@ -2,6 +2,7 @@ package com.example.tr.tourhear;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,9 +25,10 @@ public class CarGroupSettingActivity extends Activity {
         final RelativeLayout group_member = (RelativeLayout) findViewById(R.id.GroupMember);
         final RelativeLayout person_select = (RelativeLayout) findViewById(R.id.SrelativeLayout3);
         final RelativeLayout car_select = (RelativeLayout) findViewById(R.id.SrelativeLayout4);
-        final RelativeLayout set_here = (RelativeLayout) findViewById(R.id.SrelativeLayout15);
+     //   final RelativeLayout set_here = (RelativeLayout) findViewById(R.id.SrelativeLayout15);
         final RelativeLayout urgent = (RelativeLayout) findViewById(R.id.SrelativeLayout16);
         final RelativeLayout urgent_sos = (RelativeLayout) findViewById(R.id.SrelativeLayout17);
+        final RelativeLayout show_list = (RelativeLayout) findViewById(R.id.SrelativeLayout23);
         bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,14 +60,14 @@ public class CarGroupSettingActivity extends Activity {
                 startActivity(intent_car_select);
             }
         });
-        set_here.setOnClickListener(new View.OnClickListener() {
+        /*set_here.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //设置集合点
                 Intent intent_set_here = new Intent(CarGroupSettingActivity.this, CarGroupMapActivity.class);
                 startActivity(intent_set_here);
             }
-        });
+        });*/
         urgent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +87,28 @@ public class CarGroupSettingActivity extends Activity {
                 Window window = alertDialog.getWindow();
                 window.setContentView(R.layout.dialog_info_call);
 
+            }
+        });
+        show_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String[] items = new String[]{"1km","2km","3km","5km"};
+                new AlertDialog.Builder(CarGroupSettingActivity.this).setTitle("过远报警距离").setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        switch (which) {
+                            case 0:
+                                break;
+                            case 1:
+                                break;
+                            case 2:
+                                break;
+                            case 3:
+                                break;
+                        }
+                    }
+                }).show();
             }
         });
     }

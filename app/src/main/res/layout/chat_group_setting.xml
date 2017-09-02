@@ -11,8 +11,10 @@
         android:id="@+id/rl_layout"
         android:layout_width="fill_parent"
         android:layout_height="150dp"
-        android:background="@drawable/test_backpicture"
-        android:orientation="vertical">
+        android:background="@mipmap/jingdian10"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <Button
             android:id="@+id/btn_back"
@@ -89,14 +91,14 @@
                     android:id="@+id/MoreThings1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
+                    android:layout_marginLeft="45dp"
                     android:layout_marginTop="10dp">
 
                     <ImageView
                         android:id="@+id/More_img1"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/add"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_book"
                         android:scaleType="matrix"/>
 
                     <TextView
@@ -114,15 +116,15 @@
                     android:id="@+id/MoreThings2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
+                    android:layout_marginLeft="45dp"
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@id/MoreThings1">
 
                     <ImageView
                         android:id="@+id/More_img2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/add"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_car"
                         android:scaleType="matrix"/>
 
                     <TextView
@@ -140,15 +142,15 @@
                     android:id="@+id/MoreThings3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
+                    android:layout_marginLeft="45dp"
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@id/MoreThings2">
 
                     <ImageView
                         android:id="@+id/More_img3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/add"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_xiangce"
                         android:scaleType="matrix"/>
 
                     <TextView
@@ -166,15 +168,15 @@
                     android:id="@+id/MoreThings4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
+                    android:layout_marginLeft="45dp"
                     android:layout_marginTop="10dp"
                     android:layout_toRightOf="@id/MoreThings3">
 
                     <ImageView
                         android:id="@+id/More_img4"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:background="@drawable/add"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_gonggao"
                         android:scaleType="matrix"/>
 
                     <TextView
@@ -251,6 +253,37 @@
 
             </RelativeLayout>
 
+            <!--   ***********************************************************************   -->
+            <RelativeLayout
+                android:id="@+id/SrelativeLayout_"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1px"
+                android:background="@drawable/select_btn"
+                android:clickable="true"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/StxtView_"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:padding="8dp"
+                    android:text="二维码"
+                    android:textColor="@color/TittleColor"
+                    android:textSize="@dimen/TittleTextSize"/>
+
+                <ImageView
+                    android:id="@+id/SimageView_"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/icon_to"
+                    android:scaleType="matrix"/>
+
+            </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/SrelativeLayout3"
                 android:layout_width="fill_parent"
